@@ -1,0 +1,34 @@
+{
+  "name": "dual-power-app",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/BSA-US/dual-power-app.git",
+  "contributors": [
+    "replygirl <moon@moon.fyi> (https://twitter.com/anne_volin)"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "storybook": "start-storybook"
+  },
+  "dependencies": {
+    "@zeit/next-stylus": "^1.0.1",
+    "autoprefixer": "^9.7.5",
+    "faunadb": "^2.13.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.3.1",
+    "poststylus": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rupture": "^0.7.1",
+    "stylus": "^0.54.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@storybook/react": "^5.3.17",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-react-require": "^3.1.3"
+  }
+}
