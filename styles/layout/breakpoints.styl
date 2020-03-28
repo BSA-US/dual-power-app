@@ -37,14 +37,26 @@
  * iMac 27":    2560px
  */
 
-rupture.scale = 0\
-  414px\  // 1. iPhone Max
-  551px\  // 2. iPad Pro 10.5", hor-half
-  768px\  // 3. iPad Pro 9.7", ver
-  1024px\ // 4. iPad Pro 9.7", hor
-  1536px\ // 5. MacBook 16"
-  2048px  // 6. iMac 21.5"
+thresholds = {
+  phoneNarrow: 320px
+  phone: 414px
+  tabletNarrow: 551px
+  tablet: 768px
+  desktopNarrow: 1024px
+  desktop: 1536px
+  hd: 2048px
+}
 
-rupture.mobile-cutoff  = 551px  // iPad Pro 11", hor-half
-rupture.desktop-cutoff = 1024px // iPad Pro 9.7", hor
-rupture.hd-cutoff      = 1536px // MacBook 16"
+upTo(breakpoint)
+  @media (max-width: thresholds[breakpoint] - 1px)
+    {block}
+
+above(breakpoint)
+  @media (min-width: thresholds[breakpoint])
+    {block}
+
+between(aboveBreakpoint, upToBreakpoint)
+  @media \
+    (min-width: thresholds[aboveBreakpoint]) and \
+    (max-width: thresholds[upToBreakpoint] - 1px)
+    {block}

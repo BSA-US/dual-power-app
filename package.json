@@ -14,6 +14,7 @@
     "storybook": "start-storybook"
   },
   "dependencies": {
+    "@babel/plugin-transform-typescript": "^7.9.4",
     "@zeit/next-stylus": "^1.0.1",
     "autoprefixer": "^9.7.5",
     "faunadb": "^2.13.1",
@@ -22,13 +23,18 @@
     "poststylus": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "rupture": "^0.7.1",
     "stylus": "^0.54.7"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@now/node": "^1.5.0",
+    "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^5.3.17",
+    "@types/node": "^13.9.5",
+    "@types/react": "^16.9.26",
     "babel-loader": "^8.1.0",
-    "babel-plugin-react-require": "^3.1.3"
+    "babel-plugin-react-require": "^3.1.3",
+    "typescript": "^3.8.3"
   }
 }

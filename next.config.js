@@ -2,7 +2,6 @@ const path = require('path')
 
 const autoprefixer = require('autoprefixer')
 const poststylus = require('poststylus')
-const rupture = require('rupture')
 const withStylus = require('@zeit/next-stylus')
 
 module.exports = withStylus({
@@ -18,16 +17,16 @@ module.exports = withStylus({
   },
   stylusLoaderOptions: {
     use: [
-      rupture(),
       poststylus([
         autoprefixer()
       ]),
-    ]
+    ],
+    preferPathResolver: 'webpack'
   },
   /**
    * Use "~" as an alias for the root directory
    */
-  webpack: (config, _options) => {
+  webpack(config, _options) {
     config.resolve.alias['~'] = path.resolve(__dirname)
     return config
   }

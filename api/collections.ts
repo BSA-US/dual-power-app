@@ -1,16 +1,13 @@
+import { NowRequest, NowResponse } from '@now/node'
 import faunadb, { query as q } from 'faunadb';
 
 const { FAUNADB_SECRET: secret } = process.env;
 
-let client;
+const client = secret ? new faunadb.Client({ secret }) : null
 
-if (secret) {
-  client = new faunadb.Client({ secret });
-}
-
-export default async (req, res) => {
+export default async (_req: NowRequest, res: NowResponse) => {
   try {
-    let collections = []
+    let collections: Array<any> = []
 
     if (!client) return []
 
