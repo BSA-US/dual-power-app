@@ -1,0 +1,10 @@
+type Term {
+  name: String!
+  description: String!
+  wikiUrl: String
+  seeAlso: [Term!]
+}
+
+type Query {
+  allTerms: [Term]
+}

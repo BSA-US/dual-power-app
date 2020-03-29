@@ -38,9 +38,13 @@ const Index: NextPage<Props> = ({
   </div>
 }
 
-export const getServerSideProps : GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req: {
+    headers
+  }
+}) => {
   try {
-    const { 'x-now-deployment-url': nowUrl } = req.headers
+    const { 'x-now-deployment-url': nowUrl } = headers
 
     if (!nowUrl) throw new NotDeployedError()
 
@@ -55,7 +59,13 @@ export const getServerSideProps : GetServerSideProps = async ({ req }) => {
         isDeployed: true
       }
     }
-  } catch (error) { return { props: { isDeployed: false }}}
+  } catch (error) {
+    return {
+      props: {
+        isDeployed: false
+      }
+    }
+  }
 }
 
 export default Index
