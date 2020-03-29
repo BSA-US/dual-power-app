@@ -3,8 +3,8 @@ import gql from './_gql'
 
 export default async (_req: NowRequest, res: NowResponse) => {
   try {
-    const terms = await gql({
-      query: `query {
+    const response = await gql({
+      query: `{
         allTerms {
           data {
             name
@@ -14,7 +14,7 @@ export default async (_req: NowRequest, res: NowResponse) => {
       }`
     })
 
-    res.json({ terms })
+    res.json(response)
   } catch (error) {
     res.status(500).json({ error })
   }

@@ -6,5 +6,5 @@ type Term {
 }
 
 type Query {
-  allTerms: [Term]
+  allTerms: [Term!]!
 }
