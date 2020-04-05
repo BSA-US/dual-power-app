@@ -1,20 +1,10 @@
 import { NowRequest, NowResponse } from '@now/node'
-import gql from './_gql'
+import gql from '~/db/gql'
+import { allTerms } from '~/db/queries/Term'
 
 export default async (_req: NowRequest, res: NowResponse) => {
   try {
-    const response = await gql({
-      query: `{
-        allTerms {
-          data {
-            name
-            description
-          }
-        }
-      }`
-    })
-
-    res.json(response)
+    res.json(await gql({ query: allTerms() }))
   } catch (error) {
     res.status(500).json({ error })
   }
