@@ -1,4 +1,4 @@
-import type { ZeitRequest, ZeitResponse } from '~/api/_utils/types'
+import type { ZeitRequest, ZeitResponse } from '../_types'
 
 interface BaseProps {
   req: ZeitRequest,

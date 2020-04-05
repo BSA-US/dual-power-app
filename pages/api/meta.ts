@@ -1,5 +1,5 @@
-import { NowRequest, NowResponse } from '@now/node'
-import { endpoint } from '~/api/_utils'
+import { endpoint } from './_utils'
+import type { ZeitRequest, ZeitResponse } from './_types'
 
 const data = {
   endpoints: [
@@ -11,7 +11,7 @@ const data = {
   ]
 }
 
-export default (req: NowRequest, res: NowResponse): void =>
+export default (req: ZeitRequest, res: ZeitResponse): void =>
   endpoint({
     req,
     res,

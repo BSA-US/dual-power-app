@@ -1,11 +1,11 @@
-import { NowRequest, NowResponse } from '@now/node'
+import { ZeitRequest, ZeitResponse } from './_types'
 import faunadb, { query as q } from 'faunadb';
 
 const { FAUNADB_SECRET: secret } = process.env;
 
 const client = secret ? new faunadb.Client({ secret }) : null
 
-export default async (_req: NowRequest, res: NowResponse) => {
+export default async (_req: ZeitRequest, res: ZeitResponse) => {
   try {
     let collections: Array<any> = []
 
