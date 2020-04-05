@@ -1,6 +1,6 @@
 ## Importing
 
-### individual queries (recommenaded)
+### Individual queries (recommended)
 
 ```typescript
 import { gql } from '~/db'
