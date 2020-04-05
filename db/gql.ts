@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-unfetch'
 
-// const { FAUNADB_SECRET: secret } = process.env;
+const { FAUNADB_PUBLIC_SECRET: secret } = process.env;
 
 interface Props {
   query: string
