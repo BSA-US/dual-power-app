@@ -11,6 +11,8 @@ interface Props extends BaseProps {
 
 export default async ({ req, res, fn }: Props) => {
   try {
+    // Your editor may tell you the await here is unnecessary;
+    // it is definitely necessary
     const x = await fn({ req, res })
     console.log(x)
 
