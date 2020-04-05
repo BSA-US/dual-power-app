@@ -2,7 +2,10 @@ export const Term: string = `
   name
   description
   wikiUrl
-  seeAlso
+  seeAlso {
+    name
+    description
+  }
 `
 
 export default {
