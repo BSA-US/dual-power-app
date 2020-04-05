@@ -11,7 +11,7 @@ const data = {
   ]
 }
 
-export default (req: ZeitRequest, res: ZeitResponse): void =>
+export default (req: ZeitRequest, res: ZeitResponse): Promise<void> =>
   endpoint({
     req,
     res,
