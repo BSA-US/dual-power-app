@@ -9,7 +9,7 @@ interface Props {
 
 const endpoint = 'https://graphql.fauna.com/graphql'
 
-export default async ({ query, variables }: Props) => {
+export default async ({ query, variables }: Props): Promise<object> => {
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: {

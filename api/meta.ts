@@ -1,19 +1,19 @@
 import { NowRequest, NowResponse } from '@now/node'
+import { endpoint } from '~/api/_utils'
 
-export default async (_req: NowRequest, res: NowResponse) => {
-  try {
-    res.json({
-      data: {
-        endpoints: [
-          {
-            name: 'All Terms',
-            method: 'GET',
-            path: '/terms'
-          }
-        ]
-      }
-    })
-  } catch (error) {
-    res.status(500).json({ error })
-  }
+const data = {
+  endpoints: [
+    {
+      name: 'All Terms',
+      method: 'GET',
+      path: '/terms'
+    }
+  ]
 }
+
+export default (req: NowRequest, res: NowResponse): void =>
+  endpoint({
+    req,
+    res,
+    fn: (): object => ({ data })
+  })

@@ -1,11 +1,12 @@
-import { NowRequest, NowResponse } from '@now/node'
-import gql from '~/db/gql'
+import gql from '~/db'
 import { allTerms } from '~/db/queries/Term'
+import { endpoint } from '~/api/_utils'
 
-export default async (_req: NowRequest, res: NowResponse) => {
-  try {
-    res.json(await gql({ query: allTerms() }))
-  } catch (error) {
-    res.status(500).json({ error })
-  }
-}
+import type { ZeitRequest, ZeitResponse } from '~/api/_utils/types'
+
+export default (req: ZeitRequest, res: ZeitResponse): void =>
+  endpoint({
+    req,
+    res,
+    fn: async (): Promise<void> => await gql({ query: allTerms() })
+  })
