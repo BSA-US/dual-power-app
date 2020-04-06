@@ -15,5 +15,6 @@ export const findTermById = (id: number): string => `{
 }`
 
 export default {
-  allTerms
+  allTerms,
+  findTermById
 }
