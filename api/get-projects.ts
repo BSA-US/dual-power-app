@@ -1,20 +1,51 @@
-import { NowRequest, NowResponse } from '@now/node';
 import { Octokit } from "@octokit/rest";
+// import { createOAuthAppAuth } from "@octokit/auth-oauth-app";
 
-const octokit = new Octokit();
+var token = process.env.TOKEN;
 
-export default (_req: NowRequest, res: NowResponse) => {
-  const api_call = fetch('https://api.github.com/repos/BSA-US/Dual-Power-App-Client/projects', {
-    headers: {
-      'Accept': 'application/vnd.github.inertia-preview+json'
+// Find the correct project
+function findRoadmap(projectList) {
+  for (var i=0; i < projectList.length; i++)
+    if (projectList[i].name === 'Roadmap') {
+      return projectList[i]
     }
-  })
-  .then((response) => response.json())
-  .then((data) => {
-    console.log('Success:', data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-  res.json({ name: 'John', email: 'john@example.com' })
+  return projectList[0];
 }
+
+const main = async () => {
+    try {
+        // TODO: Use OAuthApp to authenticate
+        // const auth = createOAuthAppAuth({
+        //   clientId: "id",
+        //   clientSecret: "secret"
+        // });
+        //
+        // const appAuthentication = await auth({
+        //   type: "oauth-app"
+        // });
+
+        const octokit = new Octokit({
+          // authStrategy: createOAuthAppAuth,
+          auth: token,
+          userAgent: 'Dual Power App Teaser Page',
+          previews: ['inertia-preview'],
+          baseUrl: 'https://api.github.com'
+        });
+
+        // Find the list of projects
+        octokit.projects
+          .listForRepo({
+            owner: "BSA-US",
+            repo: "dual-power-app"
+          })
+          // Select the Roadmap
+          .then(({ data, headers, status }) => {
+            console.log(findRoadmap(data))
+          });
+    } catch (err) {
+        console.log('error',err);
+        return err;
+    }
+};
+
+main ()

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@octokit/auth-oauth-app": "^3.0.2",
     "@octokit/rest": "^17.1.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
