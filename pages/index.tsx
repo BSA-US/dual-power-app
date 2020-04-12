@@ -11,7 +11,7 @@ const Index: NextPage = () => {
     <main className={cn.index}>
       <article>
         <a onClick={() => showGlossary(false)}><h1>Dual Power App</h1></a>
-        <h2>Build economic democracy</h2>
+        <h2>Build economic democracy...</h2>
         <p>
           The Dual Power App is a platform that provides a framework for organizing toward a worker-owned economy, with tools for founding, funding, governance, and internal + external communications.
         </p>
