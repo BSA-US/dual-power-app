@@ -42,3 +42,24 @@
     +above('tablet')
       border-top $border
       margin-top $sp2
+
+.contact
+  display flex
+  flex-flow column nowrap
+  align-items center
+
+  > *:not(:last-child)
+    margin-bottom $sp2
+
+  ul
+    display flex
+    flex-flow column nowrap
+    align-items center
+
+    li
+      @extend .button
+      &:not(:last-child)
+        margin-bottom $sp
+
+  > a
+    @extend .caption

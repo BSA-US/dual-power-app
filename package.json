@@ -23,6 +23,7 @@
     "poststylus": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-useportal": "^1.0.13",
     "stylus": "^0.54.7"
   },
   "devDependencies": {

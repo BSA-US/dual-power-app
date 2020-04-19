@@ -1,7 +1,7 @@
-import type { NextComponentType } from 'next'
+import type { FunctionComponent } from 'react'
 import cn from '~/styles/components/Glossary.styl'
 
-const Glossary: NextComponentType = () => <div className={cn.Glossary}>
+const Glossary: FunctionComponent = () => <div className={cn.Glossary}>
   <h3>What's a Dual Power Project?</h3>
   <p>
     A Dual Power Project is a local, concerted effort to move the economy toward collective ownership and solidarity through the creation of new institutions that provide communities with cooperative control of their labor and the land, as well as housing, health, and banking services.
