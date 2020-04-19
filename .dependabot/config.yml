@@ -1,0 +1,15 @@
+version: 1
+update_configs:
+  - package_manager: 'javascript'
+    directory: '/'
+    update_schedule: 'daily'
+    target_branch: 'dev'
+    default_reviewers:
+      - 'tollevin'
+      - 'hangulu'
+      - 'replygirl'
+    default_labels:
+      - ':sparkles: optimization'
+    commit_message:
+      prefix: 'chore'
+      include_scope: true
