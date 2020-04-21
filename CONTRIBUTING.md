@@ -19,6 +19,21 @@ The Dual Power App is a [Next.js](https://nextjs.org) app built on [ZEIT Now](ht
 2. See what's up in the [projects](https://github.com/BSA-US/dual-power-app/projects) and [issues](https://github.com/BSA-US/dual-power-app/issues)
 3. [Set up commit signing](https://help.github.com/en/github/authenticating-to-github/signing-commits)
 
+## Writing commit messages
+
+- So everyone can more easily read your work, please follow [the Conventional Commits standard](https://www.conventionalcommits.org/) for your commit messages
+- When working on an issue, [reference it](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests) in your commit message
+
+This commit, in which I add this section of this document, might look like:
+    ```
+    docs(contrib): #17 add conventional commits
+    ```
+
+If I was doing this from a fork, I would instead say:
+    ```
+    docs(contrib): BSA-US/dual-power-app#17 add conventional commits
+    ```
+
 ## Submitting a pull request
 
 1. Test your work
