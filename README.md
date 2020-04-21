@@ -41,33 +41,33 @@ Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-p
 ## Setup
 
 1. Check out the `dev` branch:
-    ```
+    ```sh
     git checkout dev
     ```
 2. Create a new branch:
-    ```
+    ```sh
     git checkout -b feature/my-cool-thing
     ```
 3. Duplicate the `.env` files:
     - `.env.template` → `.env`
     - `.env.build.template` → `.env.build`
 4. Install dependencies:
-    ```
+    ```sh
     yarn
     ```
 5. Install `now` globally:
-    ```
+    ```sh
     yarn global add now
     ```
 
 ### Run the Dual Power App locally
 
-```
+```sh
 now dev
 ```
 
 ### Develop components in isolation
 
-```
+```sh
 yarn storybook
 ```
