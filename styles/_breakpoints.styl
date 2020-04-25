@@ -1,0 +1,62 @@
+/**
+ * Common viewport widths:
+ *
+ * iPhone SE:  320px
+ * iPhone:     375px
+ * iPhone Max: 414px
+ *
+ * iPad Pro 9.7", ver:      768px
+ * iPad Pro 9.7", ver-side: 320px
+ * iPad Pro 9.7", ver-most: 438px
+ * iPad Pro 9.7", hor:      1024px
+ * iPad Pro 9.7", hor-side: 320px
+ * iPad Pro 9.7", hor-half: 507px
+ * iPad Pro 9.7", hor-most: 697px
+ *
+ * iPad Pro 10.5", ver:      834px
+ * iPad Pro 10.5", ver-side: 320px
+ * iPad Pro 10.5", ver-most: 504px
+ * iPad Pro 10.5", hor:      1112px
+ * iPad Pro 10.5", hor-side: 320px
+ * iPad Pro 10.5", hor-half: 551px
+ * iPad Pro 10.5", hor-most: 782px
+ *
+ * iPad Pro 11", ver:      834px
+ * iPad Pro 11", ver-side: 320px
+ * iPad Pro 11", ver-most: 504px
+ * iPad Pro 11", hor:      1194px
+ * iPad Pro 11", hor-side: 375px
+ * iPad Pro 11", hor-half: 592px
+ * iPad Pro 11", hor-most: 809px
+ *
+ * MacBook 12": 1152px
+ * MacBook 13": 1280px
+ * MacBook 15": 1440px
+ * MacBook 16": 1536px
+ * iMac 21.5":  2048px
+ * iMac 27":    2560px
+ */
+
+thresholds = {
+  phoneNarrow: 320px
+  phone: 414px
+  tabletNarrow: 551px
+  tablet: 768px
+  desktopNarrow: 1024px
+  desktop: 1536px
+  hd: 2048px
+}
+
+upTo(breakpoint)
+  @media (max-width: thresholds[breakpoint] - 1px)
+    {block}
+
+above(breakpoint)
+  @media (min-width: thresholds[breakpoint])
+    {block}
+
+between(aboveBreakpoint, upToBreakpoint)
+  @media \
+    (min-width: thresholds[aboveBreakpoint]) and \
+    (max-width: thresholds[upToBreakpoint] - 1px)
+    {block}

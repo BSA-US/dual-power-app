@@ -1,0 +1,25 @@
+@import '../_theme'
+
+.modal
+  z-index 9001
+  position fixed
+  top 50%
+  left 50%
+  transform translate(-50%, -50%)
+  max-width "calc(100% - %s)" % $sp4
+  max-height @max-width
+  background-color $c-white
+  border $border
+  padding $sp2
+
+.clickout
+  z-index 9000
+  position fixed
+  top 0
+  left 0
+  bottom 0
+  right 0
+  background-color $c-black
+  opacity .1
+  @media (hover: hover)
+    cursor pointer
