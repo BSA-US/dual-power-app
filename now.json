@@ -1,0 +1,10 @@
+{
+  "env": {
+    "FAUNADB_SECRET": "@faunadb-secret-c8cf371e5c"
+  },
+  "build": {
+    "env": {
+      "FAUNADB_PUBLIC_SECRET": "@dual-power-app-faunadb-public-secret"
+    }
+  }
+}
