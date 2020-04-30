@@ -49,8 +49,8 @@ Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-p
     git checkout -b feature/my-cool-thing
     ```
 3. Duplicate the `.env` files:
-    - `.env.template` → `.env`
-    - `.env.build.template` → `.env.build`
+    - `cp .env.template .env`
+    - `cp .env.build.template .env.build`
 4. Install dependencies:
     ```sh
     yarn
