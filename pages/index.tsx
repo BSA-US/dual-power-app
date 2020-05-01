@@ -6,6 +6,8 @@ import { Glossary } from '~/components'
 import cn from '~/styles/pages/index.styl'
 
 const meta = {
+  title: 'Dual Power App',
+  url: 'https://dualpower.app',
   description: 'An open-source platform that provides a framework for organizing toward a worker-owned economy, with tools for founding, funding, governance, and internal + external communications.',
   imageUrl: 'https://storage.googleapis.com/bsawebsite/dual-power-green.jpg'
 }
@@ -13,48 +15,44 @@ const meta = {
 const Index: NextPage = () => {
   const [showsGlossary, showGlossary] = useState(false)
 
-  const { description, imageUrl } = meta
+  const { title, url, description, imageUrl } = meta
 
   return <BaseLayout>
     <Head>
+      <meta name='twitter:card' content='summary' key='twitter-card' />
+      <meta name='twitter:site' content='@DualPowerApp' key='twitter-site' />
+      <meta name='twitter:title' content={title} key='twitter-title' />
       <meta
-        name="twitter:card"
-        content="summary"
-        key='twitter-card'
-      />
-      <meta
-        name="twitter:site"
-        content="@DualPowerApp"
-        key='twitter-site'
-      />
-      <meta
-        name="twitter:title"
-        content="Dual Power App"
-        key='twitter-title'
-      />
-      <meta
-        name="twitter:description"
+        name='twitter:description'
         content={description}
         key='twitter-description'
       />
+      <meta name='twitter:image' content={imageUrl} key='twitter-image' />
+      <meta property='og:title' content={title} key='og-title' />
+      <meta property='og:type' content='website' key='og-type' />
+      <meta property='og:url' content={url} key='og-url' />
+      <meta property='og:image' content={imageUrl} key='og-image' />
       <meta
-        name="twitter:image"
-        content={imageUrl}
-        key='twitter-image'
+        property='og:description'
+        content={description}
+        key='og-description'
       />
+      <meta property='og:locale' content='en_US' key='og-locale' />
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html:`{
           "@context": "https://schema.org",
-          "@id": "https://dualpower.app",
+          "@id": ${url},
           "@type": "https://schema.org/WebApplication",
-          "description": "${description}",
+          "accessibilitySummary": "No accessibility accommodations have been made yet.",
+          "accessMode": "textual, visual, colorDependent",
+          "accessModeSufficient": "textual, visual",
           "applicationCategory": "Platform",
           "applicationSubCategory": "Organizing platform",
           "countriesSupported": "US",
-          "accessMode": "textual, visual, colorDependent",
-          "accessModeSufficient": "textual, visual",
-          "accessibilitySummary": "No accessibility accommodations have been made yet."
+          "description": "${description}",
+          "name": "${name}",
+          "url": "${url}"
         }`}}
       />
     </Head>
