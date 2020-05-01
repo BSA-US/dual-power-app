@@ -40,6 +40,8 @@ Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-p
 
 ## Setup
 
+### Basic setup
+
 1. Check out the `dev` branch:
     ```sh
     git checkout dev
@@ -48,9 +50,7 @@ Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-p
     ```sh
     git checkout -b feature/my-cool-thing
     ```
-3. Duplicate the `.env` files:
-    - `.env.template` → `.env`
-    - `.env.build.template` → `.env.build`
+3. Duplicate the `.env.template` file → `.env`
 4. Install dependencies:
     ```sh
     yarn
@@ -60,11 +60,23 @@ Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-p
     yarn global add now
     ```
 
-### Run the Dual Power App locally
+### Run the Dual Power App
+
+#### Without the API
+
+```sh
+yarn dev
+```
+
+#### With the API
 
 ```sh
 now dev
 ```
+
+##### Additional setup
+
+- Since you're using the API locally,
 
 ### Develop components in isolation
 
