@@ -51,7 +51,7 @@ const Index: NextPage = () => {
           "applicationSubCategory": "Organizing platform",
           "countriesSupported": "US",
           "description": "${description}",
-          "name": "${name}",
+          "name": "${title}",
           "url": "${url}"
         }`}}
       />
