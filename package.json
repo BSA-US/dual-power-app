@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
+    "dev-remote": "env API_HOST=https://dual-power-app-git-dev.blacksocialists.now.sh next",
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook"
