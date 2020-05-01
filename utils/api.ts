@@ -9,7 +9,6 @@ interface ApiProps {
   body?: object
 }
 const api = async ({ method, path, body }: ApiProps): Promise<object> => {
-  console.log(host)
   const res = await fetch(`${host}/api${path}`, {
     method,
     body: JSON.stringify(body)
