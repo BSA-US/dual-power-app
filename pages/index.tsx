@@ -1,10 +1,9 @@
-import type { NextPage } from 'next'
 import { useState } from 'react'
 import { BaseLayout } from '~/layouts'
 import { Glossary } from '~/components'
 import cn from '~/styles/pages/index.styl'
 
-const Index: NextPage = () => {
+const Index = () => {
   const [showsGlossary, showGlossary] = useState(false)
 
   return <BaseLayout>
