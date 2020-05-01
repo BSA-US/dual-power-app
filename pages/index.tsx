@@ -17,6 +17,31 @@ const Index: NextPage = () => {
 
   return <BaseLayout>
     <Head>
+      <meta
+        name="twitter:card"
+        content="summary"
+        key='twitter-card'
+      />
+      <meta
+        name="twitter:site"
+        content="@DualPowerApp"
+        key='twitter-site'
+      />
+      <meta
+        name="twitter:title"
+        content="Dual Power App"
+        key='twitter-title'
+      />
+      <meta
+        name="twitter:description"
+        content={description}
+        key='twitter-description'
+      />
+      <meta
+        name="twitter:image"
+        content={imageUrl}
+        key='twitter-image'
+      />
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html:`{
