@@ -50,36 +50,57 @@ Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-p
     ```sh
     git checkout -b feature/my-cool-thing
     ```
-3. Duplicate the `.env.template` file → `.env`
-4. Install dependencies:
+3. Install dependencies:
     ```sh
     yarn
-    ```
-5. Install `now` globally:
-    ```sh
-    yarn global add now
     ```
 
 ### Run the Dual Power App
 
-#### Without the API
-
 ```sh
-yarn dev
+yarn dev-remote
 ```
 
-#### With the API
-
-```sh
-now dev
-```
-
-##### Additional setup
-
-- Since you're using the API locally,
+This will use the dev API hosted at [https://dual-power-app-git-dev.blacksocialists.now.sh/api](https://dual-power-app-git-dev.blacksocialists.now.sh/api)
 
 ### Develop components in isolation
 
 ```sh
 yarn storybook
+```
+
+### Develop API endpoints
+
+To make changes to the API, you'll first need to create your own Fauna & Vercel projects:
+
+#### Additional setup
+
+1. Configure your [Fauna](https://fauna.com) database
+    1. Create an account
+    2. Create a database
+    3. In the GraphQL section, import [the schema](https://github.com/BSA-US/dual-power-app/blob/dev/db/schema.graphql)
+2. Configure your [Vercel](https://vercel.com) project
+    1. Create an account
+    2. Create a project
+    3. In the general settings, add the following environment variables for each of the three environments:
+        - `FAUNADB_SECRET`: A `server` key generated in the Fauna console
+        - `FAUNADB_PUBLIC_SECRET`: A `public` key generated in the Fauna console
+3. Configure your local environment
+    1. Install `now` globally:
+        ```sh
+        yarn global add now
+        ```
+    2. Link your local repo to your Vercel project:
+        ```sh
+        now
+        ```
+    3. Pull your environment variables:
+        ```sh
+        now env pull
+        ```
+
+#### Run the Dual Power App with your local API
+
+```sh
+now dev
 ```
