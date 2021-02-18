@@ -85,9 +85,8 @@ New to rebasing? It can be daunting the first time, but we'll get through this t
 
 Great question. Whatever you want!
 
-We have our own priorities for our 2020 launch which you can see:
-- summarized in our [README](https://github.com/BSA-US/dual-power-app/blob/master/README.md),
-- broken down a bit more in our [Projects](https://github.com/BSA-US/dual-power-app/projects), and
+We have our own internally decided priorities which you can see:
+- summarized in our [README](https://github.com/BSA-US/dual-power-app/blob/master/README.md) and
 - fully broken down in the [issues](https://github.com/BSA-US/dual-power-app/issues)
 
 Are we missing something essential? [Create an issue](https://github.com/BSA-US/dual-power-app/issues/new), assign it to yourself, and get going!!
