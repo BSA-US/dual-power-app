@@ -36,7 +36,7 @@ const Footer: FunctionComponent = () => {
           href={urls.bsa.main}
         >Black Socialists in America</a>
       </span>
-      <span>Coming in 2020</span>
+      <span>Coming in 2021</span>
       <ul>
         {Object.entries(urls.more).map(([k, v]) =>
           <li key={k}><a href={v}>{k}</a></li>
