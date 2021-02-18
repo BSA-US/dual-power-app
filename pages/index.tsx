@@ -15,7 +15,7 @@ const Index: NextPage = () => {
         <p>
           The Dual Power App is a platform that provides a framework for organizing toward a worker-owned economy, with tools for founding, funding, governance, and internal + external communications.
         </p>
-        <p>We’re launching in 2020 with support for Dual Power Projects.</p>
+        <p>We’re launching in 2021 with support for Dual Power Projects.</p>
         <p>
           <a onClick={() => showGlossary(true)}>What's a Dual Power Project?</a>
         </p>
