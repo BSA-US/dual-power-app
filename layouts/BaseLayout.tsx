@@ -1,6 +1,5 @@
 import type { NextComponentType } from 'next'
 import Head from 'next/head'
-import { Footer } from '~/components'
 import '~/styles/_global.styl'
 import '~/styles/layouts/base.styl'
 
@@ -13,7 +12,6 @@ const BaseLayout: NextComponentType = ({ children }) => <>
     />
   </Head>
   { children }
-  <Footer />
 </>
 
 export default BaseLayout

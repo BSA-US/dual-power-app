@@ -1,0 +1,20 @@
+@import '../../_breakpoints'
+
+.donate
+  position: absolute
+  right: 22px
+  top: 8px
+  display: flex
+  justify-content: center
+  align-items: center
+  border-radius: 50%
+  height: 83px;
+  width: 83px;
+  border: 2px solid black
+
+  +above('laptop')
+    right: 70px
+    top: 628px
+
+  &:hover
+    cursor: pointer;
