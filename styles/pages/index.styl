@@ -1,61 +1,25 @@
 @import '../_breakpoints'
-@import '../_theme'
-@import '../inputs'
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('/HelveticaNowDisplay.woff');
+}
 
 .index
-  display flex
-  flex-direction column
+  display: flex
+  position: relative
+  font-family: 'Helvetica Now Display', Helvetica
 
+  +above('laptop')
+    max-width: 1440px
+    margin: 0 auto
+    
   article
-    text-align center
-    max-width 640px
-    margin 0 auto
+    padding 37px 24px 51px
 
-    & > a
-      --size 140px
-      height var(--size)
-      display flex
-      align-items center
-      justify-content center
-      margin-bottom $sp4
-      position relative
-      &::after
-        content ' '
-        background-image url('/logo.svg')
-        background-size contain
-        height var(--size)
-        width var(--size)
-        position absolute
-        top 50%
-        left 50%
-        transform translate(-50%, -50%)
-
-  +upTo('tablet')
-    article
-      &:only-child
-        flex 1
-        margin-bottom $sp2
-      &:not(:only-child)
-        & > a
-          --size 80px
-          font-size initial
-          line-height initial
-          margin-bottom initial
-        & > *:not(a)
-          display none
-
-    aside
-      flex 1
-      order -1
-      margin-bottom $sp2
-
-  +above('tablet')
-    flex-direction row
-    align-items center
-
-    article
-      flex 1
-
-    aside
-      margin-left $sp4
-      max-width 375px
+    +above('laptop')
+      padding 42px 71px 0 64px
+      width: 100%;
+  
+    section:nth-child(2)
+      +above('laptop')
+        display: flex;
