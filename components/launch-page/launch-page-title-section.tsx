@@ -9,10 +9,13 @@ const LaunchPageTitleSection: FC = () => (
     </div>
     <div className={cn.description}>
       <p>
-        The Dual Power App will be a platform that provides a framework for organizing toward a worker-owned economy, with tools for founding, funding, governance, and internal + external communications.
+        The Dual Power App will be a platform that provides a framework for
+        building direct democracy in every sphere of society, including the
+        economy, with tools for founding, funding, governance, and internal +
+        external communications.
       </p>
       <p>
-        We’re launching in 2021 with support for Dual Power Projects.
+        <b>Status (04/2021):</b> UI/UX design for volunteer dev group.
       </p>
     </div>
   </section>
