@@ -7,9 +7,6 @@ const LaunchPageBreak: FC = () => (
     <div>
       <hr/>
     </div>
-    <div>
-      <hr/>
-    </div>
   </div>
 )
 
