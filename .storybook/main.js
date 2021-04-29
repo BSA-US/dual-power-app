@@ -17,6 +17,13 @@ module.exports = {
   ],
   webpackFinal: (config, _options) => {
     config.resolve.alias['~'] = path.resolve(__dirname, '..')
+
+    config.module.rules.push({
+      test: /\.styl$/,
+      loader: ["style-loader", "css-loader", "stylus-loader"],
+      include: path.resolve(__dirname, "../")
+    });
+
     return config
   },
 };
