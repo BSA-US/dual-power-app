@@ -15,7 +15,7 @@ const LaunchPageTitleSection: FC = () => (
         external communications.
       </p>
       <p>
-        <b>Status (04/2021):</b> UI/UX design for volunteer dev group.
+        <b>Coming up:</b> Open Design with Manhattan Hydraulics — Join us here on Wednesday, June 2, at 7pm ET
       </p>
     </div>
   </section>
