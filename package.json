@@ -27,6 +27,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-useportal": "^1.0.13",
+    "remark": "^13.0.0",
+    "remark-react": "^8.0.0",
     "stylus": "^0.54.7"
   },
   "devDependencies": {

@@ -1,8 +1,9 @@
 import { NotionAPI } from 'notion-client'
-import { parsePageId, idToUuid } from 'notion-utils'
+import { parsePageId } from 'notion-utils'
+
 import { endpoint } from './_utils'
 
-export default endpoint(async (): Promise<object> => {
+export const getStatus = async (): Promise<string> => {
   const n = new NotionAPI()
 
   const { block } = await n.getPage(
@@ -13,4 +14,6 @@ export default endpoint(async (): Promise<object> => {
 
   return Object.values(block).find((x) => x.value.type === 'code')?.value
     .properties.title[0][0]
-})
+}
+
+export default endpoint(getStatus)
