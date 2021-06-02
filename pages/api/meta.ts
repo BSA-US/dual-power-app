@@ -1,5 +1,4 @@
 import { endpoint } from './_utils'
-import type { VcRequest, VcResponse } from './_types'
 
 const data = {
   endpoints: [
