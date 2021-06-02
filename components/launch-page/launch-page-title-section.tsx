@@ -1,7 +1,11 @@
-import { FC } from 'react';
+import { FC } from 'react'
+
+import Status, { StatusProps } from '~/components/status'
 import cn from '~/styles/components/launch-page/launch-page-title-section.styl'
 
-const LaunchPageTitleSection: FC = () => (
+const LaunchPageTitleSection: FC<{
+  status: StatusProps['status'] | false
+}> = ({ status }) => (
   <section>
     <div className={cn.title}>
       <p>The Dual Power App</p>
@@ -14,9 +18,7 @@ const LaunchPageTitleSection: FC = () => (
         economy, with tools for founding, funding, governance, and internal +
         external communications.
       </p>
-      <p>
-        <b>Coming up:</b> Open Design with Manhattan Hydraulics — Join us here on Wednesday, June 2, at 7pm ET
-      </p>
+      {!!status && status.text && <Status status={status} />}
     </div>
   </section>
 )

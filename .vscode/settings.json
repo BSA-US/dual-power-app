@@ -1,0 +1,9 @@
+{
+  "stylusSupremacy.alwaysUseNoneOverZero": true,
+  "stylusSupremacy.alwaysUseZeroWithoutUnit": true,
+  "stylusSupremacy.insertBraces": false,
+  "stylusSupremacy.insertColons": false,
+  "stylusSupremacy.insertSemicolons": false,
+  "stylusSupremacy.reduceMarginAndPaddingValues": true,
+  "stylusSupremacy.sortProperties": "grouped"
+}

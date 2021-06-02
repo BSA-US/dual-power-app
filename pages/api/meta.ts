@@ -1,19 +1,18 @@
 import { endpoint } from './_utils'
-import type { ZeitRequest, ZeitResponse } from './_types'
 
 const data = {
   endpoints: [
     {
-      name: 'All Terms',
+      name: 'Status',
+      method: 'GET',
+      path: '/status'
+    },
+    {
+      name: 'All terms (experimental)',
       method: 'GET',
       path: '/terms'
     }
   ]
 }
 
-export default (req: ZeitRequest, res: ZeitResponse): Promise<void> =>
-  endpoint({
-    req,
-    res,
-    fn: (): object => ({ data })
-  })
+export default endpoint(async () => ({ data }))

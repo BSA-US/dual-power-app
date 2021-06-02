@@ -1,26 +1,18 @@
-import type { ZeitRequest, ZeitResponse } from '../_types'
+import tc from '@replygirl/tc'
 
-interface BaseProps {
-  req: ZeitRequest,
-  res: ZeitResponse
-}
+import type { VcRequest, VcResponse } from '../_types'
 
-interface Props extends BaseProps {
-  fn: (props: BaseProps) => object // TODO: Validate return type?
-}
+export default (
+    fn: (req: VcRequest, res: VcResponse) => Promise<object | string>
+  ) =>
+  async (req: VcRequest, res: VcResponse) => {
+    const [x, e] = await tc(() => fn(req, res))
 
-export default async ({ req, res, fn }: Props) => {
-  try {
-    // Your editor may tell you the await here is unnecessary;
-    // it is definitely necessary
-    const x = await fn({ req, res })
-    console.log(x)
-
-    res.json(x)
+    if (e) {
+      console.error(e)
+      res.status(500).json({ error: e })
+    } else {
+      console.info(x)
+      res.json(x)
+    }
   }
-  catch(error) {
-    console.log(error)
-
-    res.status(500).json({ error })
-  }
-}

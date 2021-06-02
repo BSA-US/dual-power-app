@@ -1,0 +1,35 @@
+@import '../_breakpoints'
+@import '../_theme'
+
+.status
+  display flex
+  flex-direction column
+
+  &:not(:first-child)
+    margin-top 24px
+
+  & > * + *
+    margin-top 10px
+
+    +above('laptop')
+      margin-top 0
+      margin-left 20px
+
+  +above('laptop')
+    flex-direction row
+    align-items flex-end
+
+    & > span:first-of-type, *:only-child
+      flex-grow 1
+
+.actions
+  display flex
+
+  & > * + *
+    margin-left 20px
+
+  li
+    white-space nowrap
+
+    &:first-child
+      font-weight bold
