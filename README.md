@@ -10,33 +10,13 @@ We’re launching in 2021 with support for [Dual Power Projects](https://github.
 
 ## Project overview
 
-### Right now: Giving the project a presence
+### Right now: Open Design with [@Manhattan-Hydraulics](https://github.com/Manhattan-Hydraulics)
 
-- [x] Project scaffold
-- [x] Teaser page layout
-- [ ] Branding
-- [ ] [World of Jackson](https://github.com/BSA-US/world-of-jackson), a sister project that introduces people to [Cooperation Jackson](https://github.com/BSA-US/dual-power-app/wiki/Cooperation-Jackson) and what a Dual Power Project looks like
-
-### What's next: Listing Dual Power Projects
-
-- [ ] A User can submit a Dual Power Project
-- [ ] A User can post updates on their Dual Power Project
-- [ ] A visitor can see detailed info about a Dual Power Project
-- [ ] A visitor can flag a Dual Power Project
-- [ ] A visitor can see Dual Power Projects on the [Dual Power Map](https://github.com/BSA-US/dual-power-app/wiki/Dual-Power-Map)
-
-### In the [roadmap](https://github.com/BSA-US/dual-power-app/projects/6)
-
-- [ ] Multi-User Dual Power Projects
-- [ ] Public change-tracking & votes
-- [ ] Resources for developing Dual Power Projects
-- [ ] Crowdfunding
-- [ ] Team chat
-- [ ] Support for other organizations, such as [WSDEs](https://github.com/BSA-US/dual-power-app/wiki/Worker-self‐directed-enterprise)
+We're working with @Manhattan-Hydraulics to build out the information architecture, wireframes, and design & tech patterns for the MVP of Dual Power App. This will be an open process that you can follow at [@DualPowerApp](https://twitter.com/DualPowerApp) (or the [Discussions](https://github.com/BSA-US/dual-power-app/discussions)), or, if you want to get more involved, join us on Basecamp by [sending BSA an intro with some links to your work](https://blacksocialists.us/contact).
 
 ## Contributing
 
-Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/master/CONTRIBUTING.md) before you move on :slightly_smiling_face:
+While we're focusing on design so we can get to a buildable spec ASAP, you're free to experiment and submit PRs. Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/master/CONTRIBUTING.md) before you move on :slightly_smiling_face:
 
 ## Setup
 
@@ -57,13 +37,13 @@ Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-p
     ```
 5. Install `now` globally:
     ```sh
-    yarn global add now
+    yarn global add vercel
     ```
 
 ### Run the Dual Power App locally
 
 ```sh
-now dev
+vc dev
 ```
 
 ### Develop components in isolation
