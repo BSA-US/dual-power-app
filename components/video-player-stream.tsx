@@ -21,6 +21,7 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
 }) => {
   const videoIframe = useRef<HTMLIFrameElement>(null)
   const videoPlayer = useRef<any | null>(null)
+  const [videoPlaying, setVideoPlaying] = useState(false)
 
   const [browserName, setBrowserName] = useState<string | false | null>(null)
   const getBrowserName = () => setBrowserName(detect()?.name ?? false)
@@ -49,17 +50,22 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
   }, [v, c])
 
   useEffect(() => {
-    if (videoIframe.current)
+    if (videoIframe.current && !videoPlayer.current)
       (async () => {
         const { PeerTubePlayer } = await import('@peertube/embed-api')
         const pt = new PeerTubePlayer(videoIframe.current!)
         await pt.ready
         videoPlayer.current = pt
-        pt.setResolution(5)
-        pt.setVolume(100)
-        pt.play()
+        // pt.setResolution(5)
+        // pt.setVolume(100)
+        if (!videoPlaying) play()
       })()
   }, [videoIframe.current])
+
+  const play = () => {
+    videoPlayer.current?.[videoPlaying ? 'pause' : 'play']?.()
+    setVideoPlaying(!videoPlaying)
+  }
 
   const { observe, width, height } = useDimensions()
   const windowWidth = useWindowWidth()
@@ -88,6 +94,13 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
               sandbox="allow-same-origin allow-scripts allow-popups"
               src={`https://${v.baseUrl}${video.embedPath}?api=1&controls=false`}
             />
+            <div
+              onClick={() => play()}
+              style={{
+                position: 'absolute',
+                inset: 0
+              }}
+            ></div>
             <button className={cn.close} onClick={onClose}>
               ×
             </button>
