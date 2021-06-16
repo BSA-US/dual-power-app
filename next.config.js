@@ -3,6 +3,7 @@ const path = require('path')
 const autoprefixer = require('autoprefixer')
 const poststylus = require('poststylus')
 const withStylus = require('@zeit/next-stylus')
+// const WindiCSSWebpackPlugin = require('windicss-webpack-plugin').default
 
 module.exports = withStylus({
   /**
@@ -13,14 +14,10 @@ module.exports = withStylus({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
-    localIdentName: "[local]___[hash:base64:5]",
+    localIdentName: '[local]___[hash:base64:5]'
   },
   stylusLoaderOptions: {
-    use: [
-      poststylus([
-        autoprefixer()
-      ]),
-    ],
+    use: [poststylus([autoprefixer()])],
     preferPathResolver: 'webpack'
   },
   /**
@@ -28,6 +25,16 @@ module.exports = withStylus({
    */
   webpack(config, _options) {
     config.resolve.alias['~'] = path.resolve(__dirname)
+
+    // config.plugins.push(
+    //   new WindiCSSWebpackPlugin({
+    //     scan: {
+    //       dirs: ['./'],
+    //       exclude: ['node_modules', '.git', '.next/**/*']
+    //     }
+    //   })
+    // )
+
     return config
   }
 })
