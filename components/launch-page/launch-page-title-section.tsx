@@ -1,11 +1,13 @@
 import { FC } from 'react'
 
-import Status, { StatusProps } from '~/components/status'
+import { Status as StatusComponent } from '~/components'
 import cn from '~/styles/components/launch-page/launch-page-title-section.styl'
+import type { Status } from '~/types'
 
 const LaunchPageTitleSection: FC<{
-  status: StatusProps['status'] | false
-}> = ({ status }) => (
+  onOpenVideo: () => void
+  status: Partial<Status> | false
+}> = ({ onOpenVideo, status }) => (
   <section>
     <div className={cn.title}>
       <p>The Dual Power App</p>
@@ -18,7 +20,9 @@ const LaunchPageTitleSection: FC<{
         economy, with tools for founding, funding, governance, and internal +
         external communications.
       </p>
-      {!!status && status.text && <Status status={status} />}
+      {!!status && status.text && (
+        <StatusComponent status={status} onOpenVideo={onOpenVideo} />
+      )}
     </div>
   </section>
 )

@@ -1,0 +1,60 @@
+@import '../_breakpoints'
+@import '../_theme'
+
+.video-player-stream
+  position fixed
+  background-color rgba(0, 0, 0, 0.25)
+  inset 0
+
+  & > *
+    position absolute
+    display flex
+    background-color black
+
+    +upTo('tablet')
+      inset 0
+
+    +upTo('laptop')
+      flex-direction column
+
+      .video
+        padding-bottom calc((100% * 9 / 16))
+        height 0
+
+      .chat
+        flex 1
+
+    +above('tablet')
+      top 50%
+      left 50%
+      width calc(100% - 80px)
+      height calc(100% - 80px)
+      border 1px solid black
+      transform translate(-50%, -50%)
+
+    +above('laptop')
+      .video
+        flex 1
+
+      .chat
+        flex-shrink 0
+
+.video
+  max-height 100%
+
+.close
+  position absolute
+  top var(--offset)
+  width var(--size)
+  text-align center
+  font-size var(--size)
+  font-family sans-serif
+  line-height var(--size)
+  --offset 10px
+  --size 24px
+
+  +upTo('laptop')
+    right var(--offset)
+
+  +above('laptop')
+    left var(--offset)
