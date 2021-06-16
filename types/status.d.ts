@@ -2,7 +2,7 @@ export interface Action {
   text: string
   href: string
   target: string
-  color?: string
+  color: string
 }
 
 export interface ChatConfig {
@@ -19,8 +19,6 @@ export interface VideoConfig {
 export interface StreamConfig {
   chatConfig: ChatConfig
   videoConfig: VideoConfig
-  discordInviteUrl: string
-  actions?: Action[]
 }
 
 export interface Status {

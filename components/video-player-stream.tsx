@@ -17,21 +17,20 @@ interface VideoPlayerStreamProps {
 
 const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
   onClose,
-  streamConfig: { videoConfig, chatConfig, actions, discordInviteUrl }
+  streamConfig: { videoConfig: v, chatConfig: c }
 }) => {
   const videoIframe = useRef<HTMLIFrameElement>(null)
   const videoPlayer = useRef<any | null>(null)
-  const [videoPlaying, setVideoPlaying] = useState(false)
 
   const [browserName, setBrowserName] = useState<string | false | null>(null)
   const getBrowserName = () => setBrowserName(detect()?.name ?? false)
 
-  const [showCompatWarning, setShowCompatWarning] = useState(true)
+  console.log(browserName)
 
   const [video, setVideo] = useState<Video | null>(null)
   const getVideo = async () => {
     const [r, e] = await tc(() =>
-      fetch(`https://${videoConfig.baseUrl}/api/v1/videos/${videoConfig.id}`)
+      fetch(`https://${v.baseUrl}/api/v1/videos/${v.id}`)
     )
 
     if (!e) {
@@ -47,23 +46,20 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
     return () => {
       document.body.style.overflow = 'unset'
     }
-  }, [videoConfig, chatConfig])
+  }, [v, c])
 
   useEffect(() => {
-    if (videoIframe.current && !videoPlayer.current)
+    if (videoIframe.current)
       (async () => {
         const { PeerTubePlayer } = await import('@peertube/embed-api')
         const pt = new PeerTubePlayer(videoIframe.current!)
         await pt.ready
         videoPlayer.current = pt
-        if (!videoPlaying) play()
+        pt.setResolution(5)
+        pt.setVolume(100)
+        pt.play()
       })()
   }, [videoIframe.current])
-
-  const play = () => {
-    videoPlayer.current?.[videoPlaying ? 'pause' : 'play']?.()
-    setVideoPlaying(!videoPlaying)
-  }
 
   const { observe, width, height } = useDimensions()
   const windowWidth = useWindowWidth()
@@ -90,102 +86,18 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
               width={width}
               height={windowWidth >= 1280 ? height : (width * 9) / 16}
               sandbox="allow-same-origin allow-scripts allow-popups"
-              src={`https://${videoConfig.baseUrl}${video.embedPath}?api=1&controls=false`}
+              src={`https://${v.baseUrl}${video.embedPath}?api=1&controls=false`}
             />
-            <div
-              onClick={(e) => {
-                if (e.target === e.currentTarget) play()
-              }}
-              style={{
-                position: 'absolute',
-                inset: 0
-              }}
-            ></div>
-            <ul className={cn.actions}>
-              {actions?.map(({ text, href, target, color = 'inherit' }) => (
-                <li key={text}>
-                  <a
-                    href={href ?? '/'}
-                    target={target ?? '_self'}
-                    style={{ color }}
-                  >
-                    {text ?? '✊'}
-                  </a>
-                </li>
-              ))}
-              <li className={cn.close} role="button" onClick={onClose}>
-                ×
-              </li>
-            </ul>
-            {!videoPlaying && (
-              <button
-                style={{
-                  backgroundColor: 'white',
-                  border: '0.5px solid black',
-                  padding: 10,
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)'
-                }}
-                onClick={() => play()}
-              >
-                Play
-              </button>
-            )}
+            <button className={cn.close} onClick={onClose}>
+              ×
+            </button>
           </div>
           <iframe
             className={`titanembed ${cn.chat}`}
-            src={`https://titanembeds.com/embed/${chatConfig.guildId}?css=${chatConfig.css}&defaultchannel=${chatConfig.channelId}&lang=en_EN`}
+            src={`https://titanembeds.com/embed/${c.guildId}?css=${c.css}&defaultchannel=${c.channelId}&lang=en_EN`}
             frameBorder="0"
             title="discord-chat"
           />
-          {showCompatWarning && browserName && browserName !== 'chrome' && (
-            <div
-              style={{
-                position: 'absolute',
-                bottom: 20,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                zIndex: 1,
-                border: '0.5px solid black',
-                backgroundColor: 'white',
-                padding: 10,
-                whiteSpace: 'nowrap',
-                display: 'flex',
-                alignItems: 'baseline',
-                justifyContent: 'space-between',
-                width: 384,
-                maxWidth: 'calc(100% - 40px)',
-                fontFamily:
-                  'Helvetica Now, Helvetica Neue, Helvetica, Arial, sans-serif'
-              }}
-            >
-              <span>
-                Chat works best in{' '}
-                <a style={{ color: 'inherit' }} href={discordInviteUrl}>
-                  Discord
-                </a>{' '}
-                or Chrome
-              </span>
-              <button
-                style={{
-                  fontSize: 'inherit',
-                  fontFamily: 'inherit',
-                  fontWeight: 'bold',
-                  margin: 0,
-                  marginLeft: 10,
-                  textDecoration: 'underline',
-                  background: 'transparent',
-                  border: 0,
-                  padding: 0
-                }}
-                onClick={() => setShowCompatWarning(false)}
-              >
-                Got it
-              </button>
-            </div>
-          )}
         </div>
       )}
     </div>
