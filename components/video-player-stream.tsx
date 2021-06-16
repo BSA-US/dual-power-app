@@ -17,7 +17,7 @@ interface VideoPlayerStreamProps {
 
 const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
   onClose,
-  streamConfig: { videoConfig: v, chatConfig: c }
+  streamConfig: { videoConfig: v, chatConfig: c, discordInviteUrl }
 }) => {
   const videoIframe = useRef<HTMLIFrameElement>(null)
   const videoPlayer = useRef<any | null>(null)
@@ -26,7 +26,7 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
   const [browserName, setBrowserName] = useState<string | false | null>(null)
   const getBrowserName = () => setBrowserName(detect()?.name ?? false)
 
-  console.log(browserName)
+  const [showCompatWarning, setShowCompatWarning] = useState(true)
 
   const [video, setVideo] = useState<Video | null>(null)
   const getVideo = async () => {
@@ -111,6 +111,52 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
             frameBorder="0"
             title="discord-chat"
           />
+          {showCompatWarning && browserName && browserName !== 'chrome' && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 20,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                zIndex: 1,
+                border: '1px solid black',
+                backgroundColor: 'white',
+                padding: 10,
+                whiteSpace: 'nowrap',
+                display: 'flex',
+                alignItems: 'baseline',
+                justifyContent: 'space-between',
+                width: 384,
+                maxWidth: 'calc(100% - 40px)',
+                fontFamily:
+                  'Helvetica Now, Helvetica Neue, Helvetica, Arial, sans-serif'
+              }}
+            >
+              <span>
+                Chat works best in{' '}
+                <a style={{ color: 'inherit' }} href={discordInviteUrl}>
+                  Discord
+                </a>{' '}
+                or Chrome
+              </span>
+              <button
+                style={{
+                  fontSize: 'inherit',
+                  fontFamily: 'inherit',
+                  fontWeight: 'bold',
+                  margin: 0,
+                  marginLeft: 10,
+                  textDecoration: 'underline',
+                  background: 'transparent',
+                  border: 0,
+                  padding: 0
+                }}
+                onClick={() => setShowCompatWarning(false)}
+              >
+                Got it
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

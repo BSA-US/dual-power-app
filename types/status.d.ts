@@ -19,6 +19,7 @@ export interface VideoConfig {
 export interface StreamConfig {
   chatConfig: ChatConfig
   videoConfig: VideoConfig
+  discordInviteUrl: string
 }
 
 export interface Status {
