@@ -117,6 +117,22 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
                 ×
               </li>
             </ul>
+            {!videoPlaying && (
+              <button
+                style={{
+                  backgroundColor: 'white',
+                  border: '0.5px solid black',
+                  padding: 10,
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)'
+                }}
+                onClick={() => play()}
+              >
+                Play
+              </button>
+            )}
           </div>
           <iframe
             className={`titanembed ${cn.chat}`}
@@ -132,7 +148,7 @@ const VideoPlayerStream: FunctionComponent<VideoPlayerStreamProps> = ({
                 left: '50%',
                 transform: 'translateX(-50%)',
                 zIndex: 1,
-                border: '1px solid black',
+                border: '0.5px solid black',
                 backgroundColor: 'white',
                 padding: 10,
                 whiteSpace: 'nowrap',
