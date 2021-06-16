@@ -40,22 +40,26 @@
         flex-shrink 0
 
 .video
+  position relative
   max-height 100%
 
-.close
+.actions
   position absolute
-  top var(--offset)
-  width var(--size)
+  display flex
+  justify-content space-between
+  align-items center
+  padding 10px 10px 40px
+  background linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0))
   color white
+  inset 0 0 auto
+
+.close
+  width var(--size)
   text-align center
   font-size var(--size)
   font-family sans-serif
   line-height var(--size)
-  --offset 10px
   --size 24px
 
   +upTo('laptop')
-    right var(--offset)
-
-  +above('laptop')
-    left var(--offset)
+    order -1
