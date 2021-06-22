@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-unfetch'
 
-const { FAUNADB_PUBLIC_SECRET: publicSecret } = process.env;
-
 interface Props {
   query: string
   variables?: object
@@ -10,11 +8,15 @@ interface Props {
 
 const endpoint = 'https://graphql.fauna.com/graphql'
 
-export default async ({ query, variables, secret = publicSecret }: Props): Promise<object> => {
+export default async ({
+  query,
+  variables,
+  secret = process.env.NEXT_PUBLIC_FAUNADB_SECRET
+}: Props): Promise<object> => {
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${secret}`,
+      Authorization: `Bearer ${secret}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ query, variables })

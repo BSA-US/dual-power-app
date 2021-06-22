@@ -1,14 +1,13 @@
-import type { FunctionComponent } from 'react'
+import type { FC } from 'react'
 import usePortal from 'react-useportal'
-import cn from '~/styles/components/Modal.styl'
 
-interface IModalProps {
+interface ModalProps {
   className?: string
   isOpen: boolean
   onRequestClose?: () => void
 }
 
-const Modal: FunctionComponent<IModalProps> = ({
+const Modal: FC<ModalProps> = ({
   children,
   className = '',
   isOpen,
@@ -16,17 +15,19 @@ const Modal: FunctionComponent<IModalProps> = ({
 }) => {
   const { Portal } = usePortal()
 
-  return !isOpen
-    ? null
-    : <Portal>
-      <div className={`${cn.modal} ${className}`}>
-        { children }
+  return !isOpen ? null : (
+    <Portal>
+      <div
+        className={`fixed z-9001 inset-center max-w-[calc(100% - 2rem) max-h-[calc(100% - 2rem)] bg-white border p-2 ${className}`}
+      >
+        {children}
       </div>
       <div
-        className={cn.clickout}
+        className="fixed z-9000 inset-0 bg-black opacity-10 cursor-pointer"
         onClick={() => !!onRequestClose && onRequestClose()}
       />
     </Portal>
+  )
 }
 
 export default Modal
