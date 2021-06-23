@@ -6,11 +6,12 @@ module.exports = {
       new WindiCSSWebpackPlugin({
         scan: {
           dirs: ['./'],
-          exclude: ['node_modules', '.git', '.next/**/*']
-        }
+          exclude: ['node_modules', '.git', '.next/**/*'],
+        },
       })
     )
 
     return config
-  }
+  },
+  webpack5: false,
 }
