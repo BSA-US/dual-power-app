@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { detect } from 'detect-browser'
 import fetch from 'isomorphic-unfetch'
 import type { FC } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import useDimensions from 'react-cool-dimensions'
 
 import type { Video, StreamConfig } from '~/types'
@@ -28,7 +28,7 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
   const [showCompatWarning, setShowCompatWarning] = useState(true)
 
   const [video, setVideo] = useState<Video | null>(null)
-  const getVideo = async () => {
+  const getVideo = useCallback(async () => {
     const [r, e] = await tc(() =>
       fetch(`https://${videoConfig.baseUrl}/api/v1/videos/${videoConfig.id}`)
     )
@@ -36,7 +36,7 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
     if (!e) {
       setVideo((await r?.json()) ?? null)
     }
-  }
+  }, [videoConfig])
 
   useEffect(() => {
     getVideo()
@@ -46,7 +46,7 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
     return () => {
       document.body.style.overflow = 'unset'
     }
-  }, [videoConfig, chatConfig])
+  }, [videoConfig, chatConfig, getVideo])
 
   useEffect(() => {
     if (videoIframe.current && !videoPlayer.current)
