@@ -1,0 +1,5 @@
+.next
+.now
+.vercel
+dist
+node_modules/

@@ -11,8 +11,5 @@ export default (
     if (e) {
       console.error(e)
       res.status(500).json({ error: e })
-    } else {
-      console.info(x)
-      res.json(x)
-    }
+    } else res.json(x)
   }

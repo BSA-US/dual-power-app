@@ -1,12 +1,12 @@
 {
   "name": "dual-power-app",
   "version": "0.1.0",
-  "main": "index.js",
+  "license": "MIT",
   "repository": "https://github.com/BSA-US/dual-power-app.git",
+  "main": "index.js",
   "contributors": [
     "replygirl <moon@moon.fyi> (https://twitter.com/anne_volin)"
   ],
-  "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -34,6 +34,7 @@
     "remark-react": "^8.0.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.6.6",
     "@babel/core": "^7.14.6",
     "@babel/preset-typescript": "^7.14.5",
     "@storybook/preset-typescript": "^3.0.0",
@@ -49,9 +50,98 @@
     "@windicss/plugin-scrollbar": "^1.2.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-react-require": "^3.1.3",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.3.1",
     "typescript": "^4.3.4",
     "windicss-webpack-plugin": "^1.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@antfu/eslint-config",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "prettier",
+      "sort-keys-fix"
+    ],
+    "rules": {
+      "import/order": [
+        "error",
+        {
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": false
+          },
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            [
+              "parent",
+              "sibling",
+              "index"
+            ],
+            "object",
+            "unknown"
+          ],
+          "newlines-between": "always",
+          "pathGroups": [
+            {
+              "pattern": "~/**",
+              "group": "internal"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": [
+            "builtin",
+            "object"
+          ]
+        }
+      ],
+      "prettier/prettier": "error",
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "sort-keys-fix/sort-keys-fix": [
+        "error",
+        "asc",
+        {
+          "caseSensitive": true,
+          "natural": true
+        }
+      ],
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "always",
+          "named": "never",
+          "asyncArrow": "always"
+        }
+      ]
+    },
+    "globals": {}
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "requirePragma": false,
+    "insertPragma": false,
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "css",
+    "vueIndentScriptAndStyle": false,
+    "endOfLine": "lf",
+    "embeddedLanguageFormatting": "auto"
   },
   "postcss": {
     "plugins": [

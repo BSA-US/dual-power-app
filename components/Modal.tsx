@@ -11,7 +11,7 @@ const Modal: FC<ModalProps> = ({
   children,
   className = '',
   isOpen,
-  onRequestClose
+  onRequestClose,
 }) => {
   const { Portal } = usePortal()
 
@@ -23,7 +23,7 @@ const Modal: FC<ModalProps> = ({
         {children}
       </div>
       <div
-        className="fixed z-9000 inset-0 bg-black opacity-10 cursor-pointer"
+        className='fixed z-9000 inset-0 bg-black opacity-10 cursor-pointer'
         onClick={() => !!onRequestClose && onRequestClose()}
       />
     </Portal>

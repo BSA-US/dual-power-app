@@ -3,16 +3,16 @@ import { endpoint } from './_utils'
 const data = {
   endpoints: [
     {
-      name: 'Status',
       method: 'GET',
-      path: '/status'
+      name: 'Status',
+      path: '/status',
     },
     {
-      name: 'All terms (experimental)',
       method: 'GET',
-      path: '/terms'
-    }
-  ]
+      name: 'All terms (experimental)',
+      path: '/terms',
+    },
+  ],
 }
 
 export default endpoint(async () => ({ data }))

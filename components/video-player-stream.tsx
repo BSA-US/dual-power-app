@@ -16,7 +16,7 @@ interface VideoPlayerStreamProps {
 
 const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
   onClose,
-  streamConfig: { videoConfig, chatConfig, actions, discordInviteUrl }
+  streamConfig: { videoConfig, chatConfig, actions, discordInviteUrl },
 }) => {
   const videoIframe = useRef<HTMLIFrameElement>(null)
   const videoPlayer = useRef<any | null>(null)
@@ -69,8 +69,8 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-[rgba(0, 0, 0, 0.25)]"
-      onClick={(e) => {
+      className='fixed inset-0 bg-[rgba(0, 0, 0, 0.25)]'
+      onClick={e => {
         if (e.target === e.currentTarget) onClose()
       }}
     >
@@ -78,35 +78,35 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
         className={classNames(
           'absolute inset-0 bg-black flex flex-col md:(inset-auto inset-center border) lg:(flex-row)',
           {
-            'justify-center items-center': !video
+            'justify-center items-center': !video,
           }
         )}
       >
         {video === null ? (
-          <p className="color-white align-middle">Loading...</p>
+          <p className='color-white align-middle'>Loading...</p>
         ) : (
           <>
             <div
-              className="relative max-h-full aspect-9/16 h-0 lg:(aspect-none flex-grow)"
+              className='relative max-h-full aspect-9/16 h-0 lg:(aspect-none flex-grow)'
               ref={observe}
             >
               <iframe
-                allow="autoplay"
+                allow='autoplay'
                 allowFullScreen
-                frameBorder="0"
+                frameBorder='0'
                 ref={videoIframe}
                 width={width}
                 height={windowWidth >= 1280 ? height : (width * 9) / 16}
-                sandbox="allow-same-origin allow-scripts allow-popups"
+                sandbox='allow-same-origin allow-scripts allow-popups'
                 src={`https://${videoConfig.baseUrl}${video.embedPath}?api=1&controls=false`}
               />
               <div
-                className="absolute inset-0"
-                onClick={(e) => {
+                className='absolute inset-0'
+                onClick={e => {
                   if (e.target === e.currentTarget) play()
                 }}
               ></div>
-              <ul className="absolute inset-x-0 top-0 flex justify-between items-center p-2 pb-8 gradient-from-[rgba(0, 0, 0, 0.5)] gradient-to-[rgba(0, 0, 0, 0)] text-white">
+              <ul className='absolute inset-x-0 top-0 flex justify-between items-center p-2 pb-8 gradient-from-[rgba(0, 0, 0, 0.5)] gradient-to-[rgba(0, 0, 0, 0)] text-white'>
                 {actions?.map(({ text, href, target, color = 'inherit' }) => (
                   <li key={text}>
                     <a
@@ -119,8 +119,8 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
                   </li>
                 ))}
                 <li
-                  className="w-6 text-2xl leading-6 text-align-center cursor-pointer -order-1 lg:order-none"
-                  role="button"
+                  className='w-6 text-2xl leading-6 text-align-center cursor-pointer -order-1 lg:order-none'
+                  role='button'
                   onClick={onClose}
                 >
                   ×
@@ -128,7 +128,7 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
               </ul>
               {!videoPlaying && (
                 <button
-                  className="absolute inset-center bg-white border p-2"
+                  className='absolute inset-center bg-white border p-2'
                   onClick={() => play()}
                 >
                   Play
@@ -136,17 +136,17 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
               )}
             </div>
             <iframe
-              className="titanembed flex-1 lg:flex-shrink-0"
+              className='titanembed flex-1 lg:flex-shrink-0'
               src={`https://titanembeds.com/embed/${chatConfig.guildId}?css=${chatConfig.css}&defaultchannel=${chatConfig.channelId}&lang=en_EN`}
-              frameBorder="0"
-              title="discord-chat"
+              frameBorder='0'
+              title='discord-chat'
             />
             {showCompatWarning && browserName && browserName !== 'chrome' && (
               <div
-                className="absolute inset-x-center bottom-4 z-1 border bg-white p-2 whitespace-nowrap flex justify-between items-baseline"
+                className='absolute inset-x-center bottom-4 z-1 border bg-white p-2 whitespace-nowrap flex justify-between items-baseline'
                 style={{
+                  maxWidth: 'calc(100% - 40px)',
                   width: 384,
-                  maxWidth: 'calc(100% - 40px)'
                 }}
               >
                 <span>
@@ -154,7 +154,7 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
                   Chrome
                 </span>
                 <button
-                  className="font-bold underline"
+                  className='font-bold underline'
                   onClick={() => setShowCompatWarning(false)}
                 >
                   Got it

@@ -11,15 +11,15 @@ const endpoint = 'https://graphql.fauna.com/graphql'
 export default async ({
   query,
   variables,
-  secret = process.env.NEXT_PUBLIC_FAUNADB_SECRET
+  secret = process.env.NEXT_PUBLIC_FAUNADB_SECRET,
 }: Props): Promise<object> => {
   const res = await fetch(endpoint, {
-    method: 'POST',
+    body: JSON.stringify({ query, variables }),
     headers: {
       Authorization: `Bearer ${secret}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ query, variables })
+    method: 'POST',
   })
   return await res.json()
 }

@@ -3,42 +3,6 @@ import { defineConfig } from 'windicss/helpers'
 
 export default defineConfig({
   darkMode: 'class',
-  theme: {
-    borderColor: (theme) => Object.assign({ DEFAULT: theme('colors.black', 'currentColor') }, theme('colors') ?? {}),
-    fontFamily: {
-      mono: [
-        'Space Mono',
-        'Helvetica Mono',
-        'SF Mono',
-        'ui-monospace',
-        'Menlo',
-        'Monaco',
-        'Consolas',
-        'Liberation Mono',
-        'Courier New',
-        'monospace'
-      ],
-      sans: [
-        'Helvetica Now Display',
-        // 'Helvetica Neue',
-        'Helvetica',
-        // 'Arial',
-        // 'sans-serif'
-      ]
-    },
-    extend: {
-      typography: {
-        DEFAULT: {
-          css: {
-            color: colors.black,
-            a: {
-              'font-weight': 'bold',
-            },
-          },
-        },
-      },
-    }
-  },
   plugins: [
     // https://windicss.org/plugins/community/animations.html
     require('@windicss/animations'),
@@ -71,15 +35,59 @@ export default defineConfig({
     require('windicss/plugin/scroll-snap'),
 
     // https://windicss.org/plugins/official/typography.html
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('windicss/plugin/typography')({
-      modifiers: ['DEFAULT', 'sm', 'lg', 'red']
-    })
+      modifiers: ['DEFAULT', 'sm', 'lg', 'red'],
+    }),
   ],
   shortcuts: {
     'inset-center':
       'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
 
     'inset-x-center': 'left-1/2 transform -translate-x-1/2',
-    'inset-y-center': 'top-1/2 transform -translate-y-1/2'
-  }
+    'inset-y-center': 'top-1/2 transform -translate-y-1/2',
+  },
+  theme: {
+    borderColor: theme =>
+      Object.assign(
+        { DEFAULT: theme('colors.black', 'currentColor') },
+        theme('colors') ?? {}
+      ),
+    extend: {
+      screens: {
+        xs: '480px',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              'font-weight': 'bold',
+            },
+            color: colors.black,
+          },
+        },
+      },
+    },
+    fontFamily: {
+      mono: [
+        'Space Mono',
+        'Helvetica Mono',
+        'SF Mono',
+        'ui-monospace',
+        'Menlo',
+        'Monaco',
+        'Consolas',
+        'Liberation Mono',
+        'Courier New',
+        'monospace',
+      ],
+      sans: [
+        'Helvetica Now Display',
+        // 'Helvetica Neue',
+        'Helvetica',
+        // 'Arial',
+        // 'sans-serif',
+      ],
+    },
+  },
 })
