@@ -38,6 +38,11 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
     }
   }, [videoConfig])
 
+  const play = useCallback(() => {
+    videoPlayer.current?.[videoPlaying ? 'pause' : 'play']?.()
+    setVideoPlaying(!videoPlaying)
+  }, [videoPlaying])
+
   useEffect(() => {
     getVideo()
     getBrowserName()
@@ -57,12 +62,7 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
         videoPlayer.current = pt
         if (!videoPlaying) play()
       })()
-  }, [videoIframe.current])
-
-  const play = () => {
-    videoPlayer.current?.[videoPlaying ? 'pause' : 'play']?.()
-    setVideoPlaying(!videoPlaying)
-  }
+  }, [play, videoPlaying])
 
   const { observe, width, height } = useDimensions()
   const windowWidth = useWindowWidth()
