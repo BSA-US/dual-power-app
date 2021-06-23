@@ -16,7 +16,7 @@ const BaseLayout: FC<LandingPageLayoutProps> = ({
   children,
 }) => (
   <div
-    className={`relative flex flex-col max-w-1440px mx-auto px-4 py-8 space-y-12 lg:(px-8 pb-0 space-y-16) xl:px-16 ${classNameLayout}`}
+    className={`relative flex flex-col max-w-1440px mx-auto px-4 py-8 space-y-12 lg:(px-8 pb-0 space-y-16) xl:px-16 min-h-screen ${classNameLayout}`}
   >
     <header className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 items-end gap-8'>
       <Link href='/'>
@@ -46,7 +46,7 @@ const BaseLayout: FC<LandingPageLayoutProps> = ({
         </a>
       </nav>
     </header>
-    <main className={classNameMain}>{children}</main>
+    <main className={`flex-grow ${classNameMain}`}>{children}</main>
     <footer className='border-t-2 py-4 text-xs font-mono'>
       <p>
         A BSA Open Tech Development project by{' '}
