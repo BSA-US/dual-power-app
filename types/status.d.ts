@@ -1,9 +1,4 @@
-export interface Action {
-  text: string
-  href: string
-  target: string
-  color?: string
-}
+import type { Action } from './common'
 
 export interface ChatConfig {
   guildId: string

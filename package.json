@@ -16,9 +16,12 @@
   "dependencies": {
     "@peertube/embed-api": "^0.0.4",
     "@react-hook/window-size": "^3.0.7",
+    "@replygirl/change-case-object": "^1.3.0",
     "@replygirl/tc": "^3.0.0",
     "autoprefixer": "^10.2.6",
     "classnames": "^2.3.1",
+    "date-fns": "^2.22.1",
+    "date-fns-tz": "^1.1.4",
     "destyle.css": "^2.0.2",
     "detect-browser": "^5.2.0",
     "faunadb": "^4.3.0",
