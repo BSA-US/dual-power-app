@@ -103,8 +103,6 @@ const OpenDesign: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
 export const getServerSideProps: GetServerSideProps = async () => {
   const [docs, events] = await Promise.all([getDocs(), getEvents()])
 
-  console.info(docs)
-
   return {
     props: { docs, events },
   }
