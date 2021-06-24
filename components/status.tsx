@@ -1,25 +1,25 @@
-import remark from 'remark'
-// @ts-ignore remark-react has no types
-import remark2react from 'remark-react'
 import { FC } from 'react'
+import remark from 'remark'
+import remark2react from 'remark-react'
 
-import cn from '~/styles/components/status.styl'
 import type { Status } from '~/types'
 
-const StatusComponent: FC<{
+interface StatusProps {
   onOpenVideo: () => void
   status: Partial<Status>
-}> = ({ onOpenVideo, status }) => (
-  <div className={cn.status}>
+}
+
+const StatusComponent: FC<StatusProps> = ({ onOpenVideo, status }) => (
+  <div className='only-child:flex-grow not-first:mt-6 flex flex-col space-y-2 lg:(flex-row items-end space-y-0 space-x-4)'>
     {status.text && (
-      <span>
+      <span className='flex-grow'>
         {remark().use(remark2react).processSync(status.text).result as string}
       </span>
     )}
     {(status.actions?.[0] || status.live) && (
-      <ul className={cn.actions}>
+      <ul className='flex space-x-4'>
         {status.actions?.map(({ text, href, target, color = 'inherit' }) => (
-          <li key={text}>
+          <li key={text} className='whitespace-nowrap first:font-bold'>
             <a href={href ?? '/'} target={target ?? '_self'} style={{ color }}>
               {text ?? '✊'}
             </a>
@@ -27,14 +27,9 @@ const StatusComponent: FC<{
         ))}
         {status.live && (
           <li
-            key="live"
-            role="button"
-            style={{
-              color: 'red',
-              fontWeight: 'bold',
-              textDecoration: 'underline',
-              cursor: 'pointer'
-            }}
+            className='whitespace-nowrap underline cursor-pointer text-red-600 first:font-bold'
+            key='live'
+            role='button'
             onClick={onOpenVideo}
           >
             Join us live

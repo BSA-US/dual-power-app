@@ -1,4 +1,4 @@
-export const Term: string = `
+export const Term = `
   name
   description
   wikiUrl
@@ -9,5 +9,5 @@ export const Term: string = `
 `
 
 export default {
-  Term
+  Term,
 }

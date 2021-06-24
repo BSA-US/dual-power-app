@@ -7,7 +7,7 @@ export const Queries = TmpQueries
 export const Schema = TmpSchema
 
 export default {
-  gql,
   Queries,
-  Schema
+  Schema,
+  gql,
 }

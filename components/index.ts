@@ -1,7 +1,4 @@
-export * from './launch-page'
-
-export { default as Footer } from './Footer'
-export { default as Glossary } from './Glossary'
-export { default as Modal } from './Modal'
+export { default as Event } from './event'
+export { default as Modal } from './modal'
 export { default as Status } from './status'
 export { default as VideoPlayerStream } from './video-player-stream'

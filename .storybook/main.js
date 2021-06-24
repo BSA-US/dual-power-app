@@ -1,13 +1,13 @@
 const path = require('path')
 
 module.exports = {
-  stories: ['../**/*.stories.js'],
+  stories: ['../stories/**/*.stories.js'],
   addons: [
     {
       name: '@storybook/preset-typescript',
       options: {
         tsLoaderOptions: {
-          configFile: path.resolve(__dirname, '../tsconfig.json'),
+          configFile: path.resolve(__dirname, '../tsconfig.json')
         },
         exclude: [path.resolve(__dirname, '../node_modules')],
         include: [path.resolve(__dirname, '..')]
@@ -20,10 +20,10 @@ module.exports = {
 
     config.module.rules.push({
       test: /\.styl$/,
-      loader: ["style-loader", "css-loader", "stylus-loader"],
-      include: path.resolve(__dirname, "../")
-    });
+      loader: ['style-loader', 'css-loader', 'stylus-loader'],
+      include: path.resolve(__dirname, '../')
+    })
 
     return config
-  },
-};
+  }
+}
