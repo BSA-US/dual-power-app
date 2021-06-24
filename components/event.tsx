@@ -2,6 +2,9 @@ import classNames from 'classnames'
 import { format } from 'date-fns'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import type { FC } from 'react'
+import remark from 'remark'
+// @ts-ignore remark-react has no types
+import remark2react from 'remark-react'
 
 import type { Event } from '~/types'
 
@@ -26,7 +29,14 @@ const EventComponent: FC<EventProps> = ({ className, event }) => {
       </div>
       <div className='flex-grow'>
         <p className='text-2xl'>{event.name}</p>
-        {event.description && <p>{event.description}</p>}
+        {event.description && (
+          <p className='prose'>
+            {
+              remark().use(remark2react).processSync(event.description)
+                .result as string
+            }
+          </p>
+        )}
         {event.actions && (
           <ul className='mt-2 space-y-2 sm:(space-y-0 flex justify-end space-x-4)'>
             {event.actions.map(({ text, href, target, color = 'inherit' }) => (

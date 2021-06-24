@@ -2480,7 +2480,7 @@
 
 "@windicss/plugin-heropatterns@^0.0.8":
   version "0.0.8"
-  resolved "https://registry.npmjs.org/@windicss/plugin-heropatterns/-/plugin-heropatterns-0.0.8.tgz"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-heropatterns/-/plugin-heropatterns-0.0.8.tgz#55b9b78111779dc928966073b984663eb066c9fa"
   integrity sha512-HaDXY9arOiscyEO6YJl3L/VU8nMHaLxg2nZKfnv+4L+BnSCcaoeAtmI7WbG6YV7amZcN6RZPvXSCHyUh9u+EyA==
   dependencies:
     lodash "^4.17.11"

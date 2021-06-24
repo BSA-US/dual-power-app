@@ -8,7 +8,8 @@ export default defineConfig({
     require('@windicss/animations'),
 
     // https://windicss.org/plugins/community/heropatterns.html
-    require('@windicss/plugin-heropatterns'),
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('@windicss/plugin-heropatterns')({}),
 
     // https://windicss.org/plugins/community/interaction-variants.html
     require('@windicss/plugin-interaction-variants'),
@@ -60,10 +61,12 @@ export default defineConfig({
       typography: {
         DEFAULT: {
           css: {
-            a: {
-              'font-weight': 'bold',
-            },
             color: colors.black,
+            lineHeight: 1.25,
+            p: {
+              marginBottom: '0.5rem',
+              marginTop: '0.5rem',
+            },
           },
         },
       },

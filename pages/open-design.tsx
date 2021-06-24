@@ -1,7 +1,11 @@
 import type { NextPage, GetServerSideProps } from 'next'
 import { useState } from 'react'
+import remark from 'remark'
+// @ts-ignore remark-react has no types
+import remark2react from 'remark-react'
 
 import { Event } from '~/components'
+import about from '~/content/open-design-about.md'
 import { LandingPage } from '~/layouts'
 import { getDocs } from '~/pages/api/docs'
 import { getEvents } from '~/pages/api/events'
@@ -21,11 +25,8 @@ const OpenDesign: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
             Dual&nbsp;Power&nbsp;App Open&nbsp;Design
           </h1>
           <p className='font-mono'>with Manhattan Hydraulics</p>
-          <p>
-            The Dual Power App will be a platform that provides a framework for
-            building direct democracy in every sphere of society, including the
-            economy, with tools for founding, funding, governance, and internal
-            + external communications.
+          <p className='prose'>
+            {remark().use(remark2react).processSync(about).result as string}
           </p>
         </section>
         <section className='col-span-3 leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'>
