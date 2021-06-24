@@ -64,13 +64,17 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
       })()
   }, [play, videoPlaying])
 
-  const { observe, width, height } = useDimensions()
+  const [videoIframeHeight, setVideoIframeHeight] = useState(0)
   const windowWidth = useWindowWidth()
+  const { observe, width } = useDimensions({
+    onResize: ({ width, height }) =>
+      setVideoIframeHeight(windowWidth >= 1024 ? height : (width * 9) / 16),
+  })
 
   return (
     <div
       className={classNames(
-        'absolute inset-0 bg-black flex flex-col lg:(flex-row)',
+        'absolute inset-0 bg-black flex flex-col lg:flex-row',
         {
           'justify-center items-center': !video,
         }
@@ -81,16 +85,17 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
       ) : (
         <>
           <div
-            className='relative max-h-full aspect-9/16 h-0 lg:(aspect-none flex-grow)'
+            className='relative max-h-full aspect-9/16 h-0 lg:(aspect-none h-auto flex-grow)'
             ref={observe}
           >
             <iframe
               allow='autoplay'
               allowFullScreen
+              className='lg:(h-full w-full)'
               frameBorder='0'
               ref={videoIframe}
               width={width}
-              height={windowWidth >= 1280 ? height : (width * 9) / 16}
+              height={videoIframeHeight}
               sandbox='allow-same-origin allow-scripts allow-popups'
               src={`https://${videoConfig.baseUrl}${video.embedPath}?api=1&controls=false`}
             />
@@ -131,7 +136,7 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
             )}
           </div>
           <iframe
-            className='titanembed flex-1 lg:flex-shrink-0'
+            className='titanembed flex-1 lg:(flex-none)'
             src={`https://titanembeds.com/embed/${chatConfig.guildId}?css=${chatConfig.css}&defaultchannel=${chatConfig.channelId}&lang=en_EN`}
             frameBorder='0'
             title='discord-chat'

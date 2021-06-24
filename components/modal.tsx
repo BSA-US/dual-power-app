@@ -20,7 +20,7 @@ const Modal: FC<ModalProps> = ({
   return !isOpen ? null : (
     <Portal>
       <div
-        className={`fixed z-9001 inset-center max-w-[calc(100% - 2rem) max-h-[calc(100% - 2rem)] bg-white border p-2 ${classNameContainer}`}
+        className={`fixed z-9001 inset-center bg-white border p-2 ${classNameContainer}`}
       >
         {children}
       </div>

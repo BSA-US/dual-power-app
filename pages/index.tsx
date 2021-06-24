@@ -72,7 +72,7 @@ const Index: NextPage<{ status: StatusType }> = ({ status }) => {
       </section>
       {process.browser && !!status?.live && !!status.streamConfig && (
         <Modal
-          classNameContainer='transform-none inset-0 md:(inset-auto inset-center border)'
+          classNameContainer='transform-none inset-0 md:(inset-auto w-90vw h-90vh max-w-1560px border) !md:inset-center lg:max-h-800px'
           isOpen={showVideo}
           onRequestClose={() => setShowVideo(false)}
         >
