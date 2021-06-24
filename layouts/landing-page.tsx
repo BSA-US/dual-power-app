@@ -9,8 +9,11 @@ interface LandingPageLayoutProps {
   classNameMain?: string
 }
 
-const isDevelopment =
-  (process.env.NEXT_PUBLIC_VERCEL_ENV ?? 'development') !== 'production'
+const isDevelopment = process.env.NEXT_PUBLIC_VERCEL_ENV
+  ? process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production'
+  : process.env.VERCEL_ENV
+  ? process.env.VERCEL_ENV !== 'production'
+  : false
 
 const BaseLayout: FC<LandingPageLayoutProps> = ({
   classNameDonate = '',
