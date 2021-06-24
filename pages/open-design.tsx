@@ -1,7 +1,6 @@
 import type { NextPage, GetServerSideProps } from 'next'
 import { useState } from 'react'
 import remark from 'remark'
-// @ts-ignore remark-react has no types
 import remark2react from 'remark-react'
 
 import { Event } from '~/components'

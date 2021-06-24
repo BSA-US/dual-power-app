@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import remark from 'remark'
-// @ts-ignore remark-react has no types
 import remark2react from 'remark-react'
 
 import type { Status } from '~/types'

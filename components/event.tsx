@@ -3,7 +3,6 @@ import { format } from 'date-fns'
 import { zonedTimeToUtc } from 'date-fns-tz'
 import type { FC } from 'react'
 import remark from 'remark'
-// @ts-ignore remark-react has no types
 import remark2react from 'remark-react'
 
 import type { Event } from '~/types'
