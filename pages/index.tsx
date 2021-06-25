@@ -15,7 +15,7 @@ const VideoPlayerStream = dynamic(
   }
 )
 
-const Index: NextPage<{ status: StatusType }> = ({ status }) => {
+const IndexPage: NextPage<{ status: StatusType }> = ({ status }) => {
   const [showVideo, setShowVideo] = useState<boolean>(false)
 
   return (
@@ -90,4 +90,4 @@ export const getServerSideProps: GetServerSideProps = async () => ({
   props: { status: await getStatus() },
 })
 
-export default Index
+export default IndexPage

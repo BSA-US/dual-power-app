@@ -10,7 +10,7 @@ import { getDocs } from '~/pages/api/docs'
 import { getEvents } from '~/pages/api/events'
 import type { Doc, Event as EventType } from '~/types'
 
-const OpenDesign: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
+const OpenDesignPage: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
   docs,
   events,
 }) => {
@@ -108,4 +108,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-export default OpenDesign
+export default OpenDesignPage
