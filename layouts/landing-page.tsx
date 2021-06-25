@@ -15,7 +15,7 @@ const isDevelopment = process.env.NEXT_PUBLIC_VERCEL_ENV
   ? process.env.VERCEL_ENV !== 'production'
   : false
 
-const BaseLayout: FC<LandingPageLayoutProps> = ({
+const LandingPageLayout: FC<LandingPageLayoutProps> = ({
   classNameDonate = '',
   classNameLayout = '',
   classNameMain = '',
@@ -74,4 +74,4 @@ const BaseLayout: FC<LandingPageLayoutProps> = ({
   </div>
 )
 
-export default BaseLayout
+export default LandingPageLayout
