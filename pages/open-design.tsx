@@ -1,23 +1,26 @@
-import type { NextPage, GetServerSideProps } from 'next'
+import type { NextPage } from 'next'
+import Head from 'next/head'
 import { useState } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
 import { Event } from '~/components'
 import about from '~/content/open-design-about.md'
+import { useDocs, useEvents } from '~/hooks'
 import { LandingPage } from '~/layouts'
-import { getDocs } from '~/pages/api/docs'
-import { getEvents } from '~/pages/api/events'
-import type { Doc, Event as EventType } from '~/types'
 
-const OpenDesignPage: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
-  docs,
-  events,
-}) => {
+const OpenDesignPage: NextPage = () => {
+  const { docs, docsHeadLink } = useDocs()
+  const { events, eventsHeadLink } = useEvents()
+
   const [tab, setTab] = useState<'docs' | 'events'>('events')
 
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
+      <Head>
+        {docsHeadLink}
+        {eventsHeadLink}
+      </Head>
       <div className='grid grid-flow-col-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
@@ -59,7 +62,7 @@ const OpenDesignPage: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
               Documents
             </li>
           </ul>
-          {tab === 'events' && (
+          {events && tab === 'events' && (
             <ul
               id='od-tabpanel-events'
               aria-labelledby='od-tab-events'
@@ -72,7 +75,7 @@ const OpenDesignPage: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
               ))}
             </ul>
           )}
-          {tab === 'docs' && (
+          {docs && tab === 'docs' && (
             <ul
               id='od-tabpanel-docs'
               aria-labelledby='od-tab-docs'
@@ -98,14 +101,6 @@ const OpenDesignPage: NextPage<{ docs: Doc[]; events: EventType[] }> = ({
       </div>
     </LandingPage>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const [docs, events] = await Promise.all([getDocs(), getEvents()])
-
-  return {
-    props: { docs, events },
-  }
 }
 
 export default OpenDesignPage

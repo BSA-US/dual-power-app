@@ -7,4 +7,4 @@ export const getStatus = createNotionGetter<Status>(
   { type: 'json' }
 )
 
-export default endpoint(getStatus!)
+export default endpoint(getStatus)

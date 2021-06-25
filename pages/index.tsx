@@ -1,12 +1,12 @@
-import type { NextPage, GetServerSideProps } from 'next'
+import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 import { useState } from 'react'
 
 import { Modal, Status } from '~/components'
 import { cooperationJacksonUrl } from '~/constants'
+import { useStatus } from '~/hooks'
 import { LandingPage } from '~/layouts'
-import { getStatus } from '~/pages/api/status'
-import type { Status as StatusType } from '~/types'
 
 const VideoPlayerStream = dynamic(
   () => import('../components/video-player-stream'),
@@ -15,7 +15,9 @@ const VideoPlayerStream = dynamic(
   }
 )
 
-const IndexPage: NextPage<{ status: StatusType }> = ({ status }) => {
+const IndexPage: NextPage = () => {
+  const { status, statusHeadLink } = useStatus()
+
   const [showVideo, setShowVideo] = useState<boolean>(false)
 
   return (
@@ -23,6 +25,7 @@ const IndexPage: NextPage<{ status: StatusType }> = ({ status }) => {
       classNameDonate='lg:(top-auto bottom-20)'
       classNameMain='flex flex-col space-y-12 lg:space-y-16'
     >
+      <Head>{statusHeadLink}</Head>
       <div className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-6xl leading-12 lg:(text-7xl leading-16)'>
@@ -37,7 +40,7 @@ const IndexPage: NextPage<{ status: StatusType }> = ({ status }) => {
             economy, with tools for founding, funding, governance, and internal
             + external communications.
           </p>
-          {!!status && status.text && (
+          {status?.text && (
             <Status status={status} onOpenVideo={() => setShowVideo(true)} />
           )}
         </section>
@@ -85,9 +88,5 @@ const IndexPage: NextPage<{ status: StatusType }> = ({ status }) => {
     </LandingPage>
   )
 }
-
-export const getServerSideProps: GetServerSideProps = async () => ({
-  props: { status: await getStatus() },
-})
 
 export default IndexPage
