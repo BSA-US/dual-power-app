@@ -4,3 +4,8 @@ export interface Action {
   target?: string
   color?: string
 }
+
+export interface Date {
+  start: string
+  end?: string
+}

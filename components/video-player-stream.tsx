@@ -14,7 +14,7 @@ interface VideoPlayerStreamProps {
   streamConfig: StreamConfig
 }
 
-const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
+const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
   onRequestClose,
   streamConfig: { videoConfig, chatConfig, actions, discordInviteUrl },
 }) => {
@@ -170,4 +170,4 @@ const VideoPlayerStream: FC<VideoPlayerStreamProps> = ({
   )
 }
 
-export default VideoPlayerStream
+export default VideoPlayerStreamComponent

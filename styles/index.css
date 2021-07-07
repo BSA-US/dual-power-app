@@ -8,6 +8,6 @@
 }
 
 :root {
-  @apply font-sans border-box;
+  @apply font-sans box-border;
   font-size: 16px;
 }

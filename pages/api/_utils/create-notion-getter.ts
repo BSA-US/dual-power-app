@@ -1,3 +1,4 @@
+import { Client as NotionClient } from '@notionhq/client'
 import { camelCase } from '@replygirl/change-case-object'
 import { NotionAPI } from 'notion-client'
 import { parsePageId } from 'notion-utils'
@@ -14,6 +15,30 @@ type CreateNotionGetterOptions =
   | CreateNotionGetterOptionsDatabase
   | CreateNotionGetterOptionsJson
 
+const notionPropertySanitizers: Record<string, (x: any) => any> = {
+  date: x => x.date,
+  rich_text: x => x.rich_text.map((x: any) => x.plain_text).join(''),
+  title: x => x.title.map((x: any) => x.plain_text).join(''),
+  url: x => x.url,
+}
+
+const sanitizeNotionPage = (x: any) =>
+  Object.entries(x).reduce(
+    (acc, [k, v]: [string, any]) => ({
+      ...acc,
+      [k]:
+        v && typeof v === 'object' && !Array.isArray(v) && v.id && v.type
+          ? notionPropertySanitizers[v.type]?.(v) ?? v
+          : v,
+    }),
+    {}
+  )
+
+const n = new NotionClient({
+  auth: process.env.NOTION_SECRET,
+})
+const nx = new NotionAPI()
+
 function createNotionGetter<T>(
   url: string,
   options: CreateNotionGetterOptionsDatabase
@@ -27,36 +52,43 @@ function createNotionGetter<
 >(url: string, { type }: CreateNotionGetterOptions) {
   return {
     database: async (): Promise<T[]> => {
-      const n = new NotionAPI()
+      const database_id = parsePageId(url)
+      const [{ results }, { block }] = await Promise.all([
+        n.databases.query({ database_id }),
+        nx.getPage(database_id),
+      ])
 
-      const { block } = await n.getPage(parsePageId(url))
-
-      return Object.values(block)
-        .filter(x => x.value?.type === 'page')
-        .map(({ value: v }) => {
-          const codeBlockId = v.content?.find(
-            id => block[id] && block[id].value.type === 'code'
+      return camelCase(
+        results.map(({ id, properties }: any) => {
+          const codeBlockId = block[id].value.content?.find(
+            (id: string) => block[id]?.value.type === 'code'
           )
 
-          return camelCase({
-            name: v.properties.title[0][0],
-            ...v.properties,
+          return sanitizeNotionPage({
+            ...properties,
             ...(codeBlockId
               ? JSON.parse(block[codeBlockId].value?.properties.title[0][0])
               : {}),
           })
         })
+      )
     },
     json: async (): Promise<T> => {
-      const n = new NotionAPI()
-
-      const { block } = await n.getPage(parsePageId(url))
+      const page_id = parsePageId(url)
+      const [{ properties }, { block }] = await Promise.all([
+        n.pages.retrieve({ page_id }),
+        nx.getPage(page_id),
+      ])
 
       return camelCase(
-        JSON.parse(
-          Object.values(block).find(x => x.value.type === 'code')?.value
-            .properties.title[0][0]
-        )
+        sanitizeNotionPage({
+          ...properties,
+          ...JSON.parse(
+            Object.values(block)
+              .map(x => x.value)
+              .find(x => x.type === 'code')?.properties.title[0][0] ?? {}
+          ),
+        })
       )
     },
   }[type]

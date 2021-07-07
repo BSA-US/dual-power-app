@@ -8,7 +8,7 @@ interface ModalProps {
   onRequestClose?: () => void
 }
 
-const Modal: FC<ModalProps> = ({
+const ModalComponent: FC<ModalProps> = ({
   children,
   classNameClickout = '',
   classNameContainer = '',
@@ -32,4 +32,4 @@ const Modal: FC<ModalProps> = ({
   )
 }
 
-export default Modal
+export default ModalComponent
