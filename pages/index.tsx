@@ -1,31 +1,22 @@
 import type { NextPage } from 'next'
-import dynamic from 'next/dynamic'
-import Head from 'next/head'
 import { useState } from 'react'
 
-import { Modal, Status } from '~/components'
+import { Status } from '~/components'
 import { cooperationJacksonUrl } from '~/constants'
 import { useStatus } from '~/hooks'
 import { LandingPage } from '~/layouts'
 
-const VideoPlayerStream = dynamic(
-  () => import('../components/video-player-stream'),
-  {
-    ssr: false,
-  }
-)
-
 const IndexPage: NextPage = () => {
-  const { status, statusHeadLink } = useStatus()
-
   const [showVideo, setShowVideo] = useState<boolean>(false)
+  const { status } = useStatus()
 
   return (
     <LandingPage
       classNameDonate='lg:(top-auto bottom-20)'
       classNameMain='flex flex-col space-y-12 lg:space-y-16'
+      showVideo={showVideo}
+      onSetShowVideo={setShowVideo}
     >
-      <Head>{statusHeadLink}</Head>
       <div className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-6xl leading-12 lg:(text-7xl leading-16)'>
@@ -73,18 +64,6 @@ const IndexPage: NextPage = () => {
           </p>
         </div>
       </section>
-      {process.browser && !!status?.live && !!status.streamConfig && (
-        <Modal
-          classNameContainer='transform-none inset-0 md:(inset-auto w-90vw h-90vh max-w-1560px border) !md:inset-center lg:max-h-800px'
-          isOpen={showVideo}
-          onRequestClose={() => setShowVideo(false)}
-        >
-          <VideoPlayerStream
-            onRequestClose={() => setShowVideo(false)}
-            streamConfig={status.streamConfig}
-          />
-        </Modal>
-      )}
     </LandingPage>
   )
 }
