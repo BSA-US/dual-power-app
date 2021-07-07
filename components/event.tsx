@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import { format } from 'date-fns'
-import { zonedTimeToUtc } from 'date-fns-tz'
 import type { FC } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
@@ -13,10 +12,7 @@ interface EventProps {
 }
 
 const EventComponent: FC<EventProps> = ({ className, event }) => {
-  const date = zonedTimeToUtc(
-    `${event.date.startDate} ${event.date.startTime ?? ''}`,
-    event.date.timeZone ?? 'America/New_York'
-  )
+  const date = new Date(event.date.start)
 
   return (
     <div className={`flex items-start space-x-4 sm:space-x-8 ${className}`}>

@@ -27,9 +27,9 @@ const OpenDesignPage: NextPage = () => {
             Dual&nbsp;Power&nbsp;App Open&nbsp;Design
           </h1>
           <p className='font-mono'>with Manhattan Hydraulics</p>
-          <p className='prose'>
+          <section className='prose'>
             {remark().use(remark2react).processSync(about).result as string}
-          </p>
+          </section>
         </section>
         <section className='col-span-3 leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'>
           <ul role='tablist' className='flex space-x-4 font-mono uppercase'>
@@ -68,11 +68,13 @@ const OpenDesignPage: NextPage = () => {
               aria-labelledby='od-tab-events'
               className='max-w-prose space-y-8'
             >
-              {events.map(x => (
-                <li key={x.name}>
-                  <Event event={x} />
-                </li>
-              ))}
+              {events
+                .sort((a, b) => new Date(b.date.start) - new Date(a.date.start))
+                .map(x => (
+                  <li key={x.name}>
+                    <Event event={x} />
+                  </li>
+                ))}
             </ul>
           )}
           {docs && tab === 'docs' && (
@@ -81,20 +83,22 @@ const OpenDesignPage: NextPage = () => {
               aria-labelledby='od-tab-docs'
               className='max-w-prose grid gap-8 grid-cols-1 sm:grid-cols-2'
             >
-              {docs.map(x => (
-                <li key={x.name}>
-                  <a
-                    className='space-y-2'
-                    href={x.url}
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img {...x.image} />
-                    <p className='text-xl font-bold'>{x.name}</p>
-                    <p>{x.description}</p>
-                  </a>
-                </li>
-              ))}
+              {docs
+                .sort((a, b) => new Date(b.date.start) - new Date(a.date.start))
+                .map(x => (
+                  <li key={x.name}>
+                    <a
+                      className='space-y-2'
+                      href={x.url}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <img {...x.image} />
+                      <p className='text-xl font-bold'>{x.name}</p>
+                      <p>{x.description}</p>
+                    </a>
+                  </li>
+                ))}
             </ul>
           )}
         </section>

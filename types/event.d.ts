@@ -1,11 +1,7 @@
-import type { Action } from './common'
+import type { Action, Date } from './common'
 
 export interface Event {
-  date: {
-    startDate: string
-    startTime?: string
-    timeZone?: string
-  }
+  date: Date
   name: string
   description?: string
   actions?: Action[]

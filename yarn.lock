@@ -1357,6 +1357,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@notionhq/client@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@notionhq/client/-/client-0.2.1.tgz#088e148500ff464c770f2850feb6b259f3079c62"
+  integrity sha512-7xFUkAQ6TConYnorHkp1Rs6P7GeJTBNapDFRoFh4yNjJvkkKU8hWP8bFip/Xt8cl8JelhsOQSZyxRLCij6YfDA==
+  dependencies:
+    "@types/node-fetch" "^2.5.10"
+    node-fetch "^2.6.1"
+
 "@npmcli/move-file@^1.0.1":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@npmcli/move-file/-/move-file-1.1.2.tgz"
@@ -2113,6 +2121,14 @@
   version "3.0.4"
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.4.tgz"
   integrity sha512-1z8k4wzFnNjVK/tlxvrWuK5WMt6mydWWP7+zvH5eFep4oj+UkrfiJTRtjCeBXNpwaA/FYqqtb4/QS4ianFpIRA==
+
+"@types/node-fetch@^2.5.10":
+  version "2.5.11"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.11.tgz#ce22a2e65fc8999f4dbdb7ddbbcf187d755169e4"
+  integrity sha512-2upCKaqVZETDRb8A2VTaRymqFBEgH8u6yr96b/u3+1uQEPDRo3mJLEiPk7vdXBHRtjwkjqzFYMJXrt0Z9QsYjQ==
+  dependencies:
+    "@types/node" "*"
+    form-data "^3.0.0"
 
 "@types/node-fetch@^2.5.7":
   version "2.5.10"
@@ -10464,6 +10480,11 @@ type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
+
+type-fest@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.2.1.tgz#232990aa513f3f5223abf54363975dfe3a121a2e"
+  integrity sha512-SbmIRuXhJs8KTneu77Ecylt9zuqL683tuiLYpTRil4H++eIhqCmx6ko6KAFem9dty8sOdnEiX7j4K1nRE628fQ==
 
 type-is@~1.6.17, type-is@~1.6.18:
   version "1.6.18"
