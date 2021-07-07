@@ -22,6 +22,7 @@ const StatusComponent: FC<StatusProps> = ({ onOpenVideo }) => {
           {status?.actions?.map(({ text, href, target, color = 'inherit' }) => (
             <li key={text} className='whitespace-nowrap first:font-bold'>
               <a
+                className='underline'
                 href={href ?? '/'}
                 target={target ?? '_self'}
                 style={{ color }}
