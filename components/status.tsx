@@ -10,6 +10,7 @@ interface StatusProps {
 
 const StatusComponent: FC<StatusProps> = ({ onOpenVideo }) => {
   const { status } = useStatus()
+
   return (
     <div className='only-child:flex-grow not-first:mt-6 flex flex-col space-y-2 lg:(flex-row items-end space-y-0 space-x-4)'>
       {status?.text && (

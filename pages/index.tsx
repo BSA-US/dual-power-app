@@ -31,9 +31,7 @@ const IndexPage: NextPage = () => {
             economy, with tools for founding, funding, governance, and internal
             + external communications.
           </p>
-          {status?.text && (
-            <Status status={status} onOpenVideo={() => setShowVideo(true)} />
-          )}
+          {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
         </section>
       </div>
       <section className='border-t-2 space-y-8'>
