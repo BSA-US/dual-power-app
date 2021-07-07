@@ -35,7 +35,7 @@ const sanitizeNotionPage = (x: any) =>
   )
 
 const n = new NotionClient({
-  auth: 'secret_r9PQf0A5nYX4AfJseiR5pbpfWwNm35Do05L0JSSV0Jj',
+  auth: process.env.NOTION_SECRET,
 })
 const nx = new NotionAPI()
 
