@@ -69,7 +69,11 @@ const OpenDesignPage: NextPage = () => {
               className='max-w-prose space-y-8'
             >
               {events
-                .sort((a, b) => new Date(b.date.start) - new Date(a.date.start))
+                .sort(
+                  (a, b) =>
+                    new Date(b.date.start).getTime() -
+                    new Date(a.date.start).getTime()
+                )
                 .map(x => (
                   <li key={x.name}>
                     <Event event={x} />
@@ -84,7 +88,11 @@ const OpenDesignPage: NextPage = () => {
               className='max-w-prose grid gap-8 grid-cols-1 sm:grid-cols-2'
             >
               {docs
-                .sort((a, b) => new Date(b.date.start) - new Date(a.date.start))
+                .sort(
+                  (a, b) =>
+                    new Date(b.date.start).getTime() -
+                    new Date(a.date.start).getTime()
+                )
                 .map(x => (
                   <li key={x.name}>
                     <a
