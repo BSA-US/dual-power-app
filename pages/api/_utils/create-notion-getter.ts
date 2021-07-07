@@ -17,8 +17,8 @@ type CreateNotionGetterOptions =
 
 const notionPropertySanitizers: Record<string, (x: any) => any> = {
   date: x => x.date,
-  rich_text: x => x.rich_text.map(x => x.plain_text).join(''),
-  title: x => x.title.map(x => x.plain_text).join(''),
+  rich_text: x => x.rich_text.map((x: any) => x.plain_text).join(''),
+  title: x => x.title.map((x: any) => x.plain_text).join(''),
   url: x => x.url,
 }
 
