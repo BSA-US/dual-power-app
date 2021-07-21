@@ -1,7 +1,6 @@
 export const bsaUrl = 'https://blacksocialists.us'
 export const githubUrl = 'https://github.com/bsa-us'
-export const roadmapUrl =
-  'https://github.com/BSA-US/dual-power-app/wiki/Dual-power-project'
+export const roadmapUrl = 'https://github.com/BSA-US/dual-power-app/projects/8'
 export const twitterUrl = 'https://twitter.com/DualPowerApp'
 export const donateUrl = 'https://blacksocialists.us/donate'
 export const getMoreInfoUrl = 'https://airtable.com/shr0fyF8z1VqA9z2A'
