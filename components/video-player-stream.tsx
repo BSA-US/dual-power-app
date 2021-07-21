@@ -127,12 +127,14 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
               </li>
             </ul>
             {!videoPlaying && (
-              <button
-                className='absolute h-auto w-auto inset-auto !inset-center bg-white border p-2'
+              <div
+                className='absolute inset-0 flex justify-center items-center'
                 onClick={() => play()}
               >
-                Play
-              </button>
+                <button className='bg-white border p-2' type='button'>
+                  Play
+                </button>
+              </div>
             )}
           </div>
           <iframe
