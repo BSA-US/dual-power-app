@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { detect } from 'detect-browser'
 import fetch from 'isomorphic-unfetch'
 import type { FC } from 'react'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import useDimensions from 'react-cool-dimensions'
 
 import type { Video, StreamConfig } from '~/types'
@@ -18,8 +18,8 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
   onRequestClose,
   streamConfig: { videoConfig, chatConfig, actions, discordInviteUrl },
 }) => {
-  const videoIframe = useRef<HTMLIFrameElement>(null)
-  const videoPlayer = useRef<any | null>(null)
+  const [videoPlayer, setVideoPlayer] = useState<any | null>(null)
+  const [videoPlayerBusy, setVideoPlayerBusy] = useState<boolean>(false)
   const [videoPlaying, setVideoPlaying] = useState(false)
 
   const [browserName, setBrowserName] = useState<string | false | null>(null)
@@ -38,10 +38,21 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
     }
   }, [videoConfig])
 
-  const play = useCallback(() => {
-    videoPlayer.current?.[videoPlaying ? 'pause' : 'play']?.()
+  const play = () => {
+    videoPlayer?.[videoPlaying ? 'pause' : 'play']?.()
     setVideoPlaying(!videoPlaying)
-  }, [videoPlaying])
+  }
+
+  const onVideoIframeLoaded = async (el: HTMLIFrameElement | null) => {
+    if (el && !videoPlayer && !videoPlayerBusy) {
+      setVideoPlayerBusy(true)
+      const { PeerTubePlayer } = await import('@peertube/embed-api')
+      const pt = new PeerTubePlayer(el)
+      await pt.ready
+      setVideoPlayer(pt)
+      setVideoPlayerBusy(false)
+    }
+  }
 
   useEffect(() => {
     getVideo()
@@ -52,17 +63,6 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
       document.body.style.overflow = 'unset'
     }
   }, [videoConfig, chatConfig, getVideo])
-
-  useEffect(() => {
-    if (videoIframe.current && !videoPlayer.current)
-      (async () => {
-        const { PeerTubePlayer } = await import('@peertube/embed-api')
-        const pt = new PeerTubePlayer(videoIframe.current!)
-        await pt.ready
-        videoPlayer.current = pt
-        if (!videoPlaying) play()
-      })()
-  }, [play, videoPlaying])
 
   const [videoIframeHeight, setVideoIframeHeight] = useState(0)
   const windowWidth = useWindowWidth()
@@ -93,18 +93,22 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
               allowFullScreen
               className='lg:(h-full w-full)'
               frameBorder='0'
-              ref={videoIframe}
               width={width}
               height={videoIframeHeight}
               sandbox='allow-same-origin allow-scripts allow-popups'
               src={`https://${videoConfig.baseUrl}${video.embedPath}?api=1&controls=false`}
+              ref={onVideoIframeLoaded}
             />
             <div
-              className='absolute inset-center'
-              onClick={e => {
-                if (e.target === e.currentTarget) play()
-              }}
-            ></div>
+              className='absolute inset-0 flex justify-center items-center cursor-pointer'
+              onClick={() => play()}
+            >
+              {!videoPlaying && (
+                <button className='bg-white border p-2' type='button'>
+                  Play
+                </button>
+              )}
+            </div>
             <ul className='absolute inset-x-0 top-0 bottom-auto h-auto flex justify-between items-center p-2 pb-8 bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-transparent text-white'>
               {actions?.map(({ text, href, target, color = 'inherit' }) => (
                 <li key={text}>
@@ -126,14 +130,6 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
                 ×
               </li>
             </ul>
-            {!videoPlaying && (
-              <button
-                className='absolute h-auto w-auto inset-auto !inset-center bg-white border p-2'
-                onClick={() => play()}
-              >
-                Play
-              </button>
-            )}
           </div>
           <iframe
             className='titanembed flex-1 lg:(flex-none)'
