@@ -1,0 +1,8 @@
+[role="tab"][aria-selected="true"] {
+  font-weight: bold;
+  pointer-events: none;
+}
+
+[role="tab"][aria-selected="false"] {
+  text-decoration: underline;
+}

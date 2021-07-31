@@ -9,13 +9,13 @@ The Dual Power App is a [Next.js](https://nextjs.org) app built on [ZEIT Now](ht
 
 ### Working on the Next.js client
 
-- **CSS:** [Stylus](https://stylus-lang.com) with [locally scoped CSS modules](https://github.com/css-modules/css-modules/blob/master/docs/local-scope.md#css-modules--local-scope). Poke around the `/styles` directory to see what's up
+- **CSS:** You should write very little CSS yourself. Use the pre-baked components in the components directory. For page layouts and tweaks, use [Windi](https://windicss.org/). If you find yourself styling a component, consider whether that is a reusable treatement that should instead be a prop on the component itself.
 - **Interacting with APIs:** [Isomorphic Unfetch](https://github.com/developit/unfetch/tree/master/packages/isomorphic-unfetch) (it's like axios, but waaay smaller)
 - **Interacting with the database:** [Read `/db/queries/README.md`](https://github.com/BSA-US/dual-power-app/blob/master/db/queries/README.md) for examples
 
 ## Getting started
 
-1. Make sure to read [the wiki](https://github.com/BSA-US/dual-power-app/wiki) if you're not 100% on what a Dual Power Project is
+1. Make sure to read [BSA's strategy](https://blacksocialists.us/our-strategy) if you're not 100% on what a Dual Power Project is
 2. See what's up in the [projects](https://github.com/BSA-US/dual-power-app/projects) and [issues](https://github.com/BSA-US/dual-power-app/issues)
 3. [Set up commit signing](https://help.github.com/en/github/authenticating-to-github/signing-commits)
 
