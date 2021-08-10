@@ -1,0 +1,104 @@
+
+type User @collection(name: "users")  {
+  email: String! @unique(index: "unique_user_email")
+  auth_uid: String!
+  profiles: [Profile!]! @relation(name: "user_profile")
+}
+
+type Profile @collection(name: "profiles")  {
+  user: User! @relation(name: "user_profile")
+  display_name: String! @unique(index: "profile_display_name")
+  pronoun: String
+  read_circles: [Circle!]! @relation(name: "circle_read_members")
+  write_circles: [Circle!]! @relation(name: "circle_write_members")
+}
+
+type Circle @collection(name: "circles")  {
+  parent: Circle
+  name: String!
+  read_members: [Profile!]! @relation(name: "circle_read_members")
+  write_members: [Profile!]! @relation(name: "circle_write_members")
+  posts: [Post!]! @relation(name: "circle_posts")
+  documents: [Document!]! @relation(name: "circle_documents")
+}
+
+type Vote @collection(name: "votes")  {
+  circle: Circle!
+  voting_model: VotingModel!
+  minimum_participation_rate: Float!
+  choices: [Choice!]!
+  active: Boolean!
+  created_at: Time!
+  resolved_at: Time
+  outcome: VoteOutcome
+}
+
+# choice represents an individual vote by an eligible member of a circle, can be proxied
+type Choice @collection(name: "choices")  {
+  vote: Vote!
+  profile: Profile!
+  proxy_to: Profile
+  approve: Boolean
+}
+
+type Document @collection(name: "documents") {
+  circle: Circle! @relation(name: "circle_documents")
+  title: String!
+  current_revision: Revision!
+  revisions: [Revision!]! @relation(name: "document_revisions")
+  proposed_revisions: [ProposedRevision!]! @relation(name: "document_proposed_revisions")
+}
+
+type Revision @collection(name: "revisions") {
+  author: Profile!
+  document: Document! @relation(name: "document_revisions")
+  revision_title: String!
+  content: String!
+  created_at: Time!
+}
+
+type ProposedRevision @collection(name: "proposed_revisions") {
+  vote: Vote!
+  author: Profile!
+  document: Document! @relation(name: "document_proposed_revisions")
+  revision_title: String!
+  content: String!
+  created_at: Time!
+}
+
+type Post @collection(name: "posts")  {
+  author: Profile!
+  circle: Circle! @relation(name: "circle_posts")
+  subject: String!
+  content: String!
+  created_at: Time!
+  comments: [Comment!]! @relation(name: "post_comments")
+}
+
+type Comment @collection(name: "comments") {
+  post: Post! @relation(name: "post_comments")
+  author: Profile!
+  content: String!
+  created_at: Time!
+}
+
+enum VotingModel {
+    CONSENSUS
+    CONSENT
+}
+
+enum VoteOutcome {
+    APPROVED
+    REJECTED
+    UNDECIDED
+}
+
+type Query {
+  # calculate outcome according to voting model and current choices made
+  calculateOutcome(vote_id: ID!): VoteOutcome @resolver(name: "vote_outcome")
+}
+
+type Mutation {
+  # adopts a proposed revision if vote approved, removes if rejected, returns VoteOutcome
+  resolveProposedRevision(proposed_revision_id: ID!): VoteOutcome @resolver(name: "resolve_proposed_revision")
+}
