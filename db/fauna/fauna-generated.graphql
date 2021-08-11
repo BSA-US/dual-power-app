@@ -7,6 +7,75 @@ directive @resolver(
 ) on FIELD_DEFINITION
 directive @relation(name: String) on FIELD_DEFINITION
 directive @unique(index: String) on FIELD_DEFINITION
+type Area {
+  name: String!
+  location: Location
+  posts(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): PostPage!
+  circle: Circle!
+  # The document's ID.
+  _id: ID!
+  documents(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): DocumentPage!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Circle' using the field 'Area.circle'.
+input AreaCircleRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Document'.
+input AreaDocumentsRelation {
+  # Create one or more documents of type 'Document' and associate them with the current document.
+  create: [DocumentInput]
+  # Connect one or more documents of type 'Document' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Document' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# 'Area' input values
+input AreaInput {
+  circle: AreaCircleRelation
+  name: String!
+  location: AreaLocationRelation
+  posts: AreaPostsRelation
+  documents: AreaDocumentsRelation
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Location' using the field 'Area.location'.
+input AreaLocationRelation {
+  # Create a document of type 'Location' and associate it with the current document.
+  create: LocationInput
+  # Connect a document of type 'Location' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Location'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Post'.
+input AreaPostsRelation {
+  # Create one or more documents of type 'Post' and associate them with the current document.
+  create: [PostInput]
+  # Connect one or more documents of type 'Post' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Post' from the current document using their IDs.
+  disconnect: [ID]
+}
+
 type Choice {
   approve: Boolean
   # The document's ID.
@@ -55,6 +124,7 @@ input ChoiceVoteRelation {
 type Circle {
   parent: Circle
   name: String!
+  location: Location
   posts(
     # The number of items to return per page.
     _size: Int
@@ -99,10 +169,21 @@ input CircleDocumentsRelation {
 input CircleInput {
   parent: CircleParentRelation
   name: String!
+  location: CircleLocationRelation
   read_members: CircleRead_membersRelation
   write_members: CircleWrite_membersRelation
   posts: CirclePostsRelation
   documents: CircleDocumentsRelation
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Location' using the field 'Circle.location'.
+input CircleLocationRelation {
+  # Create a document of type 'Location' and associate it with the current document.
+  create: LocationInput
+  # Connect a document of type 'Location' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Location'
+  disconnect: Boolean
 }
 
 # The pagination object for elements of type 'Circle'.
@@ -203,7 +284,8 @@ input CommentPostRelation {
 scalar Date
 
 type Document {
-  circle: Circle!
+  area: Area
+  circle: Circle
   # The document's ID.
   _id: ID!
   current_revision: Revision!
@@ -224,12 +306,24 @@ type Document {
   _ts: Long!
 }
 
+# Allow manipulating the relationship between the types 'Document' and 'Area' using the field 'Document.area'.
+input DocumentAreaRelation {
+  # Create a document of type 'Area' and associate it with the current document.
+  create: AreaInput
+  # Connect a document of type 'Area' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Area'
+  disconnect: Boolean
+}
+
 # Allow manipulating the relationship between the types 'Document' and 'Circle' using the field 'Document.circle'.
 input DocumentCircleRelation {
   # Create a document of type 'Circle' and associate it with the current document.
   create: CircleInput
   # Connect a document of type 'Circle' with the current document using its ID.
   connect: ID
+  # If true, disconnects this document from 'Circle'
+  disconnect: Boolean
 }
 
 # Allow manipulating the relationship between the types 'Document' and 'Revision' using the field 'Document.current_revision'.
@@ -243,6 +337,7 @@ input DocumentCurrent_revisionRelation {
 # 'Document' input values
 input DocumentInput {
   circle: DocumentCircleRelation
+  area: DocumentAreaRelation
   title: String!
   current_revision: DocumentCurrent_revisionRelation
   revisions: DocumentRevisionsRelation
@@ -277,6 +372,78 @@ input DocumentRevisionsRelation {
   connect: [ID]
   # Disconnect the given documents of type 'Revision' from the current document using their IDs.
   disconnect: [ID]
+}
+
+type Event {
+  area: Area
+  name: String!
+  starts_at: Time!
+  location: Location
+  circle: Circle
+  # The document's ID.
+  _id: ID!
+  ends_at: Time!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Event' and 'Area' using the field 'Event.area'.
+input EventAreaRelation {
+  # Create a document of type 'Area' and associate it with the current document.
+  create: AreaInput
+  # Connect a document of type 'Area' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Area'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Event' and 'Circle' using the field 'Event.circle'.
+input EventCircleRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Circle'
+  disconnect: Boolean
+}
+
+# 'Event' input values
+input EventInput {
+  name: String!
+  location: EventLocationRelation
+  circle: EventCircleRelation
+  area: EventAreaRelation
+  starts_at: Time!
+  ends_at: Time!
+}
+
+# Allow manipulating the relationship between the types 'Event' and 'Location' using the field 'Event.location'.
+input EventLocationRelation {
+  # Create a document of type 'Location' and associate it with the current document.
+  create: LocationInput
+  # Connect a document of type 'Location' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Location'
+  disconnect: Boolean
+}
+
+type Location {
+  name: String!
+  # The document's ID.
+  _id: ID!
+  address: String
+  lon: Float
+  lat: Float
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# 'Location' input values
+input LocationInput {
+  name: String!
+  address: String
+  lat: Float
+  lon: Float
 }
 
 # The `Long` scalar type
@@ -316,6 +483,11 @@ type Mutation {
     # 'Comment' input values
     data: CommentInput!
   ): Comment
+  # Delete an existing document in the collection of 'Location'
+  deleteLocation(
+    # The 'Location' document's ID
+    id: ID!
+  ): Location
   # Delete an existing document in the collection of 'Comment'
   deleteComment(
     # The 'Comment' document's ID
@@ -328,11 +500,30 @@ type Mutation {
     # 'Post' input values
     data: PostInput!
   ): Post
+  # Create a new document in the collection of 'Area'
+  createArea(
+    # 'Area' input values
+    data: AreaInput!
+  ): Area!
+  # Update an existing document in the collection of 'Event'
+  updateEvent(
+    # The 'Event' document's ID
+    id: ID!
+    # 'Event' input values
+    data: EventInput!
+  ): Event
   # Delete an existing document in the collection of 'ProposedRevision'
   deleteProposedRevision(
     # The 'ProposedRevision' document's ID
     id: ID!
   ): ProposedRevision
+  # Update an existing document in the collection of 'Location'
+  updateLocation(
+    # The 'Location' document's ID
+    id: ID!
+    # 'Location' input values
+    data: LocationInput!
+  ): Location
   # Create a new document in the collection of 'Document'
   createDocument(
     # 'Document' input values
@@ -343,6 +534,18 @@ type Mutation {
     # The 'Circle' document's ID
     id: ID!
   ): Circle
+  # Update an existing document in the collection of 'Area'
+  updateArea(
+    # The 'Area' document's ID
+    id: ID!
+    # 'Area' input values
+    data: AreaInput!
+  ): Area
+  # Create a new document in the collection of 'Location'
+  createLocation(
+    # 'Location' input values
+    data: LocationInput!
+  ): Location!
   # Create a new document in the collection of 'Revision'
   createRevision(
     # 'Revision' input values
@@ -358,6 +561,11 @@ type Mutation {
     # 'Comment' input values
     data: CommentInput!
   ): Comment!
+  # Delete an existing document in the collection of 'Area'
+  deleteArea(
+    # The 'Area' document's ID
+    id: ID!
+  ): Area
   # Delete an existing document in the collection of 'Choice'
   deleteChoice(
     # The 'Choice' document's ID
@@ -383,6 +591,11 @@ type Mutation {
     # The 'Post' document's ID
     id: ID!
   ): Post
+  # Create a new document in the collection of 'Event'
+  createEvent(
+    # 'Event' input values
+    data: EventInput!
+  ): Event!
   # Update an existing document in the collection of 'Revision'
   updateRevision(
     # The 'Revision' document's ID
@@ -442,6 +655,11 @@ type Mutation {
     data: ChoiceInput!
   ): Choice!
   resolveProposedRevision(proposed_revision_id: ID!): VoteOutcome
+  # Delete an existing document in the collection of 'Event'
+  deleteEvent(
+    # The 'Event' document's ID
+    id: ID!
+  ): Event
   # Update an existing document in the collection of 'Profile'
   updateProfile(
     # The 'Profile' document's ID
@@ -460,8 +678,9 @@ type Mutation {
 
 type Post {
   author: Profile!
+  area: Area
   subject: String!
-  circle: Circle!
+  circle: Circle
   # The document's ID.
   _id: ID!
   content: String!
@@ -474,6 +693,16 @@ type Post {
   ): CommentPage!
   # The document's timestamp.
   _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Post' and 'Area' using the field 'Post.area'.
+input PostAreaRelation {
+  # Create a document of type 'Area' and associate it with the current document.
+  create: AreaInput
+  # Connect a document of type 'Area' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Area'
+  disconnect: Boolean
 }
 
 # Allow manipulating the relationship between the types 'Post' and 'Profile' using the field 'Post.author'.
@@ -490,6 +719,8 @@ input PostCircleRelation {
   create: CircleInput
   # Connect a document of type 'Circle' with the current document using its ID.
   connect: ID
+  # If true, disconnects this document from 'Circle'
+  disconnect: Boolean
 }
 
 # Allow manipulating the relationship between the types 'Post' and 'Comment'.
@@ -506,6 +737,7 @@ input PostCommentsRelation {
 input PostInput {
   author: PostAuthorRelation
   circle: PostCircleRelation
+  area: PostAreaRelation
   subject: String!
   content: String!
   created_at: Time!
@@ -652,6 +884,16 @@ input ProposedRevisionVoteRelation {
 
 type Query {
   calculateOutcome(vote_id: ID!): VoteOutcome
+  # Find a document from the collection of 'Event' by its id.
+  findEventByID(
+    # The 'Event' document's ID
+    id: ID!
+  ): Event
+  # Find a document from the collection of 'Location' by its id.
+  findLocationByID(
+    # The 'Location' document's ID
+    id: ID!
+  ): Location
   # Find a document from the collection of 'Profile' by its id.
   findProfileByID(
     # The 'Profile' document's ID
@@ -697,6 +939,11 @@ type Query {
     # The 'Vote' document's ID
     id: ID!
   ): Vote
+  # Find a document from the collection of 'Area' by its id.
+  findAreaByID(
+    # The 'Area' document's ID
+    id: ID!
+  ): Area
   # Find a document from the collection of 'Revision' by its id.
   findRevisionByID(
     # The 'Revision' document's ID

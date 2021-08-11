@@ -16,10 +16,35 @@ type Profile @collection(name: "profiles")  {
 type Circle @collection(name: "circles")  {
   parent: Circle
   name: String!
+  location: Location
   read_members: [Profile!]! @relation(name: "circle_read_members")
   write_members: [Profile!]! @relation(name: "circle_write_members")
   posts: [Post!]! @relation(name: "circle_posts")
   documents: [Document!]! @relation(name: "circle_documents")
+}
+
+type Area @collection(name: "areas") {
+  circle: Circle!
+  name: String!
+  location: Location
+  posts: [Post!]! @relation(name: "area_posts")
+  documents: [Document!]! @relation(name: "area_documents")
+}
+
+type Location @collection(name: "locations") {
+  name: String!
+  address: String
+  lat: Float
+  lon: Float
+}
+
+type Event {
+  name: String!
+  location: Location
+  circle: Circle
+  area: Area
+  starts_at: Time!
+  ends_at: Time!
 }
 
 type Vote @collection(name: "votes")  {
@@ -42,7 +67,8 @@ type Choice @collection(name: "choices")  {
 }
 
 type Document @collection(name: "documents") {
-  circle: Circle! @relation(name: "circle_documents")
+  circle: Circle @relation(name: "circle_documents")
+  area: Area @relation(name: "area_documents")
   title: String!
   current_revision: Revision!
   revisions: [Revision!]! @relation(name: "document_revisions")
@@ -68,7 +94,8 @@ type ProposedRevision @collection(name: "proposed_revisions") {
 
 type Post @collection(name: "posts")  {
   author: Profile!
-  circle: Circle! @relation(name: "circle_posts")
+  circle: Circle @relation(name: "circle_posts")
+  area: Area @relation(name: "area_posts")
   subject: String!
   content: String!
   created_at: Time!
