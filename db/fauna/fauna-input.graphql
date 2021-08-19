@@ -9,26 +9,28 @@ type Profile @collection(name: "profiles")  {
   user: User! @relation(name: "user_profile")
   display_name: String! @unique(index: "profile_display_name")
   pronoun: String
-  read_circles: [Circle!]! @relation(name: "circle_read_members")
-  write_circles: [Circle!]! @relation(name: "circle_write_members")
+  circles: [Circle!]! @relation(name: "circle_members")
 }
 
 type Circle @collection(name: "circles")  {
   parent: Circle
   name: String!
+  proposal: Proposal!
   location: Location
-  read_members: [Profile!]! @relation(name: "circle_read_members")
-  write_members: [Profile!]! @relation(name: "circle_write_members")
+  members: [Profile!]! @relation(name: "circle_members")
   posts: [Post!]! @relation(name: "circle_posts")
   documents: [Document!]! @relation(name: "circle_documents")
+  events: [Event!]! @relation(name: "circle_events")
 }
 
 type Area @collection(name: "areas") {
   circle: Circle!
   name: String!
+  proposal: Proposal!
   location: Location
   posts: [Post!]! @relation(name: "area_posts")
   documents: [Document!]! @relation(name: "area_documents")
+  events: [Event!]! @relation(name: "area_events")
 }
 
 type Location @collection(name: "locations") {
@@ -40,27 +42,28 @@ type Location @collection(name: "locations") {
 
 type Event {
   name: String!
+  proposal: Proposal!
   location: Location
-  circle: Circle
-  area: Area
+  circle: Circle @relation(name: "circle_events")
+  area: Area @relation(name: "area_events")
   starts_at: Time!
   ends_at: Time!
 }
 
-type Vote @collection(name: "votes")  {
+type Proposal @collection(name: "proposals")  {
   circle: Circle!
   voting_model: VotingModel!
   minimum_participation_rate: Float!
-  choices: [Choice!]!
+  votes: [Vote!]! @relation(name: "proposal_votes")
   active: Boolean!
   created_at: Time!
   resolved_at: Time
-  outcome: VoteOutcome
+  outcome: ProposalOutcome
 }
 
-# choice represents an individual vote by an eligible member of a circle, can be proxied
-type Choice @collection(name: "choices")  {
-  vote: Vote!
+# an individual vote by a member of a circle, can be proxied
+type Vote @collection(name: "votes")  {
+  proposal: Proposal! @relation(name: "proposal_votes")
   profile: Profile!
   proxy_to: Profile
   approve: Boolean
@@ -69,24 +72,16 @@ type Choice @collection(name: "choices")  {
 type Document @collection(name: "documents") {
   circle: Circle @relation(name: "circle_documents")
   area: Area @relation(name: "area_documents")
+  proposal: Proposal!
   title: String!
   current_revision: Revision!
   revisions: [Revision!]! @relation(name: "document_revisions")
-  proposed_revisions: [ProposedRevision!]! @relation(name: "document_proposed_revisions")
 }
 
 type Revision @collection(name: "revisions") {
   author: Profile!
+  proposal: Proposal!
   document: Document! @relation(name: "document_revisions")
-  revision_title: String!
-  content: String!
-  created_at: Time!
-}
-
-type ProposedRevision @collection(name: "proposed_revisions") {
-  vote: Vote!
-  author: Profile!
-  document: Document! @relation(name: "document_proposed_revisions")
   revision_title: String!
   content: String!
   created_at: Time!
@@ -114,7 +109,7 @@ enum VotingModel {
     CONSENT
 }
 
-enum VoteOutcome {
+enum ProposalOutcome {
     APPROVED
     REJECTED
     UNDECIDED
@@ -122,10 +117,10 @@ enum VoteOutcome {
 
 type Query {
   # calculate outcome according to voting model and current choices made
-  calculateOutcome(vote_id: ID!): VoteOutcome @resolver(name: "vote_outcome")
+  calculateOutcome(proposal_id: ID!): ProposalOutcome @resolver(name: "proposal_outcome")
 }
 
 type Mutation {
-  # adopts a proposed revision if vote approved, removes if rejected, returns VoteOutcome
-  resolveProposedRevision(proposed_revision_id: ID!): VoteOutcome @resolver(name: "resolve_proposed_revision")
+  # adopts a proposed revision if vote approved, removes if rejected, returns ProposalOutcome
+  resolveProposedRevision(revision_id: ID!): ProposalOutcome @resolver(name: "resolve_proposed_revision")
 }
