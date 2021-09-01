@@ -8,3 +8,5 @@ node_modules
 .env*.local
 
 .vercel
+
+yarn-error.log

@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useState } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
-import { Event } from '~/components'
+import { Event, Tabs, TabsHeaders, TabHeader, TabContent } from '~/components'
 import about from '~/content/open-design-about.md'
 import { useDocs, useEvents } from '~/hooks'
 import { LandingPage } from '~/layouts'
@@ -12,8 +11,6 @@ import { LandingPage } from '~/layouts'
 const OpenDesignPage: NextPage = () => {
   const { docs, docsHeadLink } = useDocs()
   const { events, eventsHeadLink } = useEvents()
-
-  const [tab, setTab] = useState<'docs' | 'events'>('events')
 
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
@@ -31,85 +28,60 @@ const OpenDesignPage: NextPage = () => {
             {remark().use(remark2react).processSync(about).result as string}
           </section>
         </section>
-        <section className='col-span-3 leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'>
-          <ul role='tablist' className='flex space-x-4 font-mono uppercase'>
-            <li
-              id='od-tab-events'
-              className={
-                tab === 'events'
-                  ? 'font-bold pointer-events-none'
-                  : 'underline cursor-pointer'
-              }
-              role='tab'
-              aria-selected={tab === 'events'}
-              aria-controls='od-tabpanel-events'
-              onClick={() => setTab('events')}
-            >
+        <Tabs
+          defaultValue='od-tab-events'
+          className='col-span-3 leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'
+        >
+          <TabsHeaders className='max-w-prose space-x-4 font-mono uppercase'>
+            <TabHeader value='od-tab-events' className='font-bold'>
               Events
-            </li>
-            <li
-              id='od-tab-docs'
-              className={
-                tab === 'docs'
-                  ? 'font-bold pointer-events-none'
-                  : 'underline cursor-pointer'
-              }
-              role='tab'
-              aria-selected={tab === 'docs'}
-              aria-controls='od-tabpanel-docs'
-              onClick={() => setTab('docs')}
-            >
+            </TabHeader>
+            <TabHeader value='od-tab-docs' className='font-bold'>
               Documents
-            </li>
-          </ul>
-          {events && tab === 'events' && (
-            <ul
-              id='od-tabpanel-events'
-              aria-labelledby='od-tab-events'
-              className='max-w-prose space-y-8'
-            >
-              {events
-                .sort(
-                  (a, b) =>
-                    new Date(b.date.start).getTime() -
-                    new Date(a.date.start).getTime()
-                )
-                .map(x => (
-                  <li key={x.name}>
-                    <Event event={x} />
-                  </li>
-                ))}
+            </TabHeader>
+          </TabsHeaders>
+          <TabContent value='od-tab-events'>
+            <ul className='max-w-prose space-y-8'>
+              {events?.length &&
+                events
+                  .sort(
+                    (a, b) =>
+                      new Date(b.date.start).getTime() -
+                      new Date(a.date.start).getTime()
+                  )
+                  .map(x => (
+                    <li key={x.name}>
+                      <Event event={x} />
+                    </li>
+                  ))}
             </ul>
-          )}
-          {docs && tab === 'docs' && (
-            <ul
-              id='od-tabpanel-docs'
-              aria-labelledby='od-tab-docs'
-              className='max-w-prose grid gap-8 grid-cols-1 sm:grid-cols-2'
-            >
-              {docs
-                .sort(
-                  (a, b) =>
-                    new Date(b.date.start).getTime() -
-                    new Date(a.date.start).getTime()
-                )
-                .map(x => (
-                  <li key={x.name}>
-                    <a
-                      className='space-y-2'
-                      href={x.url}
-                      target='_blank'
-                      rel='noreferrer'
-                    >
-                      <img {...x.image} />
-                      <p className='text-xl font-bold'>{x.name}</p>
-                      <p>{x.description}</p>
-                    </a>
-                  </li>
-                ))}
+          </TabContent>
+          <TabContent value='od-tab-docs'>
+            <ul className='max-w-prose grid gap-8 grid-cols-1 sm:grid-cols-2'>
+              {docs?.length &&
+                docs
+                  .sort(
+                    (a, b) =>
+                      new Date(b.date.start).getTime() -
+                      new Date(a.date.start).getTime()
+                  )
+                  .map(x => (
+                    <li key={x.name}>
+                      <a
+                        className='space-y-2'
+                        href={x.url}
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <img {...x.image} />
+                        <p className='text-xl font-bold'>{x.name}</p>
+                        <p>{x.description}</p>
+                      </a>
+                    </li>
+                  ))}
             </ul>
-          )}
-        </section>
+          </TabContent>
+        </Tabs>
       </div>
     </LandingPage>
   )

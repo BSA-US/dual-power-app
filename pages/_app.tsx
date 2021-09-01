@@ -4,6 +4,7 @@ import 'destyle.css'
 import 'windi.css'
 
 import '~/styles/index.css'
+import '~/styles/tabs.css'
 import { useStatus } from '~/hooks'
 
 function DualPowerAppApp({ Component, pageProps }: AppProps) {
