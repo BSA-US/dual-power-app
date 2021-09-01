@@ -1493,6 +1493,21 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+"@radix-ui/react-checkbox@^0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-checkbox/-/react-checkbox-0.0.15.tgz#d53b56854fbba65e74ed4486116107638951b9d1"
+  integrity sha512-R8ErERPlu2kvmqNjxRyyLcS1y3D7J2bQUUEPsvP0BL2AfisUjbT7c9t19k2K/Un3Iieqe93gTPG4LRdbDQQjBw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "0.0.5"
+    "@radix-ui/react-compose-refs" "0.0.5"
+    "@radix-ui/react-context" "0.0.5"
+    "@radix-ui/react-label" "0.0.13"
+    "@radix-ui/react-polymorphic" "0.0.11"
+    "@radix-ui/react-presence" "0.0.14"
+    "@radix-ui/react-primitive" "0.0.13"
+    "@radix-ui/react-use-controllable-state" "0.0.6"
+
 "@radix-ui/react-collection@0.0.14":
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-collection/-/react-collection-0.0.14.tgz#c51c790100407e8eb38be2b67538a5ff7c52915e"
@@ -1523,10 +1538,44 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+"@radix-ui/react-label@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-0.0.13.tgz#b71930fa16a2cf859296317436cb88e31efb8ecf"
+  integrity sha512-csNElm8qA38pOHr772CXIvBXd/eCGaoAMImuLdawUxQNzwxQ4npd8lr/f9fi/4OLkgeNOVOqjsaVamiNmF/lIw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-compose-refs" "0.0.5"
+    "@radix-ui/react-id" "0.0.6"
+    "@radix-ui/react-polymorphic" "0.0.11"
+    "@radix-ui/react-primitive" "0.0.13"
+
+"@radix-ui/react-polymorphic@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-polymorphic/-/react-polymorphic-0.0.11.tgz#23f26b14e67a0e57cd981c37618d603b952af80d"
+  integrity sha512-CztM4962esOx3i1ls6GuY9RBYIY2Df1Bmp5emHRTxZi8owyCZwZYPctYaDuMO0qIGikPiKD8HBion/m7VWUyEA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+
 "@radix-ui/react-polymorphic@0.0.12":
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-polymorphic/-/react-polymorphic-0.0.12.tgz#bf4ae516669b68e059549538104d97322f7c876b"
   integrity sha512-/GYNMicBnGzjD1d2fCAuzql1VeFrp8mqM3xfzT1kxhnV85TKdURO45jBfMgqo17XNXoNhWIAProUsCO4qFAAIg==
+
+"@radix-ui/react-presence@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-presence/-/react-presence-0.0.14.tgz#6a86058bbbf46234dd8840dacd620b3ac5797025"
+  integrity sha512-ufof9B76DHXV0sC8H7Lswh2AepdJFG8qEtF32JWrbA9N1bl2Jnf9px76KsagyC0MA8crGEZO5A96wizGuSgGWQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-compose-refs" "0.0.5"
+
+"@radix-ui/react-primitive@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-0.0.13.tgz#79c606c3e7da9c377b77a7b3f4ec879b45de47a2"
+  integrity sha512-6xxWzw67t7ZuN9Ikn9NNQdb/HSF7dNHPN3kPcgjiVgTEZa3tKk1xjSxGjjQztE61g9GrnTLpu7mBjmEuZDI/lA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-polymorphic" "0.0.11"
 
 "@radix-ui/react-primitive@0.0.14":
   version "0.0.14"
