@@ -13,7 +13,7 @@
 }
 
 * {
-  scrollbar-width: none
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
