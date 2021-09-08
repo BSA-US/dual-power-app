@@ -1,0 +1,9 @@
+.tabHeader {
+  &[aria-selected="true"] {
+    @apply font-bold pointer-events-none;
+  }
+
+  &[aria-selected="false"] {
+    @apply underline;
+  }
+}
