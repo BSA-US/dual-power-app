@@ -18,7 +18,7 @@ const OpenDesignPage: NextPage = () => {
         {docsHeadLink}
         {eventsHeadLink}
       </Head>
-      <div className='grid grid-flow-col-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
+      <div className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
             Dual&nbsp;Power&nbsp;App Open&nbsp;Design
@@ -30,18 +30,14 @@ const OpenDesignPage: NextPage = () => {
         </section>
         <Tabs
           defaultValue='od-tab-events'
-          className='col-span-3 leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'
+          className='col-span-3 max-w-prose leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'
         >
-          <TabsHeaders className='max-w-prose space-x-4 font-mono uppercase'>
-            <TabHeader value='od-tab-events' className='font-bold'>
-              Events
-            </TabHeader>
-            <TabHeader value='od-tab-docs' className='font-bold'>
-              Documents
-            </TabHeader>
+          <TabsHeaders className='space-x-4 font-mono uppercase'>
+            <TabHeader value='od-tab-events'>Events</TabHeader>
+            <TabHeader value='od-tab-docs'>Documents</TabHeader>
           </TabsHeaders>
           <TabContent value='od-tab-events'>
-            <ul className='max-w-prose space-y-8'>
+            <ul className='space-y-8'>
               {events?.length &&
                 events
                   .sort(
@@ -57,7 +53,7 @@ const OpenDesignPage: NextPage = () => {
             </ul>
           </TabContent>
           <TabContent value='od-tab-docs'>
-            <ul className='max-w-prose grid gap-8 grid-cols-1 sm:grid-cols-2'>
+            <ul className='grid gap-8 grid-cols-1 sm:grid-cols-2'>
               {docs?.length &&
                 docs
                   .sort(
