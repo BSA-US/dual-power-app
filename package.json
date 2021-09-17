@@ -9,9 +9,10 @@
   ],
   "scripts": {
     "dev": "next",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.json,.jsonc",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
   },
   "dependencies": {
     "@notionhq/client": "^0.2.1",
