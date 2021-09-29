@@ -1,0 +1,32 @@
+# Copyright Fauna, Inc.
+# SPDX-License-Identifier: MIT-0
+
+mutation UpdateOldRule {
+    denyAllHTTP: updateFirewallRule(
+        id: "<data.http._id>",
+        data: {
+            action: "Deny"
+            port: 80
+            ipRange: "0.0.0.0/0"
+            description: "Universal HTTP access"
+        }
+    ) {
+        _id
+        description
+    }
+}
+
+mutation UpdateNewRule {
+    denyAllHTTP: updateFirewallRule(
+        id: "<data.http._id>",
+        data: {
+            action: "Deny"
+            port: 80
+            ipRange: ["0.0.0.0/0"]
+            description: "Universal HTTP access"
+        }
+    ) {
+        _id
+        description
+    }
+}

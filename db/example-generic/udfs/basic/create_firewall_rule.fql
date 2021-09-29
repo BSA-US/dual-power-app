@@ -1,0 +1,40 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+CreateFunction({
+    name: "create_firewall_rule",
+    body: Query(
+        Lambda(
+            ["data"],
+            Create(
+                Collection("FirewallRule"),
+                Var("data")
+            )
+        )
+    )
+})
+
+// Test your UDF by pasting the following FQL queries in the web shell.
+// 1. Pre-migration, with string for *ipRange*:
+Call("create_firewall_rule", {
+    data: {
+        action: "Deny",
+        port: 25,
+        ipRange: "0.0.0.0/0",
+        description: "Unencrypted SMTP"
+    }
+})
+
+// 2. Post-migration, with array for *ipRange*:
+Call("create_firewall_rule", {
+    data: {
+        action: "Allow",
+        port: 21,
+        ipRange: [
+            "10.0.0.0/8", 
+            "172.16.0.0/12", 
+            "192.168.0.0/16"
+        ],
+        description: "Allow FTP within private subnets"
+    }
+})

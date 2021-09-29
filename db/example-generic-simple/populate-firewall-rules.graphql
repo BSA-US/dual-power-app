@@ -1,0 +1,34 @@
+# Copyright Fauna, Inc.
+# SPDX-License-Identifier: MIT-0
+
+mutation PopulateFirewallRules {
+    http: createFirewallRule(data: {
+        action: "Allow"
+        port: 80
+        ipRange: "0.0.0.0/0"
+        description: "Universal HTTP access"
+    }) {
+        _id
+        description
+    }
+
+    https: createFirewallRule(data: {
+        action: "Allow"
+        port: 443
+        ipRange: "0.0.0.0/0"
+        description: "Universal HTTPS access"
+    }) {
+        _id
+        description
+    }
+
+    ssh: createFirewallRule(data: {
+        action: "Allow"
+        port: 22
+        ipRange: "4.4.4.0/24"
+        description: "Allow SSH from company headquarters"
+    }) {
+        _id
+        description
+    }
+}
