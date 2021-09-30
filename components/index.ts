@@ -6,4 +6,3 @@ export { Checkbox, CheckIndicator } from './checkbox'
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'
 export { RadioButtons, RadioButton, RadioIndicator } from './radioButtons'
 export * from './tabs'
-
