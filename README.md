@@ -2,10 +2,10 @@
 
 The **Dual Power App** is a platform that provides a framework for organizing toward a worker-owned economy, with tools for founding, funding, governance, and internal + external communications.
 
-We’re launching in 2021 with support for [Dual Power Projects](https://github.com/BSA-US/dual-power-app/wiki/Dual-power-project).
+We’re launching in 2021 with support for [Dual Power Projects](https://dualpower.app).
 
 * [What's up with the Dual Power App?](https://github.com/BSA-US/dual-power-app/issues/42)
-* [Stack & contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/master/CONTRIBUTING.md)
+* [Stack & contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/main/CONTRIBUTING.md)
 * [Twitter](https://twitter.com/DualPowerApp)
 
 ## Project overview
@@ -19,7 +19,7 @@ Join us in the [Discussions board](https://github.com/BSA-US/dual-power-app/disc
 
 ## Contributing
 
-While we're focusing on design so we can get to a buildable spec ASAP, you're free to experiment and submit PRs. Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/master/CONTRIBUTING.md) before you move on :slightly_smiling_face:
+While we're focusing on design so we can get to a buildable spec ASAP, you're free to experiment and submit PRs. Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/main/CONTRIBUTING.md) before you move on :slightly_smiling_face:
 
 ## Setup
 

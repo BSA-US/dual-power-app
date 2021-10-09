@@ -5,8 +5,9 @@
 
 ## Tech stack
 
-The Dual Power App is a [Next.js](https://nextjs.org) app built on [ZEIT Now](https://zeit.co/home), using [ZEIT Now Serverless Functions](https://zeit.co/docs/v2/serverless-functions/introduction) for the API and [Fauna & GraphQL](https://docs.fauna.com/fauna/current/api/graphql/) for the database. It is written in [TypeScript](https://www.typescriptlang.org).
+The Dual Power App is a [Next.js](https://nextjs.org) app built on [Vercel](https://vercel.com) for the API and [Fauna & GraphQL](https://docs.fauna.com/fauna/current/api/graphql/) for the database. Our usage of Fauna is experimental and will possibly change as we build out more of the application. The app is written in [TypeScript](https://www.typescriptlang.org).
 
+You can follow along with our [open design process](https://dualpower.app/open-design).
 ### Working on the Next.js client
 
 - **CSS:** You should write very little CSS yourself. Use the pre-baked components in the components directory. For page layouts and tweaks, use [Windi](https://windicss.org/). If you find yourself styling a component, consider whether that is a reusable treatement that should instead be a prop on the component itself.
@@ -47,9 +48,11 @@ If I was doing this from a fork, I would instead say:
 
 New to rebasing? It can be daunting the first time, but we'll get through this together.
 
+For an explanation of what rebasing means in git, check out [this guide](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+
 #### Rebasing when collaborating from a fork
 
-1. The first time you do this, add this repo as a remote in your forked repo:
+1. If you're working from a fork of the repository, you will want to add the main BSA repository as a git remote, usually called `upstream`:
     ```sh
     git remote add upstream https://github.com/BSA-US/dual-power-app.git
     git fetch upstream
@@ -68,7 +71,7 @@ New to rebasing? It can be daunting the first time, but we'll get through this t
 
 #### Rebasing when collaborating from within this repo
 
-1. Rebase your local branch onto `main`
+1. When collaborating directly on this repository instead of a fork, you do not need a separate remote:
     ```sh
     git checkout my-branch
     git rebase main
