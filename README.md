@@ -4,7 +4,7 @@ The **Dual Power App** is a platform that provides a framework for organizing to
 
 We’re launching in 2021 with support for [Dual Power Projects](https://github.com/BSA-US/dual-power-app/wiki/Dual-power-project).
 
-* [More about the Dual Power App](https://github.com/BSA-US/dual-power-app/wiki/Dual-Power-App)
+* [What's up with the Dual Power App?](https://github.com/BSA-US/dual-power-app/issues/42)
 * [Stack & contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/master/CONTRIBUTING.md)
 * [Twitter](https://twitter.com/DualPowerApp)
 
