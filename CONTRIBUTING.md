@@ -5,13 +5,14 @@
 
 ## Tech stack
 
-The Dual Power App is a [Next.js](https://nextjs.org) app built on [ZEIT Now](https://zeit.co/home), using [ZEIT Now Serverless Functions](https://zeit.co/docs/v2/serverless-functions/introduction) for the API and [Fauna & GraphQL](https://docs.fauna.com/fauna/current/api/graphql/) for the database. It is written in [TypeScript](https://www.typescriptlang.org).
+The Dual Power App is a [Next.js](https://nextjs.org) app built on [Vercel](https://vercel.com) for the API and [Fauna & GraphQL](https://docs.fauna.com/fauna/current/api/graphql/) for the database. Our usage of Fauna is experimental and will possibly change as we build out more of the application. The app is written in [TypeScript](https://www.typescriptlang.org).
 
+You can follow along with our [open design process](https://dualpower.app/open-design).
 ### Working on the Next.js client
 
 - **CSS:** You should write very little CSS yourself. Use the pre-baked components in the components directory. For page layouts and tweaks, use [Windi](https://windicss.org/). If you find yourself styling a component, consider whether that is a reusable treatement that should instead be a prop on the component itself.
 - **Interacting with APIs:** [Isomorphic Unfetch](https://github.com/developit/unfetch/tree/master/packages/isomorphic-unfetch) (it's like axios, but waaay smaller)
-- **Interacting with the database:** [Read `/db/queries/README.md`](https://github.com/BSA-US/dual-power-app/blob/master/db/queries/README.md) for examples
+- **Interacting with the database:** [Read `/db/queries/README.md`](https://github.com/BSA-US/dual-power-app/blob/main/db/queries/README.md) for examples
 
 ## Getting started
 
@@ -37,30 +38,31 @@ If I was doing this from a fork, I would instead say:
 ## Submitting a pull request
 
 1. Test your work
-2. Bring your work up to date by rebasing it onto this repo's `master` branch (see below)
+2. Bring your work up to date by rebasing it onto this repo's `main` branch (see below)
 3. Test your work again
 4. Create a pull request
-5. Change the target branch of the PR to `dev`
-6. Summarize your changes and [mention any relevant issues](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests)
-7. Submit your PR
+5. Summarize your changes and [mention any relevant issues](https://help.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests)
+6. Submit your PR
 
 ### Rebasing
 
 New to rebasing? It can be daunting the first time, but we'll get through this together.
 
+For an explanation of what rebasing means in git, check out [this guide](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+
 #### Rebasing when collaborating from a fork
 
-1. The first time you do this, add this repo as a remote in your forked repo:
+1. If you're working from a fork of the repository, you will want to add the main BSA repository as a git remote, usually called `upstream`:
     ```sh
-    git remote add upstream https://github.com/https://github.com/BSA-US/world-of-jackson.git
+    git remote add upstream https://github.com/BSA-US/dual-power-app.git
     git fetch upstream
     ```
-2. Rebase your local branch onto `upstream/master`
+2. Rebase your local branch onto `upstream/main`
     ```sh
     git checkout my-branch
-    git rebase upstream/master
+    git rebase upstream/main
     ```
-3. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `upstream/master`
+3. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `upstream/main`
 4. When finished, force-push your newly in-sync branch:
     ```sh
     git push -f origin my-branch
@@ -69,12 +71,12 @@ New to rebasing? It can be daunting the first time, but we'll get through this t
 
 #### Rebasing when collaborating from within this repo
 
-1. Rebase your local branch onto `master`
+1. When collaborating directly on this repository instead of a fork, you do not need a separate remote:
     ```sh
     git checkout my-branch
-    git rebase master
+    git rebase main
     ```
-2. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `master`
+2. Resolve the merge conflicts, choosing to keep your changes wherever you made them, and for all other conflicts choosing what is on `main`
 3. When finished, force-push your newly in-sync branch:
     ```sh
     git push -f origin my-branch
@@ -86,7 +88,7 @@ New to rebasing? It can be daunting the first time, but we'll get through this t
 Great question. Whatever you want!
 
 We have our own internally decided priorities which you can see:
-- summarized in our [README](https://github.com/BSA-US/dual-power-app/blob/master/README.md) and
+- summarized in our [README](https://github.com/BSA-US/dual-power-app/blob/main/README.md) and
 - fully broken down in the [issues](https://github.com/BSA-US/dual-power-app/issues)
 
 Are we missing something essential? [Create an issue](https://github.com/BSA-US/dual-power-app/issues/new), assign it to yourself, and get going!!

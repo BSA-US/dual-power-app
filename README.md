@@ -2,10 +2,10 @@
 
 The **Dual Power App** is a platform that provides a framework for organizing toward a worker-owned economy, with tools for founding, funding, governance, and internal + external communications.
 
-We’re launching in 2021 with support for [Dual Power Projects](https://github.com/BSA-US/dual-power-app/wiki/Dual-power-project).
+We’re launching in 2021 with support for [Dual Power Projects](https://dualpower.app).
 
-* [More about the Dual Power App](https://github.com/BSA-US/dual-power-app/wiki/Dual-Power-App)
-* [Stack & contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/master/CONTRIBUTING.md)
+* [What's up with the Dual Power App?](https://github.com/BSA-US/dual-power-app/issues/42)
+* [Stack & contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/main/CONTRIBUTING.md)
 * [Twitter](https://twitter.com/DualPowerApp)
 
 ## Project overview
@@ -19,26 +19,32 @@ Join us in the [Discussions board](https://github.com/BSA-US/dual-power-app/disc
 
 ## Contributing
 
-While we're focusing on design so we can get to a buildable spec ASAP, you're free to experiment and submit PRs. Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/master/CONTRIBUTING.md) before you move on :slightly_smiling_face:
+While we're focusing on design so we can get to a buildable spec ASAP, you're free to experiment and submit PRs. Make sure you read the [contributor guidelines](https://github.com/BSA-US/dual-power-app/blob/main/CONTRIBUTING.md) before you move on :slightly_smiling_face:
 
 ## Setup
 
-1. Check out the `dev` branch:
-    ```sh
-    git checkout dev
-    ```
-2. Create a new branch:
+1. Create a new branch:
     ```sh
     git checkout -b feature/my-cool-thing
     ```
-3. Duplicate the `.env` files:
-    - `.env.template` → `.env`
-    - `.env.build.template` → `.env.build`
-4. Install dependencies:
+2. Duplicate the `.env` files:
+    ```sh
+    cp .env.template .env
+    ```
+3. Install the correct version of Node.js (this is what `.nvmrc` does)
+    ```sh
+    nvm install
+    nvm use
+    ```
+4. Install `yarn` globally:
+    ```sh
+    npm install --global yarn
+    ```
+5. Install dependencies:
     ```sh
     yarn
     ```
-5. Install `now` globally:
+6. Install `vercel` globally:
     ```sh
     yarn global add vercel
     ```
