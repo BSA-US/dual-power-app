@@ -11,8 +11,7 @@
     "dev": "next",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.json,.jsonc",
     "build": "next build",
-    "start": "next start",
-    "storybook": "start-storybook"
+    "start": "next start"
   },
   "dependencies": {
     "@notionhq/client": "^0.2.1",
@@ -47,8 +46,6 @@
     "@antfu/eslint-config": "^0.6.6",
     "@babel/core": "^7.14.6",
     "@babel/preset-typescript": "^7.14.5",
-    "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.2.9",
     "@types/jschannel": "^1.0.1",
     "@types/node": "^15.12.4",
     "@types/react": "^17.0.11",

@@ -54,9 +54,3 @@ While we're focusing on design so we can get to a buildable spec ASAP, you're fr
 ```sh
 vc dev
 ```
-
-### Develop components in isolation
-
-```sh
-yarn storybook
-```
