@@ -38,7 +38,7 @@ const IndexPage: NextPage = () => {
       <section className='border-t-2 space-y-8'>
         <div className='flex'>
           <p className='px-4 py-2 bg-black text-white font-mono uppercase lg:(px-6 py-4)'>
-            What is a Dual Power Project??
+            What is a Dual Power Project?
           </p>
         </div>
         <div className='grid grid-flow-row-dense gap-4 leading-5 max-w-192 lg:(grid-cols-2)'>
