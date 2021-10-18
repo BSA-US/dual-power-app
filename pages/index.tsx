@@ -26,10 +26,11 @@ const IndexPage: NextPage = () => {
         </section>
         <section className='col-span-3 leading-5 space-y-2 lg:(col-start-3 col-span-3 text-4xl leading-8 space-y-4) xl:(col-start-2 col-span-2)'>
           <p>
-            The Dual Power App will be a platform that provides a framework for
-            building direct democracy in every sphere of society, including the
-            economy, with tools for founding, funding, governance, and internal
-            + external communications.
+            The Dual Power App is an app for democratic digital organizing and
+            secure social networking that provides frameworks for the building
+            of direct democracy in every single sphere of society, with tools for
+            organization founding, funding, governance, and internal + external
+            communications.
           </p>
           {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
         </section>
