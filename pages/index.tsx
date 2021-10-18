@@ -28,9 +28,9 @@ const IndexPage: NextPage = () => {
           <p>
             The Dual Power App is an app for democratic digital organizing and
             secure social networking that provides frameworks for the building
-            of direct democracy in every single sphere of society, with tools for
-            organization founding, funding, governance, and internal + external
-            communications.
+            of direct democracy in every single sphere of society, with tools
+            for organization founding, funding, governance, and internal +
+            external communications.
           </p>
           {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
         </section>
