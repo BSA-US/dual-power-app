@@ -65,7 +65,7 @@ const LandingPageLayout: FC<LandingPageLayoutProps> = ({
           <figure
             className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1'
             style={{
-              background: `url('/globe-glyph-k.svg') no-repeat center center`,
+              background: `url('/images/globe-glyph-k.svg') no-repeat center center`,
               backgroundSize: 'contain',
             }}
           />

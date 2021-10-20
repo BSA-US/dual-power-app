@@ -1,6 +1,5 @@
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import type { NextPage } from 'next'
-// import Head from 'next/head'
 
 import {
   Tabs,
@@ -15,15 +14,11 @@ import {
   RadioIndicator,
 } from '~/components'
 
-const ComponentsPage: NextPage = () => {
-  const updateBodyClass = (value: string) => {
-    if (value === 'mh') {
-      document.body.classList.add('mh-theme')
-    } else {
-      document.body.classList.remove('mh-theme')
-    }
-  }
+// This is a temporary page for demoing and exercising page components.
+// TODO: Replace with some design system / component library exercise tool
+// Manhattan hydraulics mock-ups here (current as of October 2021): https://3.basecamp.com/4111666/buckets/15607088/uploads/3970080861
 
+const ComponentsPage: NextPage = () => {
   return (
     <div
       className={`relative flex flex-col max-w-1440px mx-auto px-4 py-8 space-y-12 lg:(px-8 pb-0 space-y-16) xl:px-16 min-h-screen`}
@@ -34,7 +29,7 @@ const ComponentsPage: NextPage = () => {
           <TabHeader value='mh'>Manhattan Hydraulics</TabHeader>
         </TabsHeaders>
       </Tabs>
-      <Tabs onValueChange={updateBodyClass}>
+      <Tabs>
         <TabsHeaders>
           <TabHeader value='avatar'>Avatar</TabHeader>
           <TabHeader value='checkbox'>Checkbox</TabHeader>

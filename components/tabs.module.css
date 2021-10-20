@@ -7,3 +7,9 @@
     @apply underline;
   }
 }
+
+/* Manhattan Hydraulics Styles */
+
+.mhTheme {
+    background-color: rebeccapurple;
+}

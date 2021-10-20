@@ -1,0 +1,27 @@
+.checkbox {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #d1d6dc;
+  border-radius: 4px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    height: calc(100% + 10px);
+    width: calc(100% + 10px);
+    border: 2px solid #dc2626;
+    border-radius: 8px;
+  }
+  &[aria-checked="true"] {
+    background: url(/images/checkmark.svg) no-repeat center;
+    background-size: contain;
+  }
+}
+
+/* Manhattan Hydraulics Styles */
+.mh-theme {
+
+}

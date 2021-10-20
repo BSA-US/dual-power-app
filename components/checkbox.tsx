@@ -4,10 +4,15 @@ import type {
   CheckboxIndicatorProps,
 } from '@radix-ui/react-checkbox'
 
-export const Checkbox = (props: CheckboxProps) => (
-  <Root {...props} className={`${props.className}`}></Root>
+import styles from './checkbox.module.css'
+
+export const Checkbox = ({ className = '', ...props }: CheckboxProps) => (
+  <Root {...props} className={`${styles.checkbox} ${className}`}></Root>
 )
 
-export const CheckIndicator = (props: CheckboxIndicatorProps) => (
-  <Indicator {...props} className={`${props.className}`}></Indicator>
+export const CheckIndicator = ({
+  className = '',
+  ...props
+}: CheckboxIndicatorProps) => (
+  <Indicator {...props} className={`${className}`}></Indicator>
 )
