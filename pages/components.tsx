@@ -14,6 +14,8 @@ import {
   RadioIndicator,
 } from '~/components'
 
+import styles from '../components/tabs.module.css'
+
 // This is a temporary page for demoing and exercising page components.
 // TODO: Replace with some design system / component library exercise tool
 // Manhattan hydraulics mock-ups here (current as of October 2021): https://3.basecamp.com/4111666/buckets/15607088/uploads/3970080861
@@ -51,15 +53,16 @@ const ComponentsPage: NextPage = () => {
           </Checkbox>
         </TabContent>
         <TabContent value='radio'>
-          <RadioButtons>
+          <RadioButtons variant='radio-button-bar'>
             <RadioButton value='radio-button-1'>
-              <RadioIndicator />
+              <RadioIndicator /> Option 1
             </RadioButton>
             <RadioButton value='radio-button-2'>
-              <RadioIndicator />
+              <RadioIndicator /> Option 2
             </RadioButton>
             <RadioButton value='radio-button-3'>
               <RadioIndicator />
+              Option 3
             </RadioButton>
           </RadioButtons>
         </TabContent>

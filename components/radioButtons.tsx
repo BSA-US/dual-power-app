@@ -5,14 +5,23 @@ import type {
   RadioIndicatorProps,
 } from '@radix-ui/react-radio-group'
 
-export const RadioButtons = ({ className = '', ...props }: RadioGroupProps) => (
-  <Root {...props} className={`${className}`} />
+export interface RadioButtonsProps extends RadioGroupProps {
+  variant: 'radio-button-bar' | '' | undefined
+}
+
+export const RadioButtons = ({
+  className = '',
+  variant = '',
+  ...props
+}: RadioButtonsProps) => (
+  <Root {...props} className={`${className} ${variant}`} />
 )
 
 export const RadioButton = ({
   className = '',
   ...props
 }: RadioGroupItemProps) => <Item {...props} className={`${className}`} />
+
 export const RadioIndicator = ({
   className = '',
   ...props

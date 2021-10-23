@@ -1,6 +1,8 @@
 import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
+import { radioButtonBar } from './styles/radioButtons'
+
 export default defineConfig({
   darkMode: 'class',
   plugins: [
@@ -47,6 +49,8 @@ export default defineConfig({
 
     'inset-x-center': 'left-1/2 transform -translate-x-1/2',
     'inset-y-center': 'top-1/2 transform -translate-y-1/2',
+    //
+    'radio-button-bar': radioButtonBar,
   },
   theme: {
     borderColor: theme =>
@@ -56,6 +60,9 @@ export default defineConfig({
       ),
     extend: {
       screens: {
+        lg: '1024px',
+        md: '768px',
+        xl: '1280px',
         xs: '480px',
       },
       typography: {
