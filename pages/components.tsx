@@ -1,5 +1,6 @@
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import type { NextPage } from 'next'
+import Image from 'next/image'
 
 import {
   Tabs,
@@ -13,8 +14,6 @@ import {
   RadioButton,
   RadioIndicator,
 } from '~/components'
-
-import styles from '../components/tabs.module.css'
 
 // This is a temporary page for demoing and exercising page components.
 // TODO: Replace with some design system / component library exercise tool
@@ -40,10 +39,10 @@ const ComponentsPage: NextPage = () => {
         <TabContent value='avatar'>
           <Avatar>
             <AvatarImage>
-              <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXabO2KVRp59sZY3za1LvPoUgzhEIzL59HyWooNPZSfxtbVjTnY4OnAWi-Qw5uE9EWCcw&usqp=CAU' />
+              {/* <Image alt='Avatar image' src={Globe.Logo} /> */}
             </AvatarImage>
             <AvatarFallback>
-              <img src='https://cdn3.iconfinder.com/data/icons/account-1/64/Account-06-512.png' />
+              {/* <Image alt='Avatar image' src={Globe.Logo} /> */}
             </AvatarFallback>
           </Avatar>
         </TabContent>
