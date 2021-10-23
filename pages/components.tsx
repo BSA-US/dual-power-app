@@ -1,6 +1,6 @@
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import type { NextPage } from 'next'
-import Image from 'next/image'
+/* import Image from 'next/image' */
 
 import {
   Tabs,
