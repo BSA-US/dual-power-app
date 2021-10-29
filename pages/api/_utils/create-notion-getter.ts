@@ -59,8 +59,8 @@ function createNotionGetter<
       ])
 
       return camelCase(
-        results.map(({ id, properties }: any) => {
-          const codeBlockId = block[id].value.content?.find(
+        results.map(({ properties }: any) => {
+          const codeBlockId = block[database_id].value.content?.find(
             (id: string) => block[id]?.value.type === 'code'
           )
 
