@@ -21,6 +21,7 @@ const n = new NotionClient({
 const getFirstCodeBlock = async (page_id: string) => {
   const { results } = await n.blocks.children.list({ block_id: page_id })
 
+  // @ts-ignore
   const code = results.find(x => x.type === 'code' && x.code)?.code.text[0]
     .plain_text
 
