@@ -1,6 +1,5 @@
 import { Client as NotionClient } from '@notionhq/client'
 import { camelCase } from '@replygirl/change-case-object'
-import { NotionAPI } from 'notion-client'
 import { parsePageId } from 'notion-utils'
 
 interface CreateNotionGetterOptionsDatabase {
@@ -15,29 +14,40 @@ type CreateNotionGetterOptions =
   | CreateNotionGetterOptionsDatabase
   | CreateNotionGetterOptionsJson
 
-const notionPropertySanitizers: Record<string, (x: any) => any> = {
+const n = new NotionClient({
+  auth: process.env.NOTION_SECRET,
+})
+
+const getFirstCodeBlock = async (page_id: string) => {
+  const { results } = await n.blocks.children.list({ block_id: page_id })
+
+  // @ts-ignore
+  const code = results.find(x => x.type === 'code' && x.code)?.code.text[0]
+    .plain_text
+
+  return code ? JSON.parse(code) : null
+}
+
+const propertySanitizers: Record<string, (x: any) => any> = {
   date: x => x.date,
   rich_text: x => x.rich_text.map((x: any) => x.plain_text).join(''),
   title: x => x.title.map((x: any) => x.plain_text).join(''),
   url: x => x.url,
 }
 
-const sanitizeNotionPage = (x: any) =>
-  Object.entries(x).reduce(
+const hydrateNotionPage = async ({ id, properties }: any /* page */) => ({
+  ...Object.entries(properties).reduce(
     (acc, [k, v]: [string, any]) => ({
       ...acc,
       [k]:
         v && typeof v === 'object' && !Array.isArray(v) && v.id && v.type
-          ? notionPropertySanitizers[v.type]?.(v) ?? v
+          ? propertySanitizers[v.type]?.(v) ?? v
           : v,
     }),
     {}
-  )
-
-const n = new NotionClient({
-  auth: process.env.NOTION_SECRET,
+  ),
+  ...((await getFirstCodeBlock(id)) ?? {}),
 })
-const nx = new NotionAPI()
 
 function createNotionGetter<T>(
   url: string,
@@ -51,46 +61,24 @@ function createNotionGetter<
   T extends Record<string, any> = Record<string, any>
 >(url: string, { type }: CreateNotionGetterOptions) {
   return {
-    database: async (): Promise<T[]> => {
-      const database_id = parsePageId(url)
-      const [{ results }, { block }] = await Promise.all([
-        n.databases.query({ database_id }),
-        nx.getPage(database_id),
-      ])
-
-      return camelCase(
-        results.map(({ properties }: any) => {
-          const codeBlockId = block[database_id].value.content?.find(
-            (id: string) => block[id]?.value.type === 'code'
-          )
-
-          return sanitizeNotionPage({
-            ...properties,
-            ...(codeBlockId
-              ? JSON.parse(block[codeBlockId].value?.properties.title[0][0])
-              : {}),
-          })
-        })
-      )
-    },
-    json: async (): Promise<T> => {
-      const page_id = parsePageId(url)
-      const [{ properties }, { block }] = await Promise.all([
-        n.pages.retrieve({ page_id }),
-        nx.getPage(page_id),
-      ])
-
-      return camelCase(
-        sanitizeNotionPage({
-          ...properties,
-          ...JSON.parse(
-            Object.values(block)
-              .map(x => x.value)
-              .find(x => x.type === 'code')?.properties.title[0][0] ?? {}
-          ),
-        })
-      )
-    },
+    database: async (): Promise<T[]> =>
+      camelCase(
+        await Promise.all(
+          (
+            await n.databases.query({
+              database_id: parsePageId(url),
+            })
+          ).results
+            .filter(x => x.object === 'page')
+            .map(hydrateNotionPage)
+        )
+      ),
+    json: async (): Promise<T> =>
+      camelCase(
+        await hydrateNotionPage(
+          await n.pages.retrieve({ page_id: parsePageId(url) })
+        )
+      ),
   }[type]
 }
 
