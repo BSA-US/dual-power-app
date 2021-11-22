@@ -6,15 +6,15 @@ import type {
 } from '@radix-ui/react-radio-group'
 
 export interface RadioButtonsProps extends RadioGroupProps {
-  variant: 'radio-button-bar' | '' | undefined
+  treatment: 'button-bar' | '' | undefined
 }
 
 export const RadioButtons = ({
   className = '',
-  variant = '',
+  treatment = '',
   ...props
 }: RadioButtonsProps) => (
-  <Root {...props} className={`${className} ${variant}`} />
+  <Root {...props} className={`${className} ${treatment}`} />
 )
 
 export const RadioButton = ({
