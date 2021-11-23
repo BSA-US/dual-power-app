@@ -1,8 +1,6 @@
 import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
-import { buttonBar } from './styles/button-bar'
-
 export default defineConfig({
   darkMode: 'class',
   plugins: [
