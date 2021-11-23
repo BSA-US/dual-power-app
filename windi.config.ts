@@ -44,7 +44,16 @@ export default defineConfig({
     }),
   ],
   shortcuts: {
-    'button-bar': buttonBar,
+    'button-bar': {
+      '@apply':
+        'inline-block border border-gray-200 shadow-md rounded-lg bg-white overflow-hidden divide-x divide-gray-200 color-cool-gray-500',
+      'button[role="radio"]': {
+        '&[aria-checked="true"]': {
+          '@apply': 'bg-red-700 text-white font-bold',
+        },
+        '@apply': 'py-4 px-8',
+      },
+    },
     'inset-center':
       'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
 
