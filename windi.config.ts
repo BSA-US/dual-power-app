@@ -60,9 +60,6 @@ export default defineConfig({
       ),
     extend: {
       screens: {
-        lg: '1024px',
-        md: '768px',
-        xl: '1280px',
         xs: '480px',
       },
       typography: {
