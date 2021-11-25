@@ -748,10 +748,10 @@
   dependencies:
     change-case "^4.1.1"
 
-"@replygirl/tc@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@replygirl/tc/-/tc-4.0.1.tgz#08a18a401b617bbee49f1856a2584fc35fba3841"
-  integrity sha512-FH/OeDpJ7gnL6vJvxCEClncu0MsnAOdza86zDTijBO2k2SkHAGKtz6nDrzE0R+oHgjVWWlYe0CFf2lJTcF6rhA==
+"@replygirl/tc@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@replygirl/tc/-/tc-3.0.0.tgz#6b80ae49e6bef5a7f7097c3ec6a299f557ad73fb"
+  integrity sha512-DCezP+3t+XipJSYRvsKErhXyqtsw32DW1/ckogrgXSqjNbRo3CgYUrq/b0RfwWDbYI1in7HCVZab+wvK/Ymdww==
 
 "@tsconfig/next@^1.0.1":
   version "1.0.1"
