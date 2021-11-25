@@ -4,25 +4,30 @@ import type {
   RadioGroupItemProps,
   RadioIndicatorProps,
 } from '@radix-ui/react-radio-group'
+import classnames from 'classnames'
+import type { FC } from 'react'
 
-export interface RadioButtonsProps extends RadioGroupProps {
-  treatment: 'button-bar' | '' | undefined
-}
-
-export const RadioButtons = ({
-  className = '',
-  treatment = '',
-  ...props
-}: RadioButtonsProps) => (
-  <Root {...props} className={`${className} ${treatment}`} />
+export const RadioButtons: FC<RadioGroupProps> = ({ className, ...props }) => (
+  <Root
+    {...props}
+    className={classnames(
+      'inline-block border border-gray-200 shadow-md rounded-lg bg-white overflow-hidden divide-x divide-gray-200 color-cool-gray-500',
+      className
+    )}
+  />
 )
 
-export const RadioButton = ({
-  className = '',
+export const RadioButton: FC<RadioGroupItemProps> = ({
+  className,
   ...props
-}: RadioGroupItemProps) => <Item {...props} className={`${className}`} />
+}) => (
+  <Item
+    {...props}
+    className={classnames(
+      'px-8 py-4 aria-checked:(bg-red-700 text-white font-bold)',
+      className
+    )}
+  />
+)
 
-export const RadioIndicator = ({
-  className = '',
-  ...props
-}: RadioIndicatorProps) => <Indicator {...props} className={`${className}`} />
+export const RadioIndicator: FC<RadioIndicatorProps> = Indicator

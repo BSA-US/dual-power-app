@@ -1,9 +1,0 @@
-.checkbox {
-  &:after {
-    content: "";
-  }
-  &[aria-checked="true"] {
-    background: url(/images/checkmark.svg) no-repeat center;
-    background-size: contain;
-  }
-}

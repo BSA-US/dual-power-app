@@ -2,19 +2,15 @@
 const path = require('path')
 
 const withReactSvg = require('next-react-svg')
-const WindiCSSWebpackPlugin = require('windicss-webpack-plugin').default
+const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
 module.exports = withReactSvg({
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   include: path.resolve(__dirname, 'public'),
   webpack(config /*, _options */) {
-    config.plugins.push(
-      new WindiCSSWebpackPlugin({
-        scan: {
-          dirs: ['./'],
-          exclude: ['node_modules', '.git', '.next/**/*'],
-        },
-      })
-    )
+    config.plugins.push(new WindiCSSWebpackPlugin())
 
     config.module.rules.push({
       test: /\.md$/,
@@ -23,5 +19,4 @@ module.exports = withReactSvg({
 
     return config
   },
-  webpack5: false,
 })

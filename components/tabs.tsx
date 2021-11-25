@@ -6,8 +6,6 @@ import type {
   TabsContentProps,
 } from '@radix-ui/react-tabs'
 
-import styles from './tabs.module.css'
-
 export const Tabs = (props: TabsProps) => <Root {...props} />
 
 export const TabsHeaders = ({ className = '', ...props }: TabsListProps) => (
@@ -17,7 +15,7 @@ export const TabsHeaders = ({ className = '', ...props }: TabsListProps) => (
 export const TabHeader = ({ className = '', ...props }: TabsTriggerProps) => (
   <Trigger
     {...props}
-    className={`${styles.tabHeader} cursor-pointer outline-none ${className}`}
+    className={`cursor-pointer outline-none underline aria-selected:(font-bold pointer-events-none no-underline) ${className}`}
   />
 )
 

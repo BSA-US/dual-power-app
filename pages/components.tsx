@@ -52,7 +52,7 @@ const ComponentsPage: NextPage = () => {
           </Checkbox>
         </TabContent>
         <TabContent value='radio'>
-          <RadioButtons treatment='button-bar'>
+          <RadioButtons>
             <RadioButton value='radio-button-1'>
               <RadioIndicator /> Option 1
             </RadioButton>
