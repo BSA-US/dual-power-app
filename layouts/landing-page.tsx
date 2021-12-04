@@ -77,7 +77,7 @@ const LandingPageLayout: FC<LandingPageLayoutProps> = ({
               <a href={roadmapUrl}>Roadmap</a>
             </div>
             <Link href='/open-design'>
-              <a className='whitespace-nowrap'>Open Design</a>
+              <a className='whitespace-nowrap'>Open Design + Build</a>
             </Link>
           </div>
           {status?.live ? (

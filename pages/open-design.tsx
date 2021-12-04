@@ -21,9 +21,8 @@ const OpenDesignPage: NextPage = () => {
       <div className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
-            Dual&nbsp;Power&nbsp;App Open&nbsp;Design
+            Dual&nbsp;Power&nbsp;App Open&nbsp;Design&nbsp;+&nbsp;Build
           </h1>
-          <p className='font-mono'>with Manhattan Hydraulics</p>
           <section className='prose'>
             {remark().use(remark2react).processSync(about).result as string}
           </section>
