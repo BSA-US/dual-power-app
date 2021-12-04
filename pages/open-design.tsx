@@ -51,49 +51,10 @@ const OpenDesignPage: NextPage = () => {
       <div className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
-            Dual&nbsp;Power&nbsp;App
+            Dual&nbsp;Power&nbsp;App Open&nbsp;Design&nbsp;+&nbsp;Build
           </h1>
-          <h1 className='text-3xl leading-8 lg:(text-4xl leading-12)'>
-            Open&nbsp;Design&nbsp;+&nbsp;Build
-          </h1>
-          <section
-            className={showAbout.showAll ? 'prose' : 'prose line-clamp-7'}
-          >
-            <p>
-              {remark().use(remark2react).processSync(about).result as string}
-            </p>
-          </section>
-          <button
-            className='underline'
-            onClick={() => {
-              const newShowAll = !showAbout.showAll
-              setShowState({
-                buttonText: newShowAll ? 'show less...' : 'show more...',
-                showAll: newShowAll,
-              })
-            }}
-          >
-            {showAbout.buttonText}
-          </button>
-          <section className='grid grid-cols-2 max-w-prose  min-w-min'>
-            <Link href='https://blacksocialists.us/'>
-              <figure
-                className='h-18 cursor-pointer col-span-1 justify-center'
-                style={{
-                  background: `url('/bsa-glyph.svg') no-repeat center center`,
-                  backgroundSize: 'contain',
-                }}
-              />
-            </Link>
-            <Link href='https://hydraulics.nyc/'>
-              <figure
-                className='h-18 cursor-pointer col-span-1 justify-center'
-                style={{
-                  background: `url('/mh-glyph.svg') no-repeat center center`,
-                  backgroundSize: 'contain',
-                }}
-              />
-            </Link>
+          <section className='prose'>
+            {remark().use(remark2react).processSync(about).result as string}
           </section>
         </section>
         <Tabs
