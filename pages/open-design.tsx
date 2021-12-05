@@ -1,21 +1,23 @@
 import { useWindowWidth } from '@react-hook/window-size'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
-// import { useState } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
 import { Event, Tabs, TabsHeaders, TabHeader, TabContent } from '~/components'
 import about from '~/content/open-design-about.md'
+import showMore from '~/content/open-design-more.md'
 import { useDocs, useEvents } from '~/hooks'
 import { LandingPage } from '~/layouts'
 
-export interface IShowAbout {
+interface AboutState {
   showAll: boolean
-  buttonText: string
+  showMoreClicked: boolean
+}
+
+function About(aboutText: string): string {
+  return remark().use(remark2react).processSync(aboutText).result as string
 }
 
 const OpenDesignPage: NextPage = () => {
@@ -42,6 +44,28 @@ const OpenDesignPage: NextPage = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const [showMoreSection, setAboutState] = useState<AboutState>({
+    showAll: false,
+    showMoreClicked: false,
+    // TODO: window object sometimes undefined after refresh
+    // find better way to init showAll
+  })
+
+  useEffect(() => {
+    function handleResize() {
+      setAboutState({
+        ...showMoreSection,
+        showAll: window.innerHeight > 700, // min height required for about text
+      })
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
       <Head>
@@ -51,11 +75,28 @@ const OpenDesignPage: NextPage = () => {
       <div className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
-            Dual&nbsp;Power&nbsp;App Open&nbsp;Design&nbsp;+&nbsp;Build
+            Dual&nbsp;Power&nbsp;App
           </h1>
-          <section className='prose'>
-            {remark().use(remark2react).processSync(about).result as string}
-          </section>
+          <h1 className='text-3xl leading-8 lg:(text-4xl leading-12)'>
+            Open&nbsp;Design&nbsp;+&nbsp;Build
+          </h1>
+          {showMoreSection.showAll || showMoreSection.showMoreClicked ? (
+            <section className='prose'>{About(about + showMore)}</section>
+          ) : (
+            <section className='prose'>
+              {About(about)}
+              <button
+                onClick={() => {
+                  setAboutState({
+                    ...showMoreSection,
+                    showMoreClicked: true,
+                  })
+                }}
+              >
+                {'show more...'}
+              </button>
+            </section>
+          )}
         </section>
         <Tabs
           defaultValue='od-tab-events'
