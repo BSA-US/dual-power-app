@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
-const withReactSvg = require('next-react-svg')
 const unpluginIcons = require('unplugin-icons/webpack')
 const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
