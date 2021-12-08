@@ -1,5 +1,6 @@
 import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import type { NextPage } from 'next'
+import { useState } from 'react'
 /* import Image from 'next/image' */
 
 import {
@@ -20,6 +21,8 @@ import {
 // Manhattan hydraulics mock-ups here (current as of October 2021): https://3.basecamp.com/4111666/buckets/15607088/uploads/3970080861
 
 const ComponentsPage: NextPage = () => {
+  const [checked, setChecked] = useState(false)
+
   return (
     <div
       className={`relative flex flex-col max-w-1440px mx-auto px-4 py-8 space-y-12 lg:(px-8 pb-0 space-y-16) xl:px-16 min-h-screen`}
@@ -47,7 +50,10 @@ const ComponentsPage: NextPage = () => {
           </Avatar>
         </TabContent>
         <TabContent value='checkbox'>
-          <Checkbox>
+          <Checkbox
+            checked={checked}
+            onCheckedChange={() => setChecked(!checked)}
+          >
             <CheckIndicator />
           </Checkbox>
         </TabContent>

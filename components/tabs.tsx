@@ -15,8 +15,10 @@ export const TabsHeaders = ({ className = '', ...props }: TabsListProps) => (
 export const TabHeader = ({ className = '', ...props }: TabsTriggerProps) => (
   <Trigger
     {...props}
-    className={`cursor-pointer outline-none underline aria-selected:(font-bold pointer-events-none no-underline) ${className}`}
+    className={`cursor-pointer outline-none underline focus-ring aria-selected:(font-bold pointer-events-none no-underline) ${className}`}
   />
 )
 
-export const TabContent = (props: TabsContentProps) => <Content {...props} />
+export const TabContent = ({ className = '', ...props }: TabsContentProps) => (
+  <Content {...props} className={`focus-ring ${className}`} />
+)

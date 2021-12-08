@@ -54,12 +54,13 @@ export default defineConfig({
   shortcuts: {
     'bg-image-contain': 'bg-no-repeat bg-center bg-contain',
     'bg-image-cover': 'bg-no-repeat bg-center bg-cover',
+    'focus-ring':
+      'focus:outline-none focus-visible:(outline-none ring ring-offset-2 ring-indigo-500)',
     'inset-center':
       'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
 
     'inset-x-center': 'left-1/2 transform -translate-x-1/2',
     'inset-y-center': 'top-1/2 transform -translate-y-1/2',
-    //
   },
   theme: {
     borderColor: theme =>
