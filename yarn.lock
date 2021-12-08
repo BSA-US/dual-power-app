@@ -5471,10 +5471,10 @@ unpipe@1.0.0:
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
 
-unplugin-icons@^0.12.22:
-  version "0.12.22"
-  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.12.22.tgz#544b8f9f53919fa819f8b45c8d26ffcd95926b66"
-  integrity sha512-GG6WAK1jqc50NXqoc3dYW9ui9k2UK0eOvilwr0MQ79iGvBtATbHoDyLTgSRsuous7Qfq8n+odL8TJgELaqvNCA==
+unplugin-icons@^0.12.23:
+  version "0.12.23"
+  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.12.23.tgz#c54c83bed6ad46632b26cd864d4d3a0c085641cf"
+  integrity sha512-jhCogt+/3WEdPrfHkUGwiLnNJAOrE469J/Zlsh57KAaeEDxrw+PMqXDXRFA/fZjtal/btGPFcDOeQPPHGW6JHg==
   dependencies:
     "@antfu/install-pkg" "^0.1.0"
     "@antfu/utils" "^0.3.0"
