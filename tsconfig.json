@@ -2,6 +2,7 @@
   "extends": "@tsconfig/next/tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "preserveConstEnums": true,
