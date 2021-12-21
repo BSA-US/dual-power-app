@@ -14,6 +14,8 @@ import {
   RadioButtons,
   RadioButton,
   RadioIndicator,
+  ButtonPrimary,
+  ButtonSecondary,
 } from '~/components'
 
 // This is a temporary page for demoing and exercising page components.
@@ -38,6 +40,7 @@ const ComponentsPage: NextPage = () => {
           <TabHeader value='avatar'>Avatar</TabHeader>
           <TabHeader value='checkbox'>Checkbox</TabHeader>
           <TabHeader value='radio'>Radio Buttons</TabHeader>
+          <TabHeader value='button'>Button</TabHeader>
         </TabsHeaders>
         <TabContent value='avatar'>
           <Avatar>
@@ -70,6 +73,10 @@ const ComponentsPage: NextPage = () => {
               Option 3
             </RadioButton>
           </RadioButtons>
+        </TabContent>
+        <TabContent value='button'>
+          <ButtonPrimary>Submit</ButtonPrimary>
+          <ButtonSecondary>Submit</ButtonSecondary>
         </TabContent>
       </Tabs>
     </div>
