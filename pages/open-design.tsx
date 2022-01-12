@@ -1,24 +1,21 @@
 import { useWindowWidth } from '@react-hook/window-size'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+// import { useState } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
 import { Event, Tabs, TabsHeaders, TabHeader, TabContent } from '~/components'
 import about from '~/content/open-design-about.md'
-import showMore from '~/content/open-design-more.md'
 import { useDocs, useEvents } from '~/hooks'
 import { LandingPage } from '~/layouts'
 
-interface AboutState {
+export interface IShowAbout {
   showAll: boolean
-  showMoreClicked: boolean
-}
-
-function About(aboutText: string): string {
-  return remark().use(remark2react).processSync(aboutText).result as string
+  buttonText: string
 }
 
 const OpenDesignPage: NextPage = () => {
@@ -45,28 +42,6 @@ const OpenDesignPage: NextPage = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const [showMoreSection, setAboutState] = useState<AboutState>({
-    showAll: false,
-    showMoreClicked: false,
-    // TODO: window object sometimes undefined after refresh
-    // find better way to init showAll
-  })
-
-  useEffect(() => {
-    function handleResize() {
-      setAboutState({
-        ...showMoreSection,
-        showAll: window.innerHeight > 700, // min height required for about text
-      })
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  })
-
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
       <Head>
@@ -81,37 +56,29 @@ const OpenDesignPage: NextPage = () => {
           <h1 className='text-3xl leading-8 lg:(text-4xl leading-12)'>
             Open&nbsp;Design&nbsp;+&nbsp;Build
           </h1>
-          {showMoreSection.showAll || showMoreSection.showMoreClicked ? (
-            <section className='prose'>{About(about + showMore)}
-            <button
-                onClick={() => {
-                  setAboutState({
-                    ...showMoreSection,
-                    showMoreClicked: false,
-                  })
-                }}
-              >
-                <a className='underline-current'>{'show less...'}</a>
-              </button></section>
-          ) : (
-            <section className='prose'>
-              {About(about)}
-              <button
-                onClick={() => {
-                  setAboutState({
-                    ...showMoreSection,
-                    showMoreClicked: true,
-                  })
-                }}
-              >
-                <a className='underline-current'>{'show more...'}</a>
-              </button>
-            </section>
-          )}
-          <section className='grid grid-cols-2 items-center'>
+          <section
+            className={showAbout.showAll ? 'prose' : 'prose line-clamp-7'}
+          >
+            <p>
+              {remark().use(remark2react).processSync(about).result as string}
+            </p>
+          </section>
+          <button
+            className='underline'
+            onClick={() => {
+              const newShowAll = !showAbout.showAll
+              setShowState({
+                buttonText: newShowAll ? 'show less...' : 'show more...',
+                showAll: newShowAll,
+              })
+            }}
+          >
+            {showAbout.buttonText}
+          </button>
+          <section className='grid grid-cols-2 max-w-prose  min-w-min'>
             <Link href='https://blacksocialists.us/'>
               <figure
-                className='h-18 w-18 cursor-pointer lg:col-span-1 xl:col-span-1'
+                className='h-18 cursor-pointer col-span-1 justify-center'
                 style={{
                   background: `url('/bsa-glyph.svg') no-repeat center center`,
                   backgroundSize: 'contain',
@@ -120,7 +87,7 @@ const OpenDesignPage: NextPage = () => {
             </Link>
             <Link href='https://hydraulics.nyc/'>
               <figure
-                className='h-18 w-18 cursor-pointer lg:col-span-1 xl:col-spa-1'
+                className='h-18 cursor-pointer col-span-1 justify-center'
                 style={{
                   background: `url('/mh-glyph.svg') no-repeat center center`,
                   backgroundSize: 'contain',
