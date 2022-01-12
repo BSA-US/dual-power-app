@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
@@ -60,7 +61,17 @@ const OpenDesignPage: NextPage = () => {
             Open&nbsp;Design&nbsp;+&nbsp;Build
           </h1>
           {showMoreSection.showAll || showMoreSection.showMoreClicked ? (
-            <section className='prose'>{About(about + showMore)}</section>
+            <section className='prose'>{About(about + showMore)}
+            <button
+                onClick={() => {
+                  setAboutState({
+                    ...showMoreSection,
+                    showMoreClicked: false,
+                  })
+                }}
+              >
+                <a className='underline-current'>{'show less...'}</a>
+              </button></section>
           ) : (
             <section className='prose'>
               {About(about)}
@@ -72,10 +83,30 @@ const OpenDesignPage: NextPage = () => {
                   })
                 }}
               >
-                {'show more...'}
+                <a className='underline-current'>{'show more...'}</a>
               </button>
             </section>
           )}
+          <section className='grid grid-cols-2 items-center'>
+            <Link href='https://blacksocialists.us/'>
+              <figure
+                className='h-18 w-18 cursor-pointer lg:col-span-1 xl:col-span-1'
+                style={{
+                  background: `url('/bsa-glyph.svg') no-repeat center center`,
+                  backgroundSize: 'contain',
+                }}
+              />
+            </Link>
+            <Link href='https://hydraulics.nyc/'>
+              <figure
+                className='h-18 w-18 cursor-pointer lg:col-span-1 xl:col-spa-1'
+                style={{
+                  background: `url('/mh-glyph.svg') no-repeat center center`,
+                  backgroundSize: 'contain',
+                }}
+              />
+            </Link>
+          </section>
         </section>
         <Tabs
           defaultValue='od-tab-events'
