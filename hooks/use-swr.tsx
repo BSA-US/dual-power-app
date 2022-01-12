@@ -2,7 +2,7 @@ import _useSWR from 'swr'
 
 import { fetcher } from './_utils'
 
-const useSWR = <Data extends any = any, Error = any>(url: string) => {
+const useSWR = <Data, Error = any>(url: string) => {
   const { data, error } = _useSWR<Data, Error>(url, fetcher)
 
   const headLink = (

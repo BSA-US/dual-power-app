@@ -1,8 +1,14 @@
 import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
+import { aria, content } from './packages/@replygirl/windicss-plugins'
+
 export default defineConfig({
   darkMode: 'class',
+  extract: {
+    exclude: ['node_modules', '.*/**/*'],
+    include: ['**/*.{tsx,jsx,css}'],
+  },
   plugins: [
     // https://windicss.org/plugins/community/animations.html
     require('@windicss/animations'),
@@ -40,8 +46,16 @@ export default defineConfig({
     require('windicss/plugin/typography')({
       modifiers: ['DEFAULT', 'sm', 'lg', 'red'],
     }),
+
+    aria,
+
+    content,
   ],
   shortcuts: {
+    'bg-image-contain': 'bg-no-repeat bg-center bg-contain',
+    'bg-image-cover': 'bg-no-repeat bg-center bg-cover',
+    'focus-ring':
+      'focus:outline-none focus-visible:(outline-none ring ring-offset-2 ring-indigo-500)',
     'inset-center':
       'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
 
