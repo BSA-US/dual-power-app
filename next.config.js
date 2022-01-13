@@ -5,7 +5,7 @@ const path = require('path')
 const AutoImport = require('unplugin-auto-import/webpack')
 const { FileSystemIconLoader } = require('unplugin-icons/loaders')
 const IconsResolver = require('unplugin-icons/resolver')
-const UnpluginIcons = require('unplugin-icons/webpack')
+const Icons = require('unplugin-icons/webpack')
 const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
 module.exports = {
@@ -22,13 +22,14 @@ module.exports = {
     })
 
     config.plugins.push(
-      UnpluginIcons({
+      Icons({
         autoInstall: true,
         compiler: 'jsx',
         customCollections: {
-          custom: FileSystemIconLoader('public/icons'),
+          custom: FileSystemIconLoader('public/images', svg =>
+            svg.replace(/^<svg /, '<svg fill="currentColor" ')
+          ),
         },
-        extension: 'jsx',
         jsx: 'react',
       })
     )
@@ -38,9 +39,9 @@ module.exports = {
         imports: 'react',
         resolvers: [
           IconsResolver({
-            componentPrefix: 'Icon',
-            customCollections: ['custom', 'mdi', 'react'],
+            customCollections: ['custom'],
             extension: 'jsx',
+            prefix: 'Icon',
           }),
         ],
       })

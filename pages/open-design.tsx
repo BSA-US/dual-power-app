@@ -3,7 +3,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
@@ -11,6 +10,9 @@ import { Event, TabContent, TabHeader, Tabs, TabsHeaders } from '~/components'
 import about from '~/content/open-design-about.md'
 import { useDocs, useEvents } from '~/hooks'
 import { LandingPage } from '~/layouts'
+
+import BSAGlyph from '~icons/custom/bsa-glyph.jsx'
+import MHGlyph from '~icons/custom/mh-glyph.jsx'
 
 export interface IShowAbout {
   showAll: boolean
@@ -58,14 +60,14 @@ const OpenDesignPage: NextPage = () => {
             Open&nbsp;Design&nbsp;+&nbsp;Build
           </h1>
           <section
-            className={showAbout.showAll ? 'prose' : 'prose line-clamp-7'}
+            className={`prose ${showAbout.showAll ? '' : ' line-clamp-7'}`}
           >
             <p>
               {remark().use(remark2react).processSync(about).result as string}
             </p>
           </section>
-          <button
-            className='underline'
+          <a
+            className='underline cursor-pointer'
             onClick={() => {
               const newShowAll = !showAbout.showAll
               setShowState({
@@ -75,23 +77,27 @@ const OpenDesignPage: NextPage = () => {
             }}
           >
             {showAbout.buttonText}
-          </button>
-          <section className='grid grid-cols-2 max-w-prose  min-w-min'>
+          </a>
+          <section className='grid grid-cols-2 max-w-prose min-w-min justify-items-center'>
             <Link href='https://blacksocialists.us/'>
-              <figure
-                className='h-18 cursor-pointer col-span-1 justify-center'
+              <BSAGlyph
+                className='flex justify-center cursor-pointer col-span-1'
                 style={{
-                  background: `url('/bsa-glyph.svg') no-repeat center center`,
+                  background: `no-repeat center center`,
                   backgroundSize: 'contain',
+                  height: `4.5em`,
+                  width: `4.5em`,
                 }}
               />
             </Link>
             <Link href='https://hydraulics.nyc/'>
-              <figure
-                className='h-18 cursor-pointer col-span-1 justify-center'
+              <MHGlyph
+                className='flex justify-center cursor-pointer col-span-1'
                 style={{
-                  background: `url('/mh-glyph.svg') no-repeat center center`,
+                  background: `no-repeat center center`,
                   backgroundSize: 'contain',
+                  height: `4.5em`,
+                  width: `4.5em`,
                 }}
               />
             </Link>

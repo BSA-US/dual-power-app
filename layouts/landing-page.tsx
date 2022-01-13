@@ -7,6 +7,8 @@ import { Modal } from '~/components'
 import { bsaUrl, donateUrl, roadmapUrl, twitterUrl } from '~/constants'
 import { useStatus } from '~/hooks'
 
+import GlobeGlyph from '~icons/custom/globe-glyph.jsx'
+
 const VideoPlayerStream = dynamic(
   () => import('../components/video-player-stream'),
   {
@@ -62,7 +64,7 @@ const LandingPageLayout: FC<LandingPageLayoutProps> = ({
       )}
       <header className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 items-end gap-8'>
         <Link href='/'>
-          <figure
+          <GlobeGlyph
             className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1'
             style={{
               background: `url('/images/globe-glyph-k.svg') no-repeat center center`,
