@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require('path')
 
-const unpluginIcons = require('unplugin-icons/webpack')
+const AutoImport = require('unplugin-auto-import/webpack')
+const { FileSystemIconLoader } = require('unplugin-icons/loaders')
+const IconsResolver = require('unplugin-icons/resolver')
+const UnpluginIcons = require('unplugin-icons/webpack')
 const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
 module.exports = {
@@ -18,11 +22,27 @@ module.exports = {
     })
 
     config.plugins.push(
-      unpluginIcons({
+      UnpluginIcons({
         autoInstall: true,
         compiler: 'jsx',
+        customCollections: {
+          custom: FileSystemIconLoader('public/icons'),
+        },
         extension: 'jsx',
         jsx: 'react',
+      })
+    )
+    config.plugins.push(
+      AutoImport({
+        dts: './auto-imports.d.ts',
+        imports: 'react',
+        resolvers: [
+          IconsResolver({
+            componentPrefix: 'Icon',
+            customCollections: ['custom', 'mdi', 'react'],
+            extension: 'jsx',
+          }),
+        ],
       })
     )
 
