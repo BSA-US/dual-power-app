@@ -112,9 +112,22 @@ const LandingPageLayout: FC<LandingPageLayoutProps> = ({
       </footer>
       {process.browser && !!status?.live && !!status.streamConfig && (
         <Modal
-          classNameContainer='transform-none inset-0 md:(inset-auto w-90vw h-90vh max-w-1560px border) !md:inset-center lg:max-h-800px'
-          isOpen={_showVideo}
-          onRequestClose={() => setShowVideo(false)}
+          contentClassName={`
+            transform-none inset-0
+            w-100vw max-w-100vw h-100vh max-h-100vh
+            p-2 rounded-none
+            md:(inset-auto w-90vw h-90vh max-w-1560px border)
+            !md:inset-center
+            lg:max-h-800px
+          `}
+          open={_showVideo}
+          removeCloseIcon
+          onOpenChange={open => {
+            const requestToClose = open === false
+            if (requestToClose) {
+              setShowVideo(false)
+            }
+          }}
         >
           <VideoPlayerStream
             onRequestClose={() => setShowVideo(false)}
