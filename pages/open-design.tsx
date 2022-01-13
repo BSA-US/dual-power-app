@@ -4,11 +4,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-// import { useState } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
-import { Event, Tabs, TabsHeaders, TabHeader, TabContent } from '~/components'
+import { Event, TabContent, TabHeader, Tabs, TabsHeaders } from '~/components'
 import about from '~/content/open-design-about.md'
 import { useDocs, useEvents } from '~/hooks'
 import { LandingPage } from '~/layouts'
@@ -36,6 +35,8 @@ const OpenDesignPage: NextPage = () => {
         showAll: !newXS,
       })
     }
+
+    handleResize() // run on mount
 
     window.addEventListener('resize', handleResize)
     // Remove event listener on cleanup
