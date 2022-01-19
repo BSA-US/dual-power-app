@@ -2,7 +2,7 @@ import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
 import { aria, content } from './packages/@replygirl/windicss-plugins'
-
+import screenConfig from './windi.breakpoints'
 export default defineConfig({
   darkMode: 'class',
   extract: {
@@ -69,9 +69,7 @@ export default defineConfig({
         theme('colors') ?? {}
       ),
     extend: {
-      screens: {
-        xs: '480px',
-      },
+      screens: { screenConfig },
       typography: {
         DEFAULT: {
           css: {
