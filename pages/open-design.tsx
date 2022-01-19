@@ -1,4 +1,4 @@
-import { useWindowWidth } from '@react-hook/window-size'
+// import { useWindowWidth } from '@react-hook/window-size'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -11,6 +11,8 @@ import about from '~/content/open-design-about.md'
 import { useDocs, useEvents } from '~/hooks'
 import { LandingPage } from '~/layouts'
 
+import useBreakpoints from '../hooks/use-breakpoints'
+
 import BSAGlyph from '~icons/custom/bsa-glyph.jsx'
 import MHGlyph from '~icons/custom/mh-glyph.jsx'
 
@@ -22,28 +24,11 @@ export interface IShowAbout {
 const OpenDesignPage: NextPage = () => {
   const { docs, docsHeadLink } = useDocs()
   const { events, eventsHeadLink } = useEvents()
-  const [isXS, setXSState] = useState(useWindowWidth() <= 480) // is smaller than xs css
+  const [ref, { xs }] = useBreakpoints()
   const [showAbout, setShowState] = useState<IShowAbout>({
-    buttonText: isXS ? 'show more...' : 'show less...',
-    showAll: !isXS,
+    buttonText: xs ? 'show more...' : 'show less...',
+    showAll: !xs,
   })
-
-  useEffect(() => {
-    function handleResize() {
-      const newXS = window.innerWidth <= 480
-      setXSState(newXS)
-      setShowState({
-        buttonText: newXS ? 'show more...' : 'show less...',
-        showAll: !newXS,
-      })
-    }
-
-    handleResize() // run on mount
-
-    window.addEventListener('resize', handleResize)
-    // Remove event listener on cleanup
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
 
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
@@ -51,7 +36,10 @@ const OpenDesignPage: NextPage = () => {
         {docsHeadLink}
         {eventsHeadLink}
       </Head>
-      <div className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
+      <div
+        ref={ref}
+        className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'
+      >
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
           <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
             Dual&nbsp;Power&nbsp;App
