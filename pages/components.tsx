@@ -82,12 +82,6 @@ const ComponentsPage: NextPage = () => {
     >
       <Tabs>
         <TabsHeaders>
-          <TabHeader value='original'>Original</TabHeader>
-          <TabHeader value='mh'>Manhattan Hydraulics</TabHeader>
-        </TabsHeaders>
-      </Tabs>
-      <Tabs>
-        <TabsHeaders>
           <TabHeader value='avatar'>Avatar</TabHeader>
           <TabHeader value='checkbox'>Checkbox</TabHeader>
           <TabHeader value='radio'>Radio Buttons</TabHeader>
