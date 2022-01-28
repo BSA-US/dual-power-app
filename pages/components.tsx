@@ -1,23 +1,25 @@
-import { AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import type { NextPage } from 'next'
 import { useState } from 'react'
 /* import Image from 'next/image' */
 
 import {
-  Tabs,
-  TabsHeaders,
-  TabHeader,
-  TabContent,
   Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
   Checkbox,
   CheckIndicator,
-  RadioButtons,
-  RadioButton,
-  RadioIndicator,
   Modal,
   ModalClose,
   ModalDescription,
   ModalTitle,
+  RadioButtons,
+  RadioButton,
+  RadioIndicator,
+  Tabs,
+  TabsHeaders,
+  TabHeader,
+  TabContent,
 } from '~/components'
 
 // This is a temporary page for demoing and exercising page components.
@@ -26,7 +28,7 @@ import {
 
 const ModalExamples = () => (
   <>
-    <Modal trigger={<button>Modal with close icon and overlay</button>}>
+    <Modal trigger={<Button>Modal with close icon and overlay</Button>}>
       <ModalTitle>Title</ModalTitle>
       <ModalDescription className='mb-4'>Description</ModalDescription>
       <p className='mb-4'>
@@ -38,7 +40,7 @@ const ModalExamples = () => (
       </ModalClose>
     </Modal>
     <br />
-    <Modal removeCloseIcon trigger={<button>Modal without close icon</button>}>
+    <Modal removeCloseIcon trigger={<Button>Modal without close icon</Button>}>
       <ModalDescription className='mb-4'>
         If you remove the close icon make sure to add your own close button
       </ModalDescription>
@@ -54,7 +56,7 @@ const ModalExamples = () => (
     <br />
     <Modal
       removeOverlay
-      trigger={<button>Modal without overlay</button>}
+      trigger={<Button>Modal without overlay</Button>}
       contentClassName='p-5 ring-black ring-1 rounded-md'
     >
       <ModalDescription>
@@ -63,7 +65,7 @@ const ModalExamples = () => (
     </Modal>
     <br />
     <Modal
-      trigger={<button>Modal with custom content styling</button>}
+      trigger={<Button>Modal with custom content styling</Button>}
       contentClassName='p-5 bg-green-200 rounded-md'
     >
       <p>
@@ -80,22 +82,35 @@ const ComponentsPage: NextPage = () => {
     <div
       className={`relative flex flex-col max-w-1440px mx-auto px-4 py-8 space-y-12 lg:(px-8 pb-0 space-y-16) xl:px-16 min-h-screen`}
     >
+      <h1>Components Demo</h1>
+      <p>This page is a basic demo of the Dual Power App UI components</p>
       <Tabs>
         <TabsHeaders>
           <TabHeader value='avatar'>Avatar</TabHeader>
           <TabHeader value='checkbox'>Checkbox</TabHeader>
           <TabHeader value='radio'>Radio Buttons</TabHeader>
           <TabHeader value='modal'>Modal</TabHeader>
+          <TabHeader value='buttons'>Buttons</TabHeader>
         </TabsHeaders>
         <TabContent value='avatar'>
           <Avatar>
-            <AvatarImage>
-              {/* <Image alt='Avatar image' src={Globe.Logo} /> */}
-            </AvatarImage>
+            <AvatarImage
+              src='https://upload.wikimedia.org/wikipedia/en/e/ed/Nyan_cat_250px_frame.PNG'
+              alt='Nyan Cat'
+            />
             <AvatarFallback>
               {/* <Image alt='Avatar image' src={Globe.Logo} /> */}
             </AvatarFallback>
           </Avatar>
+        </TabContent>
+        <TabContent value='buttons'>
+          <Button
+            color='primary'
+            onClick={() => alert('Hey! Who said you could click me?')}
+          >
+            Primary
+          </Button>
+          <Button color='secondary'>Secondary</Button>
         </TabContent>
         <TabContent value='checkbox'>
           <Checkbox
