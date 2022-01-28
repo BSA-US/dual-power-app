@@ -49,6 +49,14 @@ While we're focusing on design so we can get to a buildable spec ASAP, you're fr
     yarn global add vercel
     ```
 
+### Alternative setup with Nix
+
+If you are familiar with [Nix](https://nixos.org), you can setup the necessary development tooling by running:
+
+```sh
+nix develop
+```
+
 ### Run the Dual Power App locally
 
 ```sh
