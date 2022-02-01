@@ -8,7 +8,12 @@ module.exports = {
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   webpackFinal: config => {
-    config.plugins.push(new WindiCSSWebpackPlugin())
+    config.plugins.push(
+      new WindiCSSWebpackPlugin({
+        config: path.join(__dirname, '..', 'windi.config.ts'),
+        root: path.dirname(__dirname),
+      })
+    )
     config.plugins.push(require('unplugin-icons/webpack')())
     config.resolve.modules = [
       ...(config.resolve.modules || []),
