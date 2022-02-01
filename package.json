@@ -35,7 +35,7 @@
     "detect-browser": "^5.2.1",
     "faunadb": "^4.4.1",
     "isomorphic-unfetch": "^3.1.0",
-    "next": "^12.0.7",
+    "next": "^12.0.9",
     "notion-utils": "^4.10.0",
     "react": "^17.0.2",
     "react-cool-dimensions": "^2.0.7",
