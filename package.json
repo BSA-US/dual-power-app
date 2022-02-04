@@ -5,7 +5,8 @@
   "repository": "https://github.com/BSA-US/dual-power-app.git",
   "main": "index.js",
   "contributors": [
-    "replygirl <moon@moon.fyi> (https://twitter.com/anne_volin)"
+    "replygirl <moon@moon.fyi> (https://twitter.com/anne_volin)",
+    "cedenuff (https://twitter.com/cedenufff)"
   ],
   "scripts": {
     "dev": "next",
