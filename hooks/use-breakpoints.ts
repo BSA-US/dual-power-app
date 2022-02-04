@@ -15,8 +15,10 @@ export type UseBreakPoints = Pick<
   },
   'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 >
-export type UseBreakpointsRef<E extends HTMLDivElement> = (element: E) => void
-export type UseBreakpointResult<E extends HTMLDivElement> = [
+export type UseBreakpointsRef<E extends HTMLDivElement | undefined> = (
+  element: E
+) => void
+export type UseBreakpointResult<E extends HTMLDivElement | undefined> = [
   UseBreakpointsRef<E>,
   UseBreakPoints
 ]
@@ -25,10 +27,10 @@ const BPState = (width: number) => {
   // return object of breakpoint comparisons
   return {
     '2xl': width >= parseInt(screenConfig.xl),
-    lg: width <= parseInt(screenConfig.lg),
-    md: width <= parseInt(screenConfig.md),
-    sm: width <= parseInt(screenConfig.sm),
-    xl: width <= parseInt(screenConfig.xl),
+    lg: width <= parseInt(screenConfig.xl),
+    md: width <= parseInt(screenConfig.lg),
+    sm: width <= parseInt(screenConfig.md),
+    xl: width <= parseInt(screenConfig['2xl']),
     xs: width <= parseInt(screenConfig.xs),
   }
 }
