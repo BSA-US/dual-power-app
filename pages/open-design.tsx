@@ -17,7 +17,8 @@ import MHGlyph from '~icons/custom/mh-glyph.jsx'
 
 export interface IShowAbout {
   showAll: boolean
-  buttonText: string
+  buttonText: 'show more...' | 'show less...'
+  isToggled: boolean
 }
 
 const OpenDesignPage: NextPage = () => {
@@ -26,8 +27,17 @@ const OpenDesignPage: NextPage = () => {
   const [ref, { xs }] = useBreakpoints()
   const [showAbout, setShowState] = useState<IShowAbout>({
     buttonText: xs ? 'show more...' : 'show less...',
+    isToggled: false,
     showAll: !xs,
   })
+
+  useMemo(() => {
+    setShowState({
+      buttonText: xs ? 'show more...' : 'show less...',
+      isToggled: !xs ? false : showAbout.isToggled,
+      showAll: !xs,
+    })
+  }, [xs])
 
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
@@ -36,10 +46,13 @@ const OpenDesignPage: NextPage = () => {
         {eventsHeadLink}
       </Head>
       <div
-        ref={ref}
+        // ref={ref}
         className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'
       >
-        <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
+        <section
+          ref={ref}
+          className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'
+        >
           <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
             Dual&nbsp;Power&nbsp;App
           </h1>
@@ -53,18 +66,21 @@ const OpenDesignPage: NextPage = () => {
               {remark().use(remark2react).processSync(about).result as string}
             </p>
           </section>
-          <a
-            className='underline cursor-pointer'
-            onClick={() => {
-              const newShowAll = !showAbout.showAll
-              setShowState({
-                buttonText: newShowAll ? 'show less...' : 'show more...',
-                showAll: newShowAll,
-              })
-            }}
-          >
-            {showAbout.buttonText}
-          </a>
+          {showAbout.showAll && !showAbout.isToggled ? undefined : (
+            <a
+              className='underline cursor-pointer'
+              onClick={() => {
+                const newShowAll = !showAbout.showAll
+                setShowState({
+                  buttonText: newShowAll ? 'show less...' : 'show more...',
+                  isToggled: true,
+                  showAll: newShowAll,
+                })
+              }}
+            >
+              {showAbout.buttonText}
+            </a>
+          )}
           <section className='grid grid-cols-2 max-w-prose min-w-min justify-items-center'>
             <Link href='https://blacksocialists.us/'>
               <BSAGlyph
