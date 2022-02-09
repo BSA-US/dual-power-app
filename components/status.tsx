@@ -2,7 +2,7 @@ import { FC } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
-import { useStatus } from '~/hooks'
+import { useStatus } from '../hooks'
 
 interface StatusProps {
   onOpenVideo: () => void

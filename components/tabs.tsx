@@ -9,7 +9,10 @@ import type {
 export const Tabs = (props: TabsProps) => <Root {...props} />
 
 export const TabsHeaders = ({ className = '', ...props }: TabsListProps) => (
-  <List {...props} className={`flex ${className}`} />
+  <List
+    {...props}
+    className={`flex space-x-4 font-mono uppercase ${className}`}
+  />
 )
 
 export const TabHeader = ({ className = '', ...props }: TabsTriggerProps) => (
