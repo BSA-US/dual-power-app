@@ -110,7 +110,7 @@ const OpenDesignPage: NextPage = () => {
           defaultValue='od-tab-events'
           className='col-span-3 max-w-prose leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'
         >
-          <TabsHeaders className='space-x-4 font-mono uppercase'>
+          <TabsHeaders>
             <TabHeader value='od-tab-events'>Events</TabHeader>
             <TabHeader value='od-tab-docs'>Documents</TabHeader>
           </TabsHeaders>
