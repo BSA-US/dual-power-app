@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import remark from 'remark'
 import remark2react from 'remark-react'
@@ -147,7 +146,7 @@ const OpenDesignPage: NextPage = () => {
                         target='_blank'
                         rel='noreferrer'
                       >
-                        <Image {...x.image} />
+                        <img {...x.image} />
                         <p className='text-xl font-bold'>{x.name}</p>
                         <p>{x.description}</p>
                       </a>
