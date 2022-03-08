@@ -1,6 +1,8 @@
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'
 export { Button } from './button'
+export { Card, CardCTA } from './card'
 export { Checkbox, CheckIndicator } from './checkbox'
+export { Divider } from './divider'
 export { default as Event } from './event'
 export { Modal, ModalClose, ModalDescription, ModalTitle } from './modal'
 export { RadioButtons, RadioButton, RadioIndicator } from './radio-buttons'
