@@ -26,7 +26,7 @@ const LandingPageLayout = ({
   showVideo,
   onSetShowVideo,
 }: {
-  children?: string
+  children?: React.ReactNode
   classNameDonate?: string
   classNameLayout?: string
   classNameMain?: string
