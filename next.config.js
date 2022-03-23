@@ -25,11 +25,11 @@ module.exports = {
       Icons({
         compiler: 'jsx',
         customCollections: {
-          custom: FileSystemIconLoader('public/images', svg =>
-            svg.replace(/^<svg /, '<svg fill="currentColor" ')
-          ),
           glyph: FileSystemIconLoader('./assets/glyphs'),
           icon: FileSystemIconLoader('./assets/icons'),
+          public: FileSystemIconLoader('public/images', svg =>
+            svg.replace(/^<svg /, '<svg fill="currentColor" ')
+          ),
         },
         defaultClass: 'inline-block',
         extension: 'jsx',
@@ -48,7 +48,7 @@ module.exports = {
         imports: 'react',
         resolvers: [
           IconsResolver({
-            customCollections: ['custom', 'glyph', 'icon'],
+            customCollections: ['public', 'glyph', 'icon'],
             enabledCollections: ['mdi'],
             extension: 'jsx',
             prefix: false,
