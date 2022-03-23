@@ -14,7 +14,6 @@
 !.vscode/extensions.json
 
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/releases
 !.yarn/plugins
