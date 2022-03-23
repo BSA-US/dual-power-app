@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
@@ -21,7 +21,10 @@ const StatusComponent: FC<StatusProps> = ({ onOpenVideo }) => {
       {(status?.actions?.[0] || status?.live) && (
         <ul className='flex space-x-4'>
           {status?.actions?.map(({ text, href, target, color = 'inherit' }) => (
-            <li key={text} className='whitespace-nowrap first:font-bold'>
+            <li
+              key={text}
+              className='whitespace-nowrap first:font-bold'
+            >
               <a
                 className='underline'
                 href={href ?? '/'}

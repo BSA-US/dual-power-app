@@ -1,23 +1,25 @@
-import {
-  Root,
-  Trigger as RadixTrigger,
-  Overlay,
-  Content,
-  Title,
-  Description,
-  Close,
-  DialogPortal,
-  DialogProps,
-  DialogTriggerProps,
-  DialogOverlayProps,
-  DialogContentProps,
-  DialogTitleProps,
-  DialogDescriptionProps,
+import type {
   DialogCloseProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogOverlayProps,
   DialogPortalProps,
+  DialogProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from '@radix-ui/react-dialog'
+import {
+  Close,
+  Content,
+  Description,
+  DialogPortal,
+  Overlay,
+  Trigger as RadixTrigger,
+  Root,
+  Title,
 } from '@radix-ui/react-dialog'
 import { Cross2Icon } from '@radix-ui/react-icons'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 interface ModalProps extends DialogProps {
   className?: string
@@ -43,7 +45,10 @@ const ModalOverlay = ({ className = '', ...rest }: DialogOverlayProps) => (
 )
 
 const ModalStandardClose = ({ className = '', ...rest }: DialogCloseProps) => (
-  <Close {...rest} asChild>
+  <Close
+    {...rest}
+    asChild
+  >
     <button
       type='button'
       className={`
@@ -84,7 +89,10 @@ export const ModalDescription = ({
   className = '',
   ...rest
 }: DialogDescriptionProps) => (
-  <Description className={`text-gray-700 ${className}`.trim()} {...rest} />
+  <Description
+    className={`text-gray-700 ${className}`.trim()}
+    {...rest}
+  />
 )
 
 export const ModalClose = ({ ...rest }: DialogCloseProps) => <Close {...rest} />

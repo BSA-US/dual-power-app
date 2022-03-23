@@ -8,10 +8,19 @@
   },
   "eslint.format.enable": true,
   "eslint.packageManager": "yarn",
-  "eslint.validate": ["javascript", "javascriptreact", "json", "jsonc", "jsx", "tsx", "typescript", "typescriptreact"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "jsx",
+    "tsx",
+    "typescript",
+    "typescriptreact"
+  ],
   "files.associations": {
     "*.css": "postcss"
   },
   "prettier.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

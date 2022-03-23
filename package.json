@@ -1,6 +1,7 @@
 {
   "name": "dual-power-app",
   "version": "0.1.0",
+  "packageManager": "yarn@3.2.0",
   "license": "MIT",
   "repository": "https://github.com/BSA-US/dual-power-app.git",
   "contributors": [
@@ -80,6 +81,5 @@
     "unplugin-auto-import": "^0.6.6",
     "unplugin-icons": "^0.14.1",
     "windicss-webpack-plugin": "^1.6.7"
-  },
-  "packageManager": "yarn@3.2.0"
+  }
 }

@@ -1,4 +1,4 @@
-import { Date } from './common'
+import type { Date } from './common'
 
 export interface Doc {
   date: Date
