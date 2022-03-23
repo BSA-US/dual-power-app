@@ -2,11 +2,6 @@
 // Windi probably has what you need: https://windicss.org/utilities/
 // You can add aliases in ../windi.config.ts > shortcuts
 
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('../public/HelveticaNowDisplay.woff');
-}
-
 :root {
   @apply font-sans box-border;
   font-size: 16px;

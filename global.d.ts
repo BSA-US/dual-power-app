@@ -5,11 +5,6 @@ declare module '*.md' {
   export default content
 }
 
-declare module '*.styl' {
-  const content: { [className: string]: string }
-  export default content
-}
-
 declare module '@peertube/embed-api' {
   export class PeerTubePlayer extends HTMLVideoElement {
     ready: Promise<boolean>

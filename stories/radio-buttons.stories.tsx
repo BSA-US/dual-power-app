@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RadioButtons, RadioButton, RadioIndicator } from '../components'
+import { RadioButton, RadioButtons, RadioIndicator } from '../components'
 
 export default {
   component: RadioButtons,

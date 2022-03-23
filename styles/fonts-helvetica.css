@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../public/fonts/HelveticaNowDisplay-Regular.otf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../public/fonts/HelveticaNowDisplay-RegIta.otf');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../public/fonts/HelveticaNowDisplay-Medium.otf');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../public/fonts/HelveticaNowDisplay-MedIta.otf');
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../public/fonts/HelveticaNowDisplay-Bold.otf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../public/fonts/HelveticaNowDisplay-BoldIta.otf');
+  font-weight: 700;
+  font-style: italic;
+}

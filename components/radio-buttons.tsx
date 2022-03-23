@@ -1,7 +1,7 @@
-import { Root, Item, Indicator } from '@radix-ui/react-radio-group'
+import { Indicator, Item, Root } from '@radix-ui/react-radio-group'
 import type {
-  RadioGroupProps,
   RadioGroupItemProps,
+  RadioGroupProps,
   RadioIndicatorProps,
 } from '@radix-ui/react-radio-group'
 import classnames from 'classnames'

@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import { format } from 'date-fns'
-import type { FC } from 'react'
 import remark from 'remark'
 import remark2react from 'remark-react'
 
@@ -11,7 +10,7 @@ interface EventProps {
   event: Event
 }
 
-const EventComponent: FC<EventProps> = ({ className, event }) => {
+const EventComponent = ({ className, event }: EventProps) => {
   const date = new Date(event.date.start)
 
   return (
@@ -25,17 +24,20 @@ const EventComponent: FC<EventProps> = ({ className, event }) => {
       <div className='flex-grow'>
         <p className='text-2xl'>{event.name}</p>
         {event.description && (
-          <p className='prose'>
+          <div className='prose'>
             {
               remark().use(remark2react).processSync(event.description)
                 .result as string
             }
-          </p>
+          </div>
         )}
         {event.actions && (
           <ul className='mt-2 space-y-2 sm:(space-y-0 flex justify-end space-x-4)'>
             {event.actions.map(({ text, href, target, color = 'inherit' }) => (
-              <li key={text} className='first:font-bold'>
+              <li
+                key={text}
+                className='first:font-bold'
+              >
                 <a
                   className={classNames({ underline: href })}
                   href={href ?? '/'}
