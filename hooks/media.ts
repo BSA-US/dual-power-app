@@ -1,6 +1,5 @@
 // import type { BreakPoints } from '~/types'
 
-import { useMemo } from 'react'
 import { useMeasure, useWindowSize } from 'react-use'
 
 import { screens } from '../windi.screens'

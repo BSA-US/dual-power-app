@@ -51,7 +51,7 @@ const OpenDesignPage: NextPage = () => {
             <section className='flex space-x-4 <lg:hidden'>
               <Link href='https://blacksocialists.us/'>
                 <a>
-                  <GlyphBSA className='h-10' />
+                  <GlyphBsa className='h-10' />
                   <span className='hidden'>Black Socialists in America</span>
                 </a>
               </Link>

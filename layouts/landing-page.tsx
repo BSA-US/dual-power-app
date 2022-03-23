@@ -1,7 +1,5 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import type { FC } from 'react'
-import { useEffect, useState } from 'react'
 
 import { Modal } from '~/components'
 import { bsaUrl, donateUrl, roadmapUrl, twitterUrl } from '~/constants'
@@ -20,21 +18,20 @@ const isDevelopment = process.env.NEXT_PUBLIC_VERCEL_ENV
   ? process.env.VERCEL_ENV !== 'production'
   : false
 
-interface LandingPageLayoutProps {
-  classNameDonate?: string
-  classNameLayout?: string
-  classNameMain?: string
-  showVideo?: boolean
-  onSetShowVideo?: (x: boolean) => void
-}
-
-const LandingPageLayout: FC<LandingPageLayoutProps> = ({
+const LandingPageLayout = ({
   classNameDonate = '',
   classNameLayout = '',
   classNameMain = '',
   children,
   showVideo,
   onSetShowVideo,
+}: {
+  children?: string
+  classNameDonate?: string
+  classNameLayout?: string
+  classNameMain?: string
+  showVideo?: boolean
+  onSetShowVideo?: (x: boolean) => void
 }) => {
   const [_showVideo, _setShowVideo] = useState<boolean>(showVideo ?? false)
   const setShowVideo = (x: boolean) => {
@@ -66,7 +63,7 @@ const LandingPageLayout: FC<LandingPageLayoutProps> = ({
       )}
       <header className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 items-end gap-8'>
         <Link href='/'>
-          <GlyphOTD className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1' />
+          <GlyphOtd className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1' />
         </Link>
         <nav className='col-span-2 justify-self-end lg:(col-start-3 col-span-3 justify-self-auto) xl:(col-start-2 col-span-2)'>
           <div className='flex flex-col border-b-2 py-2 pr-28 leading-6 font-bold xs:pr-32 sm:(flex-row items-end space-x-8 pr-32) md:pr-48'>

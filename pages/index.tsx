@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
 
 import { Status } from '~/components'
 import { cooperationJacksonUrl } from '~/constants'
@@ -57,7 +56,10 @@ const IndexPage: NextPage = () => {
           <p>
             Looking for an example?
             <br />
-            <a className='underline' href={cooperationJacksonUrl}>
+            <a
+              className='underline'
+              href={cooperationJacksonUrl}
+            >
               Check out Cooperation Jackson.
             </a>
           </p>
