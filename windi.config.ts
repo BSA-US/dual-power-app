@@ -104,8 +104,8 @@ export default defineConfig({
         'monospace',
       ],
       sans: [
-        'Helvetica Now Display',
-        // 'Helvetica Neue',
+        // 'Helvetica Now Display',
+        'Helvetica Neue',
         'Helvetica',
         // 'Arial',
         // 'sans-serif',
