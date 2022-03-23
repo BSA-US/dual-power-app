@@ -23,7 +23,6 @@ module.exports = {
 
     config.plugins.push(
       Icons({
-        autoInstall: true,
         compiler: 'jsx',
         customCollections: {
           custom: FileSystemIconLoader('public/images', svg =>
