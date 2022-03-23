@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -6,37 +7,16 @@ import remark2react from 'remark-react'
 
 import { Event, TabContent, TabHeader, Tabs, TabsHeaders } from '~/components'
 import about from '~/content/open-design-about.md'
-import { useDocs, useEvents } from '~/hooks'
+import { useDocs, useEvents, useMedia } from '~/hooks'
 import { LandingPage } from '~/layouts'
-
-import useBreakpoints from '../hooks/use-breakpoints'
-
-import BSAGlyph from '~icons/custom/bsa-glyph.jsx'
-import MHGlyph from '~icons/custom/mh-glyph.jsx'
-
-export interface IShowAbout {
-  showAll: boolean
-  buttonText: 'show more...' | 'show less...'
-  isToggled: boolean
-}
 
 const OpenDesignPage: NextPage = () => {
   const { docs, docsHeadLink } = useDocs()
   const { events, eventsHeadLink } = useEvents()
-  const [ref, { xs }] = useBreakpoints()
-  const [showAbout, setShowState] = useState<IShowAbout>({
-    buttonText: xs ? 'show more...' : 'show less...',
-    isToggled: false,
-    showAll: !xs,
-  })
 
-  useMemo(() => {
-    setShowState({
-      buttonText: xs ? 'show more...' : 'show less...',
-      isToggled: !xs ? false : showAbout.isToggled,
-      showAll: !xs,
-    })
-  }, [xs])
+  const { lg } = useMedia()
+  const [_showMore, setShowMore] = useState(false)
+  const showMore = _showMore || lg
 
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
@@ -44,67 +24,47 @@ const OpenDesignPage: NextPage = () => {
         {docsHeadLink}
         {eventsHeadLink}
       </Head>
-      <div
-        // ref={ref}
-        className='grid grid-flow-row-dense grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'
-      >
-        <section
-          ref={ref}
-          className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'
-        >
-          <h1 className='text-4xl leading-8 lg:(text-5xl leading-12)'>
-            Dual&nbsp;Power&nbsp;App
-          </h1>
-          <h1 className='text-3xl leading-8 lg:(text-4xl leading-12)'>
-            Open&nbsp;Design&nbsp;+&nbsp;Build
-          </h1>
-          <section
-            className={`prose ${showAbout.showAll ? '' : ' line-clamp-7'}`}
-          >
-            <p>
-              {remark().use(remark2react).processSync(about).result as string}
-            </p>
+      <div className='grid grid-flow-row-dense gap-8 grid-cols-3 <lg:space-y-8 lg:grid-cols-5 xl:grid-cols-3'>
+        <div className='col-span-3 lg:col-span-2 xl:col-span-1'>
+          <section className='space-y-4 lg:(space-y-8 sticky top-8)'>
+            <h1 className='flex flex-col'>
+              <span className='text-2xl lg:text-3xl'>Dual&nbsp;Power App</span>
+              <span className='text-4xl lg:text-5xl'>
+                Open&nbsp;Design +&nbsp;Build
+              </span>
+            </h1>
+            <section>
+              <div
+                className={classNames('prose', { 'line-clamp-5': !showMore })}
+              >
+                {remark().use(remark2react).processSync(about).result as string}
+              </div>
+              {!showMore && (
+                <button
+                  className='font-bold underline cursor-pointer'
+                  onClick={() => setShowMore(true)}
+                >
+                  Show more
+                </button>
+              )}
+            </section>
+            <section className='flex space-x-4 <lg:hidden'>
+              <Link href='https://blacksocialists.us/'>
+                <a>
+                  <GlyphBSA className='h-10' />
+                  <span className='hidden'>Black Socialists in America</span>
+                </a>
+              </Link>
+              <MdiClose className='self-center' />
+              <Link href='https://hydraulics.nyc/'>
+                <a>
+                  <GlyphManhattanHydraulics className='h-10' />
+                  <span className='hidden'>Manhattan Hydraulics</span>
+                </a>
+              </Link>
+            </section>
           </section>
-          {showAbout.showAll && !showAbout.isToggled ? undefined : (
-            <a
-              className='underline cursor-pointer'
-              onClick={() => {
-                const newShowAll = !showAbout.showAll
-                setShowState({
-                  buttonText: newShowAll ? 'show less...' : 'show more...',
-                  isToggled: true,
-                  showAll: newShowAll,
-                })
-              }}
-            >
-              {showAbout.buttonText}
-            </a>
-          )}
-          <section className='grid grid-cols-2 max-w-prose min-w-min justify-items-center'>
-            <Link href='https://blacksocialists.us/'>
-              <BSAGlyph
-                className='flex justify-center cursor-pointer col-span-1'
-                style={{
-                  background: `no-repeat center center`,
-                  backgroundSize: 'contain',
-                  height: `4.5em`,
-                  width: `4.5em`,
-                }}
-              />
-            </Link>
-            <Link href='https://hydraulics.nyc/'>
-              <MHGlyph
-                className='flex justify-center cursor-pointer col-span-1'
-                style={{
-                  background: `no-repeat center center`,
-                  backgroundSize: 'contain',
-                  height: `4.5em`,
-                  width: `4.5em`,
-                }}
-              />
-            </Link>
-          </section>
-        </section>
+        </div>
         <Tabs
           defaultValue='od-tab-events'
           className='col-span-3 max-w-prose leading-5 space-y-8 lg:(col-start-3 col-span-3) xl:(col-start-2 col-span-2)'
@@ -123,7 +83,7 @@ const OpenDesignPage: NextPage = () => {
                       new Date(a.date.start).getTime()
                   )
                   .map(x => (
-                    <li key={x.name}>
+                    <li key={x.date.start}>
                       <Event event={x} />
                     </li>
                   ))}

@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "license": "MIT",
   "repository": "https://github.com/BSA-US/dual-power-app.git",
-  "main": "index.js",
   "contributors": [
-    "replygirl <moon@moon.fyi> (https://twitter.com/anne_volin)",
+    "replygirl <moon@moon.fyi>",
     "cedenuff (https://twitter.com/cedenufff)"
   ],
+  "main": "index.js",
   "scripts": {
+    "build": "next build",
+    "build-storybook": "build-storybook",
     "dev": "next",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.json,.jsonc",
-    "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "@notionhq/client": "^0.4.9",
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.12.2",
+    "@antfu/ni": "^0.13.2",
     "@babel/core": "^7.16.12",
     "@iconify-json/mdi": "^1.0.12",
     "@next/eslint-plugin-next": "^12.0.7",
@@ -71,9 +72,8 @@
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-sonar": "^0.7.1",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-preset-env": "^7.0.1",
     "prettier": "^2.5.1",
     "raw-loader": "^4.0.2",
     "typescript": "^4.5.2",
@@ -81,106 +81,5 @@
     "unplugin-icons": "^0.13.0",
     "windicss-webpack-plugin": "^1.5.9"
   },
-  "eslintConfig": {
-    "extends": [
-      "@antfu/eslint-config",
-      "plugin:prettier/recommended"
-    ],
-    "plugins": [
-      "prettier",
-      "sort-keys-fix",
-      "@next/next"
-    ],
-    "rules": {
-      "import/order": [
-        "error",
-        {
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": false
-          },
-          "groups": [
-            "builtin",
-            "external",
-            "internal",
-            [
-              "parent",
-              "sibling",
-              "index"
-            ],
-            "object",
-            "unknown"
-          ],
-          "newlines-between": "always",
-          "pathGroups": [
-            {
-              "pattern": "~/**",
-              "group": "internal"
-            }
-          ],
-          "pathGroupsExcludedImportTypes": [
-            "builtin",
-            "object"
-          ]
-        }
-      ],
-      "prettier/prettier": "error",
-      "react/prop-types": "off",
-      "react/react-in-jsx-scope": "off",
-      "sort-keys-fix/sort-keys-fix": [
-        "error",
-        "asc",
-        {
-          "caseSensitive": true,
-          "natural": true
-        }
-      ],
-      "space-before-function-paren": [
-        "error",
-        {
-          "anonymous": "always",
-          "named": "never",
-          "asyncArrow": "always"
-        }
-      ]
-    },
-    "globals": {}
-  },
-  "prettier": {
-    "printWidth": 80,
-    "tabWidth": 2,
-    "useTabs": false,
-    "semi": false,
-    "singleQuote": true,
-    "quoteProps": "as-needed",
-    "jsxSingleQuote": true,
-    "trailingComma": "es5",
-    "bracketSpacing": true,
-    "jsxBracketSameLine": false,
-    "arrowParens": "avoid",
-    "requirePragma": false,
-    "insertPragma": false,
-    "proseWrap": "preserve",
-    "htmlWhitespaceSensitivity": "css",
-    "vueIndentScriptAndStyle": false,
-    "endOfLine": "lf",
-    "embeddedLanguageFormatting": "auto"
-  },
-  "postcss": {
-    "plugins": [
-      "postcss-flexbugs-fixes",
-      [
-        "postcss-preset-env",
-        {
-          "autoprefixer": {
-            "flexbox": "no-2009"
-          },
-          "stage": 1,
-          "features": {
-            "custom-properties": false
-          }
-        }
-      ]
-    ]
-  }
+  "packageManager": "yarn@3.2.0"
 }

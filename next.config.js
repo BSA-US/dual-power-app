@@ -29,6 +29,13 @@ module.exports = {
           custom: FileSystemIconLoader('public/images', svg =>
             svg.replace(/^<svg /, '<svg fill="currentColor" ')
           ),
+          glyph: FileSystemIconLoader('./assets/glyphs'),
+          icon: FileSystemIconLoader('./assets/icons'),
+        },
+        defaultClass: 'inline-block',
+        extension: 'jsx',
+        iconCustomizer(collection, _icon, props) {
+          if (collection === 'glyph') props.width = ''
         },
         jsx: 'react',
       })
@@ -36,12 +43,16 @@ module.exports = {
     config.plugins.push(
       AutoImport({
         dts: './auto-imports.d.ts',
+        eslintrc: {
+          enabled: true,
+        },
         imports: 'react',
         resolvers: [
           IconsResolver({
-            customCollections: ['custom'],
+            customCollections: ['custom', 'glyph', 'icon'],
+            enabledCollections: ['mdi'],
             extension: 'jsx',
-            prefix: 'Icon',
+            prefix: false,
           }),
         ],
       })

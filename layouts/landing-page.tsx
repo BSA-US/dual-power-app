@@ -7,8 +7,6 @@ import { Modal } from '~/components'
 import { bsaUrl, donateUrl, roadmapUrl, twitterUrl } from '~/constants'
 import { useStatus } from '~/hooks'
 
-import GlobeGlyph from '~icons/custom/globe-glyph.jsx'
-
 const VideoPlayerStream = dynamic(
   () => import('../components/video-player-stream'),
   {
@@ -57,29 +55,30 @@ const LandingPageLayout: FC<LandingPageLayoutProps> = ({
       {isDevelopment && (
         <div className='flex justify-between p-2 bg-hero-diagonal-lines bg-lime-200 font-mono text-xs'>
           <p>OTD development build</p>
-          <a className='underline' href='https://dualpower.app' target='_self'>
+          <a
+            className='underline'
+            href='https://dualpower.app'
+            target='_self'
+          >
             dualpower.app →
           </a>
         </div>
       )}
       <header className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 items-end gap-8'>
         <Link href='/'>
-          <GlobeGlyph
-            className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1'
-            style={{
-              background: `url('/images/globe-glyph-k.svg') no-repeat center center`,
-              backgroundSize: 'contain',
-            }}
-          />
+          <GlyphOTD className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1' />
         </Link>
         <nav className='col-span-2 justify-self-end lg:(col-start-3 col-span-3 justify-self-auto) xl:(col-start-2 col-span-2)'>
-          <div className='flex flex-col border-b-2 py-2 pr-28 leading-6 font-bold xs:(flex-row items-end pr-32 space-x-8) sm:pr-64 md:pr-88'>
+          <div className='flex flex-col border-b-2 py-2 pr-28 leading-6 font-bold xs:pr-32 sm:(flex-row items-end space-x-8 pr-32) md:pr-48'>
             <div className='flex flex-col'>
               <a href={twitterUrl}>Twitter</a>
               <a href={roadmapUrl}>Roadmap</a>
             </div>
             <Link href='/open-design'>
-              <a className='whitespace-wrap'>Open Design + Build</a>
+              <a>
+                <span>Open Design&#32;</span>
+                <span className='<xs:hidden'>+ Build</span>
+              </a>
             </Link>
           </div>
           {status?.live ? (
@@ -107,7 +106,10 @@ const LandingPageLayout: FC<LandingPageLayoutProps> = ({
       <footer className='border-t-2 py-4 text-xs font-mono'>
         <p>
           A BSA Open Tech Development project by{' '}
-          <a className='underline whitespace-nowrap' href={bsaUrl}>
+          <a
+            className='underline whitespace-nowrap'
+            href={bsaUrl}
+          >
             Black Socialists in America
           </a>
         </p>
