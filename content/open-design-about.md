@@ -1,4 +1,4 @@
-Open Design + Build began as a collaborative project involving [Manhattan Hydraulics](https://twitter.com/hydraulics_nyc), the Open Tech Development (OTD) team, Black Socialists in America, and its broader following + community to create the Dual Power App. Through open and transparent development, we're working to distribute digital tools supporting orgs and individuals building a direct democracy.
+Open Design + Build began as a collaborative project involving [Manhattan Hydraulics](https://twitter.com/hydraulics_nyc), Black Socialists in America's volunteer Open Tech Development (OTD) team, and BSA's broader following + community to create the Dual Power App. Through open and transparent development, we're working to distribute digital tools supporting orgs and individuals building a direct democracy.
 
 You're welcome to join us at any of our events, or [send BSA an intro](https://blacksocialists.us/contact) for an invite to our Basecamp space.
 
