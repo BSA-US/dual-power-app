@@ -25,5 +25,10 @@ export const Card = ({
 }
 
 export const CardCTA = ({ className, ...props }: any) => {
-  return <div className={`pt-2 flex justify-center ${className}`} {...props} />
+  return (
+    <div
+      className={`pt-2 flex justify-center ${className}`}
+      {...props}
+    />
+  )
 }
