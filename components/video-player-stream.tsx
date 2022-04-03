@@ -3,20 +3,16 @@ import tc from '@replygirl/tc'
 import classNames from 'classnames'
 import { detect } from 'detect-browser'
 import fetch from 'isomorphic-unfetch'
-import type { FC } from 'react'
-import { useCallback, useEffect, useState } from 'react'
 import useDimensions from 'react-cool-dimensions'
 
-import type { Video, StreamConfig } from '~/types'
+import type { StreamConfig, Video } from '~/types'
 
-interface VideoPlayerStreamProps {
-  onRequestClose: () => void
-  streamConfig: StreamConfig
-}
-
-const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
+const VideoPlayerStreamComponent = ({
   onRequestClose,
   streamConfig: { videoConfig, chatConfig, actions, discordInviteUrl },
+}: {
+  onRequestClose: () => void
+  streamConfig: StreamConfig
 }) => {
   const [videoPlayer, setVideoPlayer] = useState<any | null>(null)
   const [videoPlayerBusy, setVideoPlayerBusy] = useState<boolean>(false)
@@ -104,7 +100,10 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
               onClick={() => play()}
             >
               {!videoPlaying && (
-                <button className='bg-white border p-2' type='button'>
+                <button
+                  className='bg-white border p-2'
+                  type='button'
+                >
                   Play
                 </button>
               )}
@@ -147,7 +146,10 @@ const VideoPlayerStreamComponent: FC<VideoPlayerStreamProps> = ({
             >
               <span>
                 Chat works best in{' '}
-                <a className='underline' href={discordInviteUrl}>
+                <a
+                  className='underline'
+                  href={discordInviteUrl}
+                >
                   Discord
                 </a>{' '}
                 or Chrome

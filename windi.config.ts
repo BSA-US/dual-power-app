@@ -2,6 +2,7 @@ import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
 import { aria, content } from './packages/@replygirl/windicss-plugins'
+import { screens } from './windi.screens'
 
 export default defineConfig({
   darkMode: 'class',
@@ -61,6 +62,12 @@ export default defineConfig({
 
     'inset-x-center': 'left-1/2 transform -translate-x-1/2',
     'inset-y-center': 'top-1/2 transform -translate-y-1/2',
+    'stack-x': 'flex flex-row items-center justify-between',
+    'stack-x-center': 'flex flex-row items-center justify-center',
+    'stack-x-start': 'flex flex-row items-start justify-start',
+    'stack-y': 'flex flex-col items-start justify-between',
+    'stack-y-center': 'flex flex-col items-center justify-center',
+    'stack-y-start': 'flex flex-col items-start justify-start',
   },
   theme: {
     borderColor: theme =>
@@ -69,9 +76,7 @@ export default defineConfig({
         theme('colors') ?? {}
       ),
     extend: {
-      screens: {
-        xs: '480px',
-      },
+      screens,
       typography: {
         DEFAULT: {
           css: {
@@ -99,8 +104,8 @@ export default defineConfig({
         'monospace',
       ],
       sans: [
-        'Helvetica Now Display',
-        // 'Helvetica Neue',
+        // 'Helvetica Now Display',
+        'Helvetica Neue',
         'Helvetica',
         // 'Arial',
         // 'sans-serif',

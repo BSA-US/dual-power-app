@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 const path = require('path')
 
-const unpluginIcons = require('unplugin-icons/webpack')
+const AutoImport = require('unplugin-auto-import/webpack')
+const { FileSystemIconLoader } = require('unplugin-icons/loaders')
+const IconsResolver = require('unplugin-icons/resolver')
+const Icons = require('unplugin-icons/webpack')
 const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
 
 module.exports = {
@@ -18,11 +22,38 @@ module.exports = {
     })
 
     config.plugins.push(
-      unpluginIcons({
-        autoInstall: true,
+      Icons({
         compiler: 'jsx',
+        customCollections: {
+          glyph: FileSystemIconLoader('./assets/glyphs'),
+          icon: FileSystemIconLoader('./assets/icons'),
+          public: FileSystemIconLoader('public/images', svg =>
+            svg.replace(/^<svg /, '<svg fill="currentColor" ')
+          ),
+        },
+        defaultClass: 'inline-block',
         extension: 'jsx',
+        iconCustomizer(collection, _icon, props) {
+          if (collection === 'glyph') props.width = ''
+        },
         jsx: 'react',
+      })
+    )
+    config.plugins.push(
+      AutoImport({
+        dts: './auto-imports.d.ts',
+        eslintrc: {
+          enabled: true,
+        },
+        imports: 'react',
+        resolvers: [
+          IconsResolver({
+            customCollections: ['public', 'glyph', 'icon'],
+            enabledCollections: ['mdi'],
+            extension: 'jsx',
+            prefix: false,
+          }),
+        ],
       })
     )
 

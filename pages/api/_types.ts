@@ -1,5 +1,5 @@
-import { VercelRequest, VercelResponse } from '@vercel/node'
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 // Exporting unions of the Now & Next _types
 // makes the API more framework-agnostic

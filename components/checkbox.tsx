@@ -1,10 +1,8 @@
-import { Root, Indicator } from '@radix-ui/react-checkbox'
+import { Indicator, Root } from '@radix-ui/react-checkbox'
 import type {
-  CheckboxProps,
   CheckboxIndicatorProps,
+  CheckboxProps,
 } from '@radix-ui/react-checkbox'
-
-import MdiCheck from '~icons/mdi/check.jsx'
 
 export const Checkbox = ({ className = '', ...props }: CheckboxProps) => (
   <Root
@@ -19,5 +17,8 @@ export const CheckIndicator = ({
   className = '',
   ...props
 }: CheckboxIndicatorProps) => (
-  <Indicator {...props} className={`${className}`}></Indicator>
+  <Indicator
+    {...props}
+    className={`${className}`}
+  ></Indicator>
 )

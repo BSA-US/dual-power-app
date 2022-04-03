@@ -1,4 +1,4 @@
-import { Tabs, TabsHeaders, TabHeader, TabContent } from '../components'
+import { TabContent, TabHeader, Tabs, TabsHeaders } from '../components'
 
 export default {
   component: Tabs,

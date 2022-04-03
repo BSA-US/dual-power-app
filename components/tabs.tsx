@@ -1,9 +1,9 @@
-import { Root, List, Trigger, Content } from '@radix-ui/react-tabs'
+import { Content, List, Root, Trigger } from '@radix-ui/react-tabs'
 import type {
-  TabsProps,
-  TabsListProps,
-  TabsTriggerProps,
   TabsContentProps,
+  TabsListProps,
+  TabsProps,
+  TabsTriggerProps,
 } from '@radix-ui/react-tabs'
 
 export const Tabs = (props: TabsProps) => <Root {...props} />
@@ -23,5 +23,8 @@ export const TabHeader = ({ className = '', ...props }: TabsTriggerProps) => (
 )
 
 export const TabContent = ({ className = '', ...props }: TabsContentProps) => (
-  <Content {...props} className={`focus-ring ${className}`} />
+  <Content
+    {...props}
+    className={`focus-ring ${className}`}
+  />
 )

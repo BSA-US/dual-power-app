@@ -25,7 +25,10 @@ export const CloseButtonAndOverlay = () => (
 )
 
 export const NoCloseButton = () => (
-  <Modal removeCloseIcon trigger={<Button>Modal without close icon</Button>}>
+  <Modal
+    removeCloseIcon
+    trigger={<Button>Modal without close icon</Button>}
+  >
     <ModalDescription className='mb-4'>
       If you remove the close icon make sure to add your own close button
     </ModalDescription>
