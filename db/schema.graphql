@@ -1,10 +1,39 @@
-type Term {
-  name: String!
-  description: String!
-  wikiUrl: String
-  seeAlso: [Term!]
+type What {
+  bar: String
 }
 
-type Query {
-  allTerms: [Term!]
+type Proposal {
+  canonicalDraft: Draft @resolver(name: "get_canonical_draft")
+  drafts: [Draft!]! @relation(name: "proposal_drafts")
+}
+
+type Draft {
+  content: ContentNode!
+  poll: Poll
+  proposal: Proposal! @relation(name: "proposal_drafts")
+}
+
+type ContentNode @embedded {
+  tag: String!
+  text: String
+  children: [ContentNode!]!
+}
+
+type Poll {
+  draft: Draft!
+  openAt: Time
+  openDurationSeconds: Int
+  pollOptions: [PollOption!]! @relation
+  votes: [Vote!]! @relation
+}
+
+type PollOption {
+  name: String
+  poll: Poll!
+  votes: [Vote!]! @relation(name: "vote_options")
+}
+
+type Vote {
+  poll: Poll!
+  pollOptions: [PollOption!]! @relation(name: "vote_options")
 }
