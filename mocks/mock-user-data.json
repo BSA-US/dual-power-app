@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": "user-id-1",
+      "bio": "Hello I am a user and this is my bio blurb",
+      "circles": ["membership-id-1", "membership-id-4"],
+      "focuses": ["focus-id-1", "focus-id-2", "focus-id-3"],
+      "handle": "Cool McAwesome",
+      "location": "Placeton",
+      "name": "Cromulence Namesly",
+      "posts": ["post-id-1", "post-id-2", "post-id-3"],
+      "pronouns": "nil/none (please do not refer to me)"
+    },
+    {
+      "id": "user-id-2",
+      "bio": "hi! I am also a user and this is my bio blurb",
+      "circles": ["membership-id-2"],
+      "focuses": ["focus-id-1", "focus-id-2", "focus-id-3"],
+      "handle": "Fine McAlright",
+      "location": "Placeton",
+      "name": "Zip Bop",
+      "posts": ["post-id-1", "post-id-2", "post-id-3"],
+      "pronouns": "nil/none (please do not refer to me)"
+    },
+    {
+      "id": "user-id-3",
+      "bio": "I am always prepared",
+      "circles": ["membership-id-3"],
+      "focuses": ["focus-id-1", "focus-id-2", "focus-id-3"],
+      "handle": "Towelfolk42",
+      "location": "Magreathea",
+      "name": "Zarkin' Frood",
+      "posts": ["post-id-1", "post-id-2", "post-id-3"],
+      "pronouns": "nil/none (please do not refer to me)"
+    }
+  ]
+}

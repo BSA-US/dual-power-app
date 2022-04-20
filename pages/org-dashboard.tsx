@@ -29,7 +29,7 @@ const OrgDashboardPage: NextPage = () => {
             <span>ORG</span>
           </div>
           <h3>BSA</h3>
-          <p>1 Vota ready</p>
+          <p>1 Vote ready</p>
         </Card>
         <Card
           treatment='knockout'
@@ -57,15 +57,15 @@ const OrgDashboardPage: NextPage = () => {
           <div className='flex flex-col'>
             <h3>TAKE ACTION</h3>
             <div className='grid-cols-3 flex'>
-              <Card>Developing the Dial Power App</Card>
-              <Card>Developing the Dial Power App</Card>
-              <Card>Developing the Dial Power App</Card>
+              <Card>Developing the Dual Power App</Card>
+              <Card>Developing the Dual Power App</Card>
+              <Card>Developing the Dual Power App</Card>
             </div>
             <h3>MUTUAL AID</h3>
 
             <div className='grid-cols-2 flex'>
-              <Card>Developing the Dial Power App</Card>
-              <Card>Developing the Dial Power App</Card>
+              <Card>Developing the Dual Power App</Card>
+              <Card>Developing the Dual Power App</Card>
             </div>
           </div>
         </div>
