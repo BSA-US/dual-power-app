@@ -20,7 +20,7 @@
       "location": "Placeton",
       "name": "Zip Bop",
       "posts": ["post-id-1", "post-id-2", "post-id-3"],
-      "pronouns": "nil/none (please do not refer to me)"
+      "pronouns": "He/They (please do not refer to me)"
     },
     {
       "id": "user-id-3",
@@ -31,7 +31,7 @@
       "location": "Magreathea",
       "name": "Zarkin' Frood",
       "posts": ["post-id-1", "post-id-2", "post-id-3"],
-      "pronouns": "nil/none (please do not refer to me)"
+      "pronouns": "She/THey (please do not refer to me)"
     }
   ]
 }
