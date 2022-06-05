@@ -36,7 +36,7 @@ const IndexPage: NextPage = () => {
             software with social media components baked into it so that
             grassroots orgs can democratically organize themselves internally,
             and communicate with one another (along with the broader public)
-            externally, safely and securely.
+            externally in a safe and secure way.
           </p>
           {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
         </section>
