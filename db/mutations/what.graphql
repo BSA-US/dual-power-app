@@ -1,0 +1,7 @@
+mutation CreateWhat {
+  createWhat(data: {
+    bar: "no thanks!"
+  }) {
+    _id
+  }
+}
