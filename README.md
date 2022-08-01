@@ -23,31 +23,33 @@ While we're focusing on design so we can get to a buildable spec ASAP, you're fr
 
 ## Setup
 
-1. Create a new branch:
+1. Fork the [Dual Power App github repository](https://github.com/BSA-US/dual-power-app) and clone it locally.
+2. Create a new branch:
     ```sh
     git checkout -b feature/my-cool-thing
     ```
-2. Duplicate the `.env` files:
+3. Duplicate the `.env` files:
     ```sh
     cp .env.template .env
     ```
-3. Install the correct version of Node.js (this is what `.nvmrc` does)
+4. Install the correct version of Node.js using [node version manager](https://github.com/nvm-sh/nvm#installing-and-updating) (this is what `.nvmrc` is for)
     ```sh
     nvm install
     nvm use
     ```
-4. Install `yarn` globally:
+5. Install `yarn` globally:
     ```sh
     npm install --global yarn
     ```
-5. Install dependencies:
+6. Install dependencies:
     ```sh
     yarn
     ```
-6. Install `vercel` globally:
+7. [Sign up](https://vercel.com/signup) for a free vercel account. You need to import your fork of the dual power github repo into vercel. Deploy to vercel from the command line with:
     ```sh
-    yarn global add vercel
+    npx vercel
     ```
+
 
 ### Alternative setup with Nix
 
@@ -60,5 +62,5 @@ nix develop
 ### Run the Dual Power App locally
 
 ```sh
-vc dev
+npx yarn dev
 ```
