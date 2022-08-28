@@ -10,7 +10,7 @@ import { LandingPage } from '~/layouts'
  * Create sub-components for cards that lay out well with the group / org / area icons
  */
 
-const OrgDashboardPage: NextPage = () => {
+const CircleDashboardPage: NextPage = () => {
   return (
     <LandingPage classNameMain='flex flex-col space-y-12 lg:space-y-16'>
       <div className='grid-cols-4 flex'>
@@ -77,4 +77,4 @@ const OrgDashboardPage: NextPage = () => {
   )
 }
 
-export default OrgDashboardPage
+export default CircleDashboardPage

@@ -1,7 +1,10 @@
 {
   "globals": {
+    "GlyphBsa": true,
+    "GlyphManhattanHydraulics": true,
     "GlyphOtd": true,
     "MdiCheck": true,
+    "MdiClose": true,
     "useCallback": true,
     "useContext": true,
     "useEffect": true,
