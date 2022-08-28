@@ -31,6 +31,13 @@ const IndexPage: NextPage = () => {
             for organization founding, funding, governance, and internal +
             external communications.
           </p>
+          <p>
+            In more technical terms, the Dual Power App is project management
+            software with social media components baked into it so that
+            grassroots orgs can democratically organize themselves internally,
+            and communicate with one another (along with the broader public)
+            externally in a safe and secure way.
+          </p>
           {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
         </section>
       </div>

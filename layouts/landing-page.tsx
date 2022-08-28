@@ -102,7 +102,7 @@ const LandingPageLayout = ({
       <main className={`flex-grow ${classNameMain}`}>{children}</main>
       <footer className='border-t-2 py-4 text-xs font-mono'>
         <p>
-          A BSA Open Tech Development project by{' '}
+          An Open Tech Development (OTD) project commissioned by{' '}
           <a
             className='underline whitespace-nowrap'
             href={bsaUrl}
