@@ -45,6 +45,7 @@ export default defineConfig({
     // https://windicss.org/plugins/official/typography.html
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('windicss/plugin/typography')({
+      dark: true,
       modifiers: ['DEFAULT', 'sm', 'lg', 'red'],
     }),
 
@@ -55,11 +56,14 @@ export default defineConfig({
   shortcuts: {
     'bg-image-contain': 'bg-no-repeat bg-center bg-contain',
     'bg-image-cover': 'bg-no-repeat bg-center bg-cover',
+    btn: 'font-bold p-2 rounded-md m-2',
+    'btn-secondary': 'border text-white border-white',
+    'dark-accent': 'bg-white text-black border-white',
+    'dark-page': 'bg-black text-white',
     'focus-ring':
       'focus:outline-none focus-visible:(outline-none ring ring-offset-2 ring-indigo-500)',
     'inset-center':
       'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
-
     'inset-x-center': 'left-1/2 transform -translate-x-1/2',
     'inset-y-center': 'top-1/2 transform -translate-y-1/2',
     'stack-x': 'flex flex-row items-center justify-between',
@@ -75,13 +79,24 @@ export default defineConfig({
         { DEFAULT: theme('colors.black', 'currentColor') },
         theme('colors') ?? {}
       ),
+    colors: {
+      ballot: '#3375FF',
+      black: '#0D0D0D',
+      'blue-gray': '#7F8693',
+      'dark-gray': '#444444',
+      greenlit: '#14FF00',
+      'light-gray': '#E0E0E0',
+      pop: '#BB28FF',
+      reject: '#FF3333',
+      white: '#FAFAFA',
+      yield: '#DBFF33',
+    },
     extend: {
       screens,
       typography: {
         DEFAULT: {
           css: {
             color: colors.black,
-            lineHeight: 1.25,
             p: {
               marginBottom: '0.5rem',
               marginTop: '0.5rem',
@@ -91,6 +106,7 @@ export default defineConfig({
       },
     },
     fontFamily: {
+      logo: ['"Space Grotesk"'],
       mono: [
         'Space Mono',
         'Helvetica Mono',
@@ -104,11 +120,9 @@ export default defineConfig({
         'monospace',
       ],
       sans: [
-        // 'Helvetica Now Display',
-        'Helvetica Neue',
-        'Helvetica',
+        '"Manrope"',
         // 'Arial',
-        // 'sans-serif',
+        'sans-serif',
       ],
     },
   },

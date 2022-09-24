@@ -4,7 +4,6 @@ declare global {
   const GlyphBsa: typeof import('~icons/glyph/bsa.jsx')['default']
   const GlyphManhattanHydraulics: typeof import('~icons/glyph/manhattan-hydraulics.jsx')['default']
   const GlyphOtd: typeof import('~icons/glyph/otd.jsx')['default']
-  const MdiCheck: typeof import('~icons/mdi/check.jsx')['default']
   const MdiClose: typeof import('~icons/mdi/close.jsx')['default']
   const useCallback: typeof import('react')['useCallback']
   const useContext: typeof import('react')['useContext']

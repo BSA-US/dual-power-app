@@ -18,7 +18,7 @@ const IndexPage: NextPage = () => {
     >
       <div className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
-          <h1 className='text-6xl leading-12 lg:(text-7xl leading-16)'>
+          <h1 className='font-logo uppercase text-6xl leading-12 lg:(text-7xl leading-16)'>
             The&nbsp;Dual Power&nbsp;App
           </h1>
           <p className='font-mono uppercase'>Build economic democracy</p>
@@ -41,9 +41,9 @@ const IndexPage: NextPage = () => {
           {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
         </section>
       </div>
-      <section className='border-t-2 space-y-8'>
+      <section className='border-t-2 space-y-8 dark:border-white'>
         <div className='flex'>
-          <p className='px-4 py-2 bg-black text-white font-mono uppercase lg:(px-6 py-4)'>
+          <p className='px-4 py-2 bg-black text-white dark:dark-accent font-mono uppercase lg:(px-6 py-4)'>
             What is a Dual Power Project?
           </p>
         </div>

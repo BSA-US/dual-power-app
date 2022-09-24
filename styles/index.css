@@ -4,13 +4,22 @@
 
 :root {
   @apply font-sans box-border;
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.dark {
+  a, .prose strong {
+    @apply text-light-gray;
+  }
+  .prose {
+    @apply text-white;
+  }
 }
 
 * {
   scrollbar-width: none;
 
-  &::-webkit-scrollbar {
+   &::-webkit-scrollbar {
     display: none;
   }
 }

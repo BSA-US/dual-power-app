@@ -67,10 +67,8 @@ const LandingPageLayout = ({
         </Link>
         <nav className='col-span-2 justify-self-end lg:(col-start-3 col-span-3 justify-self-auto) xl:(col-start-2 col-span-2)'>
           <div className='flex flex-col border-b-2 py-2 pr-28 leading-6 font-bold xs:pr-32 sm:(flex-row items-end space-x-8 pr-32) md:pr-48'>
-            <div className='flex flex-col'>
-              <a href={twitterUrl}>Twitter</a>
-              <a href={roadmapUrl}>Roadmap</a>
-            </div>
+            <a href={twitterUrl}>Twitter</a>
+            <a href={roadmapUrl}>Roadmap</a>
             <Link href='/open-design'>
               <a>
                 <span>Open Design&#32;</span>
@@ -89,7 +87,7 @@ const LandingPageLayout = ({
             </button>
           ) : (
             <a
-              className={`absolute right-4 top-4 grid place-content-center rounded-full h-20 w-20 border-2 text-center cursor-pointer xs:top-2 lg:right-16 ${
+              className={`absolute right-4 top-4 grid place-content-center rounded-full h-20 w-20 border-2 dark:border-white text-center cursor-pointer xs:top-2 lg:right-16 ${
                 isDevelopment ? 'top-24 xs:top-22' : 'top-4 xs:top-2'
               } ${classNameDonate}`}
               href={donateUrl}
@@ -100,7 +98,7 @@ const LandingPageLayout = ({
         </nav>
       </header>
       <main className={`flex-grow ${classNameMain}`}>{children}</main>
-      <footer className='border-t-2 py-4 text-xs font-mono'>
+      <footer className='border-t-2 dark:border-white py-4 text-xs font-mono'>
         <p>
           An Open Tech Development (OTD) project commissioned by{' '}
           <a
