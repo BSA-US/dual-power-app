@@ -18,12 +18,14 @@ const IndexPage: NextPage = () => {
     >
       <div className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
-          <h1 className='font-logo uppercase text-6xl leading-12 lg:(text-7xl leading-16)'>
-            The&nbsp;Dual Power&nbsp;App
+          <h1 className='font-logo text-subheading uppercase dark:text-light-gray'>
+            Dual Power App
           </h1>
-          <p className='font-mono uppercase'>Build economic democracy</p>
+          <p className='font-mono uppercase dark:text-light-gray'>
+            Build economic democracy
+          </p>
         </section>
-        <section className='col-span-3 leading-5 space-y-2 lg:(col-start-3 col-span-3 text-4xl leading-8 space-y-4) xl:(col-start-2 col-span-2)'>
+        <section className='col-span-3 space-y-2 lg:(col-start-3 col-span-3 space-y-4) xl:(col-start-2 col-span-2) dark:text-light-gray'>
           <p>
             The Dual Power App is an app for democratic digital organizing and
             secure social networking that provides frameworks for the building
@@ -41,13 +43,13 @@ const IndexPage: NextPage = () => {
           {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
         </section>
       </div>
-      <section className='border-t-2 space-y-8 dark:border-white'>
+      <section className='border-t-2 space-y-8 dark:border-light-gray'>
         <div className='flex'>
-          <p className='px-4 py-2 bg-black text-white dark:dark-accent font-mono uppercase lg:(px-6 py-4)'>
+          <p className='px-4 py-2 bg-black text-light-gray dark:bg-light-gray  dark:text-black font-mono uppercase'>
             What is a Dual Power Project?
           </p>
         </div>
-        <div className='grid grid-flow-row-dense gap-4 leading-5 max-w-192 lg:(grid-cols-2)'>
+        <div className='grid grid-flow-row-dense gap-4 max-w-192 lg:(grid-cols-2) prose dark:text-light-gray'>
           <p className='row-span-2'>
             A Dual Power Project is a local, concerted effort to move the
             economy toward collective ownership and solidarity through the

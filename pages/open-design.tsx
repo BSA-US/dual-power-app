@@ -24,14 +24,14 @@ const OpenDesignPage: NextPage = () => {
         {docsHeadLink}
         {eventsHeadLink}
       </Head>
-      <div className='grid grid-flow-row-dense gap-8 grid-cols-3 <lg:space-y-8 lg:grid-cols-5 xl:grid-cols-3'>
+      <div className='grid grid-flow-row-dense gap-8 grid-cols-3 dark:text-light-gray <lg:space-y-8 lg:grid-cols-5 xl:grid-cols-3'>
         <div className='col-span-3 lg:col-span-2 xl:col-span-1'>
           <section className='space-y-4 lg:(space-y-8 sticky top-8)'>
             <h1 className='flex flex-col'>
-              <span className='font-logo text-2xl lg:text-3xl'>
+              <span className='font-logo text-2xl uppercase'>
                 Dual&nbsp;Power App
               </span>
-              <span className='text-4xl lg:text-5xl'>
+              <span className='font-mono text-4xl'>
                 Open&nbsp;Design +&nbsp;Build
               </span>
             </h1>
@@ -60,7 +60,7 @@ const OpenDesignPage: NextPage = () => {
               <MdiClose className='self-center' />
               <Link href='https://hydraulics.nyc/'>
                 <a>
-                  <GlyphManhattanHydraulics className='h-10' />
+                  <GlyphManhattanHydraulics className='h-10 dark:text-light-gray' />
                   <span className='hidden'>Manhattan Hydraulics</span>
                 </a>
               </Link>

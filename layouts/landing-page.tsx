@@ -63,14 +63,24 @@ const LandingPageLayout = ({
       )}
       <header className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 items-end gap-8'>
         <Link href='/'>
-          <GlyphOtd className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1' />
+          <GlyphOtd className='h-18 w-18 cursor-pointer lg:col-span-2 xl:col-span-1 dark:text-yield' />
         </Link>
         <nav className='col-span-2 justify-self-end lg:(col-start-3 col-span-3 justify-self-auto) xl:(col-start-2 col-span-2)'>
           <div className='flex flex-col border-b-2 py-2 pr-28 leading-6 font-bold xs:pr-32 sm:(flex-row items-end space-x-8 pr-32) md:pr-48'>
-            <a href={twitterUrl}>Twitter</a>
-            <a href={roadmapUrl}>Roadmap</a>
+            <a
+              className='dark:text-yield'
+              href={twitterUrl}
+            >
+              Twitter
+            </a>
+            <a
+              className='dark:text-yield'
+              href={roadmapUrl}
+            >
+              Roadmap
+            </a>
             <Link href='/open-design'>
-              <a>
+              <a className='dark:text-yield'>
                 <span>Open Design&#32;</span>
                 <span className='<xs:hidden'>+ Build</span>
               </a>
@@ -78,7 +88,7 @@ const LandingPageLayout = ({
           </div>
           {status?.live ? (
             <button
-              className={`absolute right-4 top-4 grid place-content-center rounded-full h-20 w-20 border-2 border-red-500 text-red-500 leading-5 text-center cursor-pointer animate-animated animate-pulse animate-infinite xs:top-2 lg:right-16 ${
+              className={`absolute right-4 top-4 grid place-content-center rounded-full h-20 w-20 border-2 border-red-500 text-red-500 leading-5 text-center cursor-pointer animate-animated animate-pulse animate-infinite xs:top-2 lg:right-16 dark:text-yield dark:border-yield ${
                 isDevelopment ? 'top-24 xs:top-22' : 'top-4 xs:top-2'
               } ${classNameDonate}`}
               onClick={() => setShowVideo(true)}
@@ -98,11 +108,11 @@ const LandingPageLayout = ({
         </nav>
       </header>
       <main className={`flex-grow ${classNameMain}`}>{children}</main>
-      <footer className='border-t-2 dark:border-white py-4 text-xs font-mono'>
+      <footer className='border-t-2 dark:border-white py-4 text-xs font-mono dark:text-light-gray'>
         <p>
           An Open Tech Development (OTD) project commissioned by{' '}
           <a
-            className='underline whitespace-nowrap'
+            className='underline whitespace-nowrap dark:text-yield'
             href={bsaUrl}
           >
             Black Socialists in America

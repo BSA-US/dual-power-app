@@ -1,4 +1,4 @@
-import colors from 'windicss/colors'
+// import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
 import { aria, content } from './packages/@replygirl/windicss-plugins'
@@ -46,7 +46,7 @@ export default defineConfig({
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('windicss/plugin/typography')({
       dark: true,
-      modifiers: ['DEFAULT', 'sm', 'lg', 'red'],
+      modifiers: ['DEFAULT', 'sm', 'lg', 'red', '2xl', '4xl'],
     }),
 
     aria,
@@ -58,8 +58,6 @@ export default defineConfig({
     'bg-image-cover': 'bg-no-repeat bg-center bg-cover',
     btn: 'font-bold p-2 rounded-md m-2',
     'btn-secondary': 'border text-white border-white',
-    'dark-accent': 'bg-white text-black border-white',
-    'dark-page': 'bg-black text-white',
     'focus-ring':
       'focus:outline-none focus-visible:(outline-none ring ring-offset-2 ring-indigo-500)',
     'inset-center':
@@ -92,11 +90,35 @@ export default defineConfig({
       yield: '#DBFF33',
     },
     extend: {
+      fontSize: {
+        heading: ['7.625rem', '7rem'],
+        subheading: ['5rem', '5rem'],
+        title: ['14rem', '14rem'],
+      },
       screens,
       typography: {
+        '2xl': {
+          css: {
+            letterSpacing: '.02rem',
+            lineHeight: '1.25rem',
+          },
+        },
+        '4xl': {
+          css: {
+            fontSize: '2.25rem',
+            letterSpacing: '.04rem',
+          },
+        },
+        DARK: {
+          css: {
+            color: 'text-light-gray',
+          },
+        },
         DEFAULT: {
           css: {
-            color: colors.black,
+            color: 'text-black',
+            letterSpacing: '.03rem',
+            lineHeight: '1.25rem',
             p: {
               marginBottom: '0.5rem',
               marginTop: '0.5rem',

@@ -4,16 +4,6 @@
 
 :root {
   @apply font-sans box-border;
-  font-size: 15px;
-}
-
-.dark {
-  a, .prose strong {
-    @apply text-light-gray;
-  }
-  .prose {
-    @apply text-white;
-  }
 }
 
 * {

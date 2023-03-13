@@ -13,7 +13,7 @@ class DualPowerAppDocument extends Document {
             rel='stylesheet'
           />
         </Head>
-        <body className='dark:dark-page'>
+        <body className='dark:bg-black'>
           <Main />
           <NextScript />
         </body>
