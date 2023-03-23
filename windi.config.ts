@@ -1,8 +1,20 @@
-// import colors from 'windicss/colors'
 import { defineConfig } from 'windicss/helpers'
 
 import { aria, content } from './packages/@replygirl/windicss-plugins'
 import { screens } from './windi.screens'
+
+const colors = {
+  ballot: '#3375FF',
+  black: '#0D0D0D',
+  'blue-gray': '#7F8693',
+  'dark-gray': '#444444',
+  greenlit: '#14FF00',
+  'light-gray': '#E0E0E0',
+  pop: '#BB28FF',
+  reject: '#FF3333',
+  white: '#FAFAFA',
+  yield: '#DBFF33',
+}
 
 export default defineConfig({
   darkMode: 'class',
@@ -77,18 +89,7 @@ export default defineConfig({
         { DEFAULT: theme('colors.black', 'currentColor') },
         theme('colors') ?? {}
       ),
-    colors: {
-      ballot: '#3375FF',
-      black: '#0D0D0D',
-      'blue-gray': '#7F8693',
-      'dark-gray': '#444444',
-      greenlit: '#14FF00',
-      'light-gray': '#E0E0E0',
-      pop: '#BB28FF',
-      reject: '#FF3333',
-      white: '#FAFAFA',
-      yield: '#DBFF33',
-    },
+    colors,
     extend: {
       fontSize: {
         heading: ['7.625rem', '7rem'],
@@ -99,6 +100,7 @@ export default defineConfig({
       typography: {
         '2xl': {
           css: {
+            fontSize: '1.5rem',
             letterSpacing: '.02rem',
             lineHeight: '1.25rem',
           },
@@ -107,16 +109,17 @@ export default defineConfig({
           css: {
             fontSize: '2.25rem',
             letterSpacing: '.04rem',
+            lineHeight: '2.5rem',
           },
         },
         DARK: {
           css: {
-            color: 'text-light-gray',
+            color: colors['light-gray'],
           },
         },
         DEFAULT: {
           css: {
-            color: 'text-black',
+            color: colors.black,
             letterSpacing: '.03rem',
             lineHeight: '1.25rem',
             p: {
@@ -128,7 +131,7 @@ export default defineConfig({
       },
     },
     fontFamily: {
-      logo: ['"Space Grotesk"'],
+      brand: ['"Space Grotesk"'],
       mono: [
         'Space Mono',
         'Helvetica Mono',
@@ -141,11 +144,7 @@ export default defineConfig({
         'Courier New',
         'monospace',
       ],
-      sans: [
-        '"Manrope"',
-        // 'Arial',
-        'sans-serif',
-      ],
+      sans: ['"Manrope"', 'sans-serif'],
     },
   },
 })

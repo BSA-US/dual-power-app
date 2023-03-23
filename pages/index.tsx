@@ -18,7 +18,7 @@ const IndexPage: NextPage = () => {
     >
       <div className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
-          <h1 className='font-logo text-subheading uppercase dark:text-light-gray'>
+          <h1 className='font-brand text-subheading uppercase dark:text-light-gray'>
             Dual Power App
           </h1>
           <p className='font-mono uppercase dark:text-light-gray'>

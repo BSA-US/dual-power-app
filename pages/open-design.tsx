@@ -28,7 +28,7 @@ const OpenDesignPage: NextPage = () => {
         <div className='col-span-3 lg:col-span-2 xl:col-span-1'>
           <section className='space-y-4 lg:(space-y-8 sticky top-8)'>
             <h1 className='flex flex-col'>
-              <span className='font-logo text-2xl uppercase'>
+              <span className='font-brand text-2xl uppercase'>
                 Dual&nbsp;Power App
               </span>
               <span className='font-mono text-4xl'>
