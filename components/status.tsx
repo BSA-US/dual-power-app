@@ -37,7 +37,7 @@ const StatusComponent: FC<StatusProps> = ({ onOpenVideo }) => {
           ))}
           {status?.live && (
             <li
-              className='whitespace-nowrap underline cursor-pointer text-red-500 first:font-bold'
+              className='whitespace-nowrap underline cursor-pointer text-red-500 first:font-bold dark:text-yield'
               key='live'
               role='button'
               onClick={onOpenVideo}

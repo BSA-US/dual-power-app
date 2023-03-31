@@ -15,7 +15,7 @@
     "dev": "next",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.json,.jsonc",
     "start": "next start",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -s public -p 6006"
   },
   "dependencies": {
     "@notionhq/client": "^0.4.9",

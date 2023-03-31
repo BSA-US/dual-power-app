@@ -7,6 +7,21 @@ module.exports = {
     '../stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  previewHead: (head) => (`
+    ${head}
+    <style>
+      @font-face {
+        font-family: 'Manrope';
+        src: url('/fonts/Manrope-Bold.ttf');
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: 'Manrope';
+        src: url('/fonts/Manrope-Regular.ttf');
+        font-weight: 400;
+      }
+    </style>
+  `),
   webpackFinal: config => {
     config.plugins.push(
       new WindiCSSWebpackPlugin({
@@ -22,7 +37,7 @@ module.exports = {
 
     config.resolve.alias = {
       ...config.resolve?.alias,
-      '~': path.resolve(__dirname, '../src/'),
+      '~': path.dirname(__dirname),
     }
     return config
   },

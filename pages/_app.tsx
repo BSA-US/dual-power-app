@@ -4,7 +4,8 @@ import Head from 'next/head'
 import 'destyle.css'
 import 'windi.css'
 
-import '~/styles/fonts-helvetica.css'
+import '~/styles/fonts-manrope.css'
+import '~/styles/fonts-space-grotesk.css'
 import '~/styles/index.css'
 import { useStatus } from '~/hooks'
 

@@ -4,13 +4,12 @@
 
 :root {
   @apply font-sans box-border;
-  font-size: 16px;
 }
 
 * {
   scrollbar-width: none;
 
-  &::-webkit-scrollbar {
+   &::-webkit-scrollbar {
     display: none;
   }
 }
