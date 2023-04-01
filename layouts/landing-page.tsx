@@ -97,7 +97,7 @@ const LandingPageLayout = ({
             </button>
           ) : (
             <a
-              className={`absolute right-4 top-4 grid place-content-center rounded-full h-20 w-20 border-2 dark:border-white text-center cursor-pointer xs:top-2 lg:right-16 ${
+              className={`absolute right-4 top-4 grid place-content-center rounded-full h-20 w-20 border-2 dark:border-yield dark:text-yield text-center cursor-pointer xs:top-2 lg:right-16 ${
                 isDevelopment ? 'top-24 xs:top-22' : 'top-4 xs:top-2'
               } ${classNameDonate}`}
               href={donateUrl}
