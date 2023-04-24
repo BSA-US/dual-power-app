@@ -1,0 +1,46 @@
+{
+  "circles": [
+    {
+      "id": "circle-id-1",
+      "name": "Our Cool Circle",
+      "desires": ["desire-id-1", "desire-id-2", "desire-id-3"],
+      "docs": "doc-directory-id-1",
+      "focuses": ["focus-id-1", "focus-id-2", "focus-id-3"],
+      "funds": ["fund-id-1", "fund-id-2"],
+      "location": "location-id-1",
+      "engagements": ["engagement-id-1", "engagement-id-2"],
+      "members": ["membership-id-1", "membership-id-2", "membership-id-3"],
+      "membersInherited": false,
+      "membersRequireInvite": true,
+      "proposals": ["proposal-id-1", "proposal-id-2", "proposal-id-3"]
+    },
+    {
+      "id": "circle-id-2",
+      "name": "Another Cool Circle",
+      "desires": ["desire-id-1", "desire-id-2", "desire-id-3"],
+      "docs": "doc-directory-id-1",
+      "focuses": ["focus-id-1", "focus-id-2", "focus-id-3"],
+      "funds": ["fund-id-1", "fund-id-2"],
+      "location": "location-id-1",
+      "engagements": ["engagement-id-1", "engagement-id-2"],
+      "members": ["membership-id-1", "membership-id-3"],
+      "membersInherited": false,
+      "membersRequireInvite": true,
+      "proposals": ["proposal-id-1", "proposal-id-2", "proposal-id-3"]
+    },
+    {
+      "id": "circle-id-3",
+      "name": "The Coolest Circle?",
+      "desires": ["desire-id-1", "desire-id-2", "desire-id-3"],
+      "docs": "doc-directory-id-1",
+      "focuses": ["focus-id-1", "focus-id-2", "focus-id-3"],
+      "funds": ["fund-id-1", "fund-id-2"],
+      "location": "location-id-1",
+      "engagements": ["engagement-id-1", "engagement-id-2"],
+      "members": ["membership-id-1", "membership-id-2", "membership-id-3"],
+      "membersInherited": false,
+      "membersRequireInvite": true,
+      "proposals": ["proposal-id-1", "proposal-id-2", "proposal-id-3"]
+    }
+  ]
+}
