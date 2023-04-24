@@ -1,0 +1,27 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+Update(
+    Function("delete_firewall_rule"),
+    {
+        body: Query(
+            Lambda(
+                ["id"],
+                Let(
+                    {
+                        ref: Ref(Collection("FirewallRule"), Var("id")),
+                        doc: Call("migrate_firewall_rule", Var("ref"))
+                    },
+                    Delete(Var("ref"))
+                )
+            )
+        )
+    }
+)
+
+// Test your UDF by running the following FQL queries, replacing *<string_id>*
+// with a valid id from a document in the *FirewallRule* collection where
+// *ipRange* is a string, and *<array_id>* with a valid id from a document in
+// the *FirewallRule* collection where *ipRange* is an array of strings.
+Call("delete_firewall_rule", "<string_id>")
+Call("delete_firewall_rule", "<array_id>")

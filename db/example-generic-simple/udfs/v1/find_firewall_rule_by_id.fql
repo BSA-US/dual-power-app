@@ -1,0 +1,19 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+CreateFunction({
+    name: "find_firewall_rule_by_id",
+    body: Query(
+        Lambda(
+            ["id"],
+            Get(
+                Ref(Collection("FirewallRule"), Var("id"))
+            )
+        )
+    )
+})
+
+// Test your UDF by pasting the following FQL in the web shell, replacing
+// *<some_id>* with a valid id from a document in the *FirewallRule*
+// collection.
+Call("find_firewall_rule_by_id", "<some_id>")
