@@ -1,20 +1,17 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
-const path = require('path')
-
 const AutoImport = require('unplugin-auto-import/webpack')
 const { FileSystemIconLoader } = require('unplugin-icons/loaders')
 const IconsResolver = require('unplugin-icons/resolver')
 const Icons = require('unplugin-icons/webpack')
-const WindiCSSWebpackPlugin = require('windicss-webpack-plugin')
+const UnoCSS = require('@unocss/webpack').default
 
+/** @type {import('next').NextConfig} */
 module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  include: path.resolve(__dirname, 'public'),
-  webpack(config /* , _options */) {
-    config.plugins.push(new WindiCSSWebpackPlugin())
+  webpack(config) {
+    config.plugins.push(UnoCSS())
+    config.optimization.realContentHash = true
 
     config.module.rules.push({
       test: /\.md$/,

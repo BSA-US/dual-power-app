@@ -22,5 +22,18 @@
     "*.css": "postcss"
   },
   "prettier.enable": false,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "windicss.sortOnSave": false,
+  "windicss.enableVariantCompletion": false,
+  "windicss.enableUtilityCompletion": false,
+  "windicss.enableRemToPxPreview": false,
+  "windicss.enableHoverPreview": false,
+  "windicss.enableEmmetCompletion": false,
+  "windicss.enableDynamicCompletion": false,
+  "windicss.enableColorDecorators": false,
+  "windicss.enableCodeFolding": false,
+  "windicss.enableCodeCompletion": false,
+  "windicss.enableBracketCompletion": false,
+  "windicss.enableAttrVariantCompletion": false,
+  "windicss.enableAttrUtilityCompletion": false
 }

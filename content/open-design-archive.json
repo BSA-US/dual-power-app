@@ -1,0 +1,328 @@
+{
+  "docs": [
+    {
+      "date": "21-09-30",
+      "name": "Data model RFC",
+      "href": "https://github.com/BSA-US/dual-power-app/discussions/85"
+    },
+    {
+      "date": "21-06-02",
+      "name": "Design crit board",
+      "href": "https://miro.com/app/board/o9J_l7tg2oA=/"
+    },
+    {
+      "date": "21-06-02",
+      "name": "Information architecture overview",
+      "href": "https://www.loom.com/share/f1f81d5c868a46abae6725bb5d956658"
+    },
+    {
+      "date": "21-05-28",
+      "name": "Information architecture deck",
+      "href": "/docs/dual-power-app-ia.png"
+    }
+  ],
+  "events": [
+    {
+      "date": "22-07-27",
+      "name": "Design reveal + Q&A",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/SgMQVh8VUpv"
+        }
+      ]
+    },
+    {
+      "date": "22-07-13",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOmVvsFw=/?share_link_id=465724999833"
+        }
+      ]
+    },
+    {
+      "date": "22-06-29",
+      "name": "Opsec & brand chats",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOpIOE90=/?share_link_id=771885510684"
+        }
+      ]
+    },
+    {
+      "date": "22-06-01",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOwa5tfg=/?share_link_id=881757378795"
+        }
+      ]
+    },
+    {
+      "date": "22-05-04",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVO34MHVI=/?share_link_id=393263223007"
+        }
+      ]
+    },
+    {
+      "date": "22-04-20",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVO7IU7xI=/?share_link_id=869678255617"
+        }
+      ]
+    },
+    {
+      "date": "22-04-06",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVO-q1nx8=/?share_link_id=609529204955"
+        }
+      ]
+    },
+    {
+      "date": "22-03-23",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOCuLrX0=/?share_link_id=195129271742"
+        }
+      ]
+    },
+    {
+      "date": "22-03-09",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOIB5XNw=/?share_link_id=165967441687"
+        }
+      ]
+    },
+    {
+      "date": "22-02-23",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/5h1NKOwAYI8"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOKOHf_s=/?share_link_id=754852296251"
+        }
+      ]
+    },
+    {
+      "date": "22-02-09",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOOOK-Zg=/?share_link_id=984904883572"
+        }
+      ]
+    },
+    {
+      "date": "22-01-26",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/aCpnyQxbGfe"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOSI7T0A=/?invite_link_id=660588605139"
+        }
+      ]
+    },
+    {
+      "date": "22-01-12",
+      "name": "2022 kickoff",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOWak-Q4=/?invite_link_id=527359135725"
+        }
+      ]
+    },
+    {
+      "date": "21-12-08",
+      "name": "Visual design updates",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/uXjVOcG4SR4=/?invite_link_id=141576815935"
+        }
+      ]
+    },
+    {
+      "date": "21-11-24",
+      "name": "Planning session",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_lgh7hbc=/?invite_link_id=869064492106"
+        }
+      ]
+    },
+    {
+      "date": "21-11-10",
+      "name": "Data model RFC vote tally",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/PxIoU39Bg5p"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_lkoxnew=/?invite_link_id=408469173770"
+        }
+      ]
+    },
+    {
+      "date": "21-10-27",
+      "name": "Data model RFC vote + Stack preview",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/dDO5uy1YkOs"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_lnFqc0c=/?invite_link_id=505760327201"
+        }
+      ]
+    },
+    {
+      "date": "21-10-13",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/ZXPtrNVsWSD"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_lq7-pO0=/"
+        }
+      ]
+    },
+    {
+      "date": "21-09-29",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_lwwSwlo=/"
+        }
+      ]
+    },
+    {
+      "date": "21-09-15",
+      "name": "Check-in",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/NFBUJqPp2S5"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_lzEQtU4=/"
+        }
+      ]
+    },
+    {
+      "date": "21-09-01",
+      "name": "Technical meeting",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/kuEXQz2200X"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_l0LIt-g=/"
+        }
+      ]
+    },
+    {
+      "date": "21-08-18",
+      "name": "Design phase 2 kickoff",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/W82NnNIDF9z"
+        },
+        {
+          "name": "Notes",
+          "href": "https://miro.com/app/board/o9J_l2wDHzs=/"
+        }
+      ]
+    },
+    {
+      "date": "21-08-04",
+      "name": "Technical meeting",
+      "links": [
+        {
+          "name": "Notes",
+          "href": "https://share.descript.com/view/sb3qAD4l9DR"
+        }
+      ]
+    },
+    {
+      "date": "21-07-21",
+      "name": "Wireframes review",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/BvptYpMTPCv"
+        }
+      ]
+    },
+    {
+      "date": "21-07-07",
+      "name": "Design crit",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/mD1iq2t5Tom"
+        }
+      ]
+    },
+    {
+      "date": "21-06-16",
+      "name": "Design workshop",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/EaKTBCyJ8i9"
+        }
+      ]
+    },
+    {
+      "date": "21-06-02",
+      "name": "Design kickoff",
+      "links": [
+        {
+          "name": "Video",
+          "href": "https://share.descript.com/view/80RLFxoLiw4"
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
-    "voorjaar.windicss-intellisense"
+    "voorjaar.windicss-intellisense",
+    "antfu.unocss"
   ]
 }

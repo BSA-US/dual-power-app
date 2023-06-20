@@ -1,20 +1,14 @@
 import type { NextPage } from 'next'
 
-import { Status } from '~/components'
+import { SectionCtaOpenDesign } from '~/components'
 import { cooperationJacksonUrl } from '~/constants'
-import { useStatus } from '~/hooks'
 import { LandingPage } from '~/layouts'
 
 const IndexPage: NextPage = () => {
-  const [showVideo, setShowVideo] = useState<boolean>(false)
-  const { status } = useStatus()
-
   return (
     <LandingPage
       classNameDonate='lg:(top-auto bottom-20)'
       classNameMain='flex flex-col space-y-12 lg:space-y-16'
-      showVideo={showVideo}
-      onSetShowVideo={setShowVideo}
     >
       <div className='grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-3 gap-8'>
         <section className='col-span-3 flex-shrink-0 space-y-2 lg:col-span-2 xl:col-span-1'>
@@ -40,7 +34,7 @@ const IndexPage: NextPage = () => {
             and communicate with one another (along with the broader public)
             externally in a safe and secure way.
           </p>
-          {status?.text && <Status onOpenVideo={() => setShowVideo(true)} />}
+          <SectionCtaOpenDesign className='!mt-4' />
         </section>
       </div>
       <section className='border-t-2 space-y-8 dark:border-light-gray'>
@@ -49,7 +43,7 @@ const IndexPage: NextPage = () => {
             What is a Dual Power Project?
           </p>
         </div>
-        <div className='grid grid-flow-row-dense gap-4 max-w-192 lg:(grid-cols-2) prose dark:text-light-gray'>
+        <div className='grid grid-flow-row-dense gap-4 max-w-192 lg:(grid-cols-2) prose'>
           <p className='row-span-2'>
             A Dual Power Project is a local, concerted effort to move the
             economy toward collective ownership and solidarity through the

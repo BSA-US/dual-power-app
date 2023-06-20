@@ -4,21 +4,25 @@ import type {
   CheckboxProps,
 } from '@radix-ui/react-checkbox'
 
-export const Checkbox = ({ className = '', ...props }: CheckboxProps) => (
-  <Root
-    {...props}
-    className={`relative w-24px h-24px border-1 border-cool-gray-300 rounded-sm flex items-center justify-center focus-ring ${className}`}
-  >
-    <MdiCheck className={props.checked ? '' : 'hidden'} />
-  </Root>
-)
+export function Checkbox({ className = '', ...props }: CheckboxProps) {
+  return (
+    <Root
+      {...props}
+      className={`relative w-24px h-24px border-1 border-cool-gray-300 rounded-sm flex items-center justify-center focus-ring ${className}`}
+    >
+      <MdiCheck className={props.checked ? '' : 'hidden'} />
+    </Root>
+  )
+}
 
-export const CheckIndicator = ({
+export function CheckIndicator({
   className = '',
   ...props
-}: CheckboxIndicatorProps) => (
-  <Indicator
-    {...props}
-    className={`${className}`}
-  ></Indicator>
-)
+}: CheckboxIndicatorProps) {
+  return (
+    <Indicator
+      {...props}
+      className={`${className}`}
+    ></Indicator>
+  )
+}

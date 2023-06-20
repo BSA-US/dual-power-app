@@ -5,11 +5,11 @@ export interface CardProps {
   onClick?: () => void
 }
 
-export const Card = ({
+export function Card({
   treatment = 'standard',
   className,
   ...props
-}: CardProps) => {
+}: CardProps) {
   const styleMap = {
     knockout: 'bg-dark-900 text-white font-bold',
     outline: 'bg-transparent text-dark-900 font-bold border-3',
@@ -24,7 +24,7 @@ export const Card = ({
   )
 }
 
-export const CardCTA = ({ className, ...props }: any) => {
+export function CardCTA({ className, ...props }: any) {
   return (
     <div
       className={`pt-2 flex justify-center ${className}`}
