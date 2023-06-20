@@ -24,7 +24,7 @@ function LandingPageLayout({
       className={`relative flex flex-col max-w-1440px mx-auto px-4 py-8 space-y-12 lg:(px-8 pb-0 space-y-16) xl:px-16 min-h-screen ${classNameLayout}`}
     >
       {isDevelopment && (
-        <div className='flex justify-between p-2 bg-hero-diagonal-lines bg-lime-200 font-mono text-xs'>
+        <div className='flex justify-between p-2 bg-reject font-mono text-xs text-white'>
           <p>OTD development build</p>
           <a
             className='underline'
