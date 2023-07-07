@@ -1,9 +1,8 @@
 export const bsaUrl = 'https://blacksocialists.us'
+export const discordUrl = 'https://discord.gg/BqdhzwM2aa'
+export const miroUrl =
+  'https://miro.com/app/board/uXjVPUFB31M=/?share_link_id=728572488671'
 export const githubUrl = 'https://github.com/bsa-us'
-export const roadmapUrl = 'https://github.com/BSA-US/dual-power-app/projects/8'
 export const twitterUrl = 'https://twitter.com/DualPowerApp'
 export const donateUrl = 'https://blacksocialists.us/donate'
-export const getMoreInfoUrl = 'https://airtable.com/shr0fyF8z1VqA9z2A'
-export const helpTheProjectUrl = 'https://airtable.com/shrpDcYjkRf6b1Cv2'
-export const joinTheWaitlistUrl = 'https://airtable.com/shr6pI1H4YoyISpMG'
 export const cooperationJacksonUrl = 'https://cooperationjackson.org/'

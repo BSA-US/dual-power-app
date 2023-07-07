@@ -8,23 +8,29 @@ import type {
 
 export const Tabs = (props: TabsProps) => <Root {...props} />
 
-export const TabsHeaders = ({ className = '', ...props }: TabsListProps) => (
-  <List
-    {...props}
-    className={`flex space-x-4 font-mono uppercase ${className}`}
-  />
-)
+export function TabsHeaders({ className = '', ...props }: TabsListProps) {
+  return (
+    <List
+      {...props}
+      className={`flex space-x-4 font-mono uppercase ${className}`}
+    />
+  )
+}
 
-export const TabHeader = ({ className = '', ...props }: TabsTriggerProps) => (
-  <Trigger
-    {...props}
-    className={`cursor-pointer outline-none underline focus-ring aria-selected:(font-bold pointer-events-none no-underline) ${className}`}
-  />
-)
+export function TabHeader({ className = '', ...props }: TabsTriggerProps) {
+  return (
+    <Trigger
+      {...props}
+      className={`cursor-pointer outline-none underline focus-ring aria-selected:(font-bold pointer-events-none no-underline) ${className}`}
+    />
+  )
+}
 
-export const TabContent = ({ className = '', ...props }: TabsContentProps) => (
-  <Content
-    {...props}
-    className={`focus-ring ${className}`}
-  />
-)
+export function TabContent({ className = '', ...props }: TabsContentProps) {
+  return (
+    <Content
+      {...props}
+      className={`focus-ring ${className}`}
+    />
+  )
+}

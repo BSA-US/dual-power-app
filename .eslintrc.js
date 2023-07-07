@@ -7,6 +7,7 @@ module.exports = {
   ],
   plugins: ['prettier', 'sonarjs', 'sort-keys-fix', '@next/next'],
   rules: {
+    'antfu/if-newline': 'off',
     'import/order': [
       'error',
       {
@@ -56,12 +57,12 @@ module.exports = {
         vueIndentScriptAndStyle: false,
       },
     ],
-    'react/jsx-no-undef': [
-      'error',
-      {
-        allowGlobals: true,
-      },
-    ],
+    // 'react/jsx-no-undef': [
+    //   'error',
+    //   {
+    //     allowGlobals: true,
+    //   },
+    // ],
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'sort-keys-fix/sort-keys-fix': [

@@ -1,4 +1,5 @@
-import 'windi.css'
+import '@unocss/reset/tailwind.css'
+import 'uno.css'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

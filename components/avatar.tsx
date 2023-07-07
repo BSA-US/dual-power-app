@@ -5,23 +5,29 @@ import type {
   AvatarProps,
 } from '@radix-ui/react-avatar'
 
-export const Avatar = (props: AvatarProps) => (
-  <Root
-    {...props}
-    className={`${props.className}`}
-  />
-)
+export function Avatar(props: AvatarProps) {
+  return (
+    <Root
+      {...props}
+      className={`${props.className}`}
+    />
+  )
+}
 
-export const AvatarImage = (props: AvatarImageProps) => (
-  <Image
-    {...props}
-    className={`${props.className}`}
-  />
-)
+export function AvatarImage(props: AvatarImageProps) {
+  return (
+    <Image
+      {...props}
+      className={`${props.className}`}
+    />
+  )
+}
 
-export const AvatarFallback = (props: AvatarFallbackProps) => (
-  <Fallback
-    {...props}
-    className={`${props.className}`}
-  />
-)
+export function AvatarFallback(props: AvatarFallbackProps) {
+  return (
+    <Fallback
+      {...props}
+      className={`${props.className}`}
+    />
+  )
+}

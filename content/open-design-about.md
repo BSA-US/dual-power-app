@@ -1,8 +1,9 @@
 Open Design + Build began as a collaborative project involving [Manhattan Hydraulics](https://twitter.com/hydraulics_nyc), Black Socialists in America's volunteer Open Tech Development (OTD) team, and BSA's broader following + community to create the Dual Power App. Through open and transparent development, we're working to distribute digital tools supporting orgs and individuals building a direct democracy.
 
-You're welcome to join us at any of our events, or [send BSA an intro](https://blacksocialists.us/contact) for an invite to our Basecamp space.
+Join us at any of our events on [Discord](https://discord.gg/BqdhzwM2aa) for an invite to our Basecamp space.
 
-**Designers:** We need your help turning our
-[wireframes](https://www.figma.com/file/N6VFPqgNVovoXxy93Q6i4Q/Dual-Power-App-2021%E2%80%93present?node-id=0%3A1) and [information architecture](https://dualpower.app/docs/dual-power-app-ia.pdf) into high-fidelity components and prototypes.
+**Designers:** We could use a hand turning our mockups and component library into realistic prototypes for engineers to follow.
 
-**Engineers:** We have a broad roadmap and some issues that are open to your contributions and, if you introduce yourself, we can help you get started.
+**Engineers:** We have mockups, a data model they conform to, and this repo as an app scaffold. Jump and do whatever you want across the stack; we would especially appreciate:
+- Leadership on the back end, potentially using [Open Sociocracy](https://www.opensociocracy.org/) but also open to a proprietary monolith or [Fediverse](https://fediverse.party/) network.
+- User flows modeled in [XState](https://xstate.js.org/) FSMs, while others continue building components and pages.

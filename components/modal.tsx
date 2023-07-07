@@ -29,44 +29,51 @@ interface ModalProps extends DialogProps {
   removeOverlay?: boolean
 }
 
-const ModalTrigger = ({ className = '', ...rest }: DialogTriggerProps) => (
-  <RadixTrigger
-    asChild
-    className={`font-inter ${className}`.trim()}
-    {...rest}
-  />
-)
+function ModalTrigger({ className = '', ...rest }: DialogTriggerProps) {
+  return (
+    <RadixTrigger
+      asChild
+      className={`font-inter ${className}`.trim()}
+      {...rest}
+    />
+  )
+}
 
-const ModalOverlay = ({ className = '', ...rest }: DialogOverlayProps) => (
-  <Overlay
-    className={`fixed -inset-0 bg-black bg-opacity-50 font-inter ${className}`.trim()}
-    {...rest}
-  />
-)
+function ModalOverlay({ className = '', ...rest }: DialogOverlayProps) {
+  return (
+    <Overlay
+      className={`fixed -inset-0 bg-black bg-opacity-50 font-inter ${className}`.trim()}
+      {...rest}
+    />
+  )
+}
 
-const ModalStandardClose = ({ className = '', ...rest }: DialogCloseProps) => (
-  <Close
-    {...rest}
-    asChild
-  >
-    <button
-      type='button'
-      className={`
+function ModalStandardClose({ className = '', ...rest }: DialogCloseProps) {
+  return (
+    <Close
+      {...rest}
+      asChild
+    >
+      <button
+        type='button'
+        className={`
         absolute top-10px right-10px
         flex justify-center align-middle
         h-15px w-15px
         font-inter
         ${className}
       `.trim()}
-    >
-      <Cross2Icon />
-    </button>
-  </Close>
-)
+      >
+        <Cross2Icon />
+      </button>
+    </Close>
+  )
+}
 
-const ModalContent = ({ className = '', ...rest }: DialogContentProps) => (
-  <Content
-    className={`
+function ModalContent({ className = '', ...rest }: DialogContentProps) {
+  return (
+    <Content
+      className={`
       fixed inset-center
       w-90vw max-w-md max-h-85vh
       p-7 rounded-md
@@ -74,49 +81,56 @@ const ModalContent = ({ className = '', ...rest }: DialogContentProps) => (
       font-inter
       ${className}
     `.trim()}
-    {...rest}
-  />
-)
+      {...rest}
+    />
+  )
+}
 
-export const ModalTitle = ({ className = '', ...rest }: DialogTitleProps) => (
-  <Title
-    className={`text-lg font-bold mb-2 font-inter ${className}`.trim()}
-    {...rest}
-  />
-)
+export function ModalTitle({ className = '', ...rest }: DialogTitleProps) {
+  return (
+    <Title
+      className={`text-lg font-bold mb-2 font-inter ${className}`.trim()}
+      {...rest}
+    />
+  )
+}
 
-export const ModalDescription = ({
+export function ModalDescription({
   className = '',
   ...rest
-}: DialogDescriptionProps) => (
-  <Description
-    className={`text-gray-700 ${className}`.trim()}
-    {...rest}
-  />
-)
+}: DialogDescriptionProps) {
+  return (
+    <Description
+      className={`text-gray-700 ${className}`.trim()}
+      {...rest}
+    />
+  )
+}
 
 export const ModalClose = ({ ...rest }: DialogCloseProps) => <Close {...rest} />
 
-export const ModalPortal = ({ ...rest }: DialogPortalProps) => (
-  <DialogPortal {...rest} />
-)
+export function ModalPortal({ ...rest }: DialogPortalProps) {
+  return <DialogPortal {...rest} />
+}
 
-export const Modal = ({
+export function Modal({
   trigger,
   removeCloseIcon,
   removeOverlay,
   contentClassName = '',
   children,
   ...rest
-}: ModalProps) => (
-  <Root {...rest}>
-    {trigger && <ModalTrigger>{trigger}</ModalTrigger>}
-    <ModalPortal>
-      {!removeOverlay && <ModalOverlay />}
-      <ModalContent className={contentClassName}>
-        {!removeCloseIcon && <ModalStandardClose />}
-        {children}
-      </ModalContent>
-    </ModalPortal>
-  </Root>
-)
+}: ModalProps) {
+  return (
+    <Root {...rest}>
+      {trigger && <ModalTrigger>{trigger}</ModalTrigger>}
+      <ModalPortal>
+        {!removeOverlay && <ModalOverlay />}
+        <ModalContent className={contentClassName}>
+          {!removeCloseIcon && <ModalStandardClose />}
+          {children}
+        </ModalContent>
+      </ModalPortal>
+    </Root>
+  )
+}
