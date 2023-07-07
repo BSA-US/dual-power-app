@@ -5,10 +5,12 @@ export default {
   title: 'Divider',
 }
 
-export const Standard = () => (
-  <div>
-    a divider divides some things
-    <Divider />
-    from other things
-  </div>
-)
+export function Standard() {
+  return (
+    <div>
+      a divider divides some things
+      <Divider />
+      from other things
+    </div>
+  )
+}

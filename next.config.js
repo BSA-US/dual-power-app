@@ -1,8 +1,8 @@
+const UnoCSS = require('@unocss/webpack').default
 const AutoImport = require('unplugin-auto-import/webpack')
 const { FileSystemIconLoader } = require('unplugin-icons/loaders')
 const IconsResolver = require('unplugin-icons/resolver')
 const Icons = require('unplugin-icons/webpack')
-const UnoCSS = require('@unocss/webpack').default
 
 /** @type {import('next').NextConfig} */
 module.exports = {

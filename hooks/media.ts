@@ -7,7 +7,7 @@ import { breakpoints as breakpointsRaw } from '../uno.config.breakpoints'
 const breakpoints = Object.entries(breakpointsRaw).reduce(
   (acc, [k, v]) => ({
     ...acc,
-    [k]: parseInt(v.replace('px', ''), 10),
+    [k]: Number.parseInt(v.replace('px', ''), 10),
   }),
   {} as { [P in keyof typeof breakpointsRaw]: number }
 )

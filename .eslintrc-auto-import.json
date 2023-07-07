@@ -20,9 +20,6 @@
     "useState": true,
     "useSyncExternalStore": true,
     "useTransition": true,
-    "GlyphBsa": true,
-    "GlyphManhattanHydraulics": true,
-    "MdiClose": true,
     "GlyphOtd": true,
     "MdiCheck": true
   }
