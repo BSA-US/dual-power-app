@@ -41,7 +41,21 @@ export default defineConfig({
     presetTypography({
       cssExtend: {
         '*': {
+          'letter-spacing': '.03rem',
           'line-height': '1.25rem',
+        },
+        '2xl': {
+          'font-size': '1.5rem',
+          'letter-spacing': '.02rem',
+          'line-height': '1.25rem',
+        },
+        '4xl': {
+          'font-size': '2.25rem',
+          'letter-spacing': '.04rem',
+          'line-height': '2.5rem',
+        },
+        DARK: {
+          color: colors['light-gray'],
         },
         a: {
           color: colors.yield,
@@ -80,7 +94,6 @@ export default defineConfig({
       subheading: ['5rem', '5rem'],
       title: ['14rem', '14rem'],
     },
-    typography: {},
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
   variants: [

@@ -3,12 +3,9 @@ import Document, { Head, Html, Main, NextScript } from 'next/document'
 class DualPowerAppDocument extends Document {
   render() {
     return (
-      <Html
-        className='box-border dark bg-black text-light-gray  [&_*]:border-light-gray font-sans'
-        lang='en'
-      >
+      <Html lang='en'>
         <Head />
-        <body>
+        <body className='box-border dark bg-black text-light-gray  [&_*]:border-light-gray font-sans'>
           <Main />
           <NextScript />
         </body>
