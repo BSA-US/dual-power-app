@@ -62,11 +62,8 @@ const IndexPage: NextPage = () => {
             ecosystem defined by directly democratic social relations.
           </p>
           <p>
-                        Can we build a parallel world?
+              Can we build a parallel world?
             <br />
-            <a              
-            >
-            
             </a>
           </p>
         </div>
