@@ -66,7 +66,7 @@ const IndexPage: NextPage = () => {
             <br />
             <a              
             >
-              Think about it.
+            
             </a>
           </p>
         </div>
