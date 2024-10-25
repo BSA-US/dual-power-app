@@ -64,9 +64,7 @@ const IndexPage: NextPage = () => {
           <p>
                         Can we build a parallel world?
             <br />
-            <a
-              className='underline'
-              
+            <a              
             >
               Think about it.
             </a>
