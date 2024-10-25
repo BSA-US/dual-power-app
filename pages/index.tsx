@@ -63,13 +63,6 @@ const IndexPage: NextPage = () => {
             ecosystem defined by directly democratic social relations.
           </p>
           <p>
-            Looking for an example?
-            <br />
-            <a
-              className='underline'
-              href={cooperationJacksonUrl}
-            >
-              Check out Cooperation Jackson.
             </a>
           </p>
         </div>
