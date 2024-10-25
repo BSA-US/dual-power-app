@@ -66,8 +66,9 @@ const IndexPage: NextPage = () => {
             <br />
             <a
               className='underline'
-            >
               
+            >
+              ...
             </a>
           </p>
         </div>
