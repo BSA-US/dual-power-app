@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 
 import { Status } from '~/components'
-import { cooperationJacksonUrl } from '~/constants'
 import { useStatus } from '~/hooks'
 import { LandingPage } from '~/layouts'
 
