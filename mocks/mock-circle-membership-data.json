@@ -1,0 +1,28 @@
+{
+  "circleMemberships": [
+    {
+      "id": "membership-id-1",
+      "circle": "circle-id-1",
+      "user": "user-id-1",
+      "role": "Steward"
+    },
+    {
+      "id": "membership-id-2",
+      "circle": "circle-id-1",
+      "user": "user-id-2",
+      "role": "Friend"
+    },
+    {
+      "id": "membership-id-3",
+      "circle": "circle-id-1",
+      "user": "user-id-3",
+      "role": "Decorated Participant"
+    },
+    {
+      "id": "membership-id-4",
+      "circle": "circle-id-2",
+      "user": "user-id-1",
+      "role": "Principal Anarch"
+    }
+  ]
+}

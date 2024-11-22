@@ -1,0 +1,24 @@
+{
+  "proposals": [
+    {
+      "id": "proposal-id-1",
+      "authors": ["user-id-1", "user-id-2"],
+      "circle": "circle-id-1",
+      "desires": ["desire-id-1"],
+      "docs": ["doc-id-1"],
+      "engagements": ["engagement-id-1"],
+      "focuses": ["focus-id-1"],
+      "funds": ["fund-id-1"]
+    },
+    {
+      "id": "proposal-id-2",
+      "authors": ["user-id-3", "user-id-2"],
+      "circle": "circle-id-2",
+      "desires": ["desire-id-2"],
+      "docs": ["doc-id-2"],
+      "engagements": ["engagement-id-2"],
+      "focuses": ["focus-id-2"],
+      "funds": ["fund-id-2"]
+    }
+  ]
+}
