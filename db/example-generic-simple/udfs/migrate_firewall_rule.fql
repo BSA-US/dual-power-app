@@ -1,0 +1,25 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+CreateFunction({
+    name: "migrate_firewall_rule",
+    body: Query(
+        Lambda(
+            ["firewall_rule_ref"],
+            Let(
+                { 
+                    doc: Get(Var("firewall_rule_ref")),
+                    ipRange: Select(["data", "ipRange"], Var("doc"))
+                },
+                If(
+                    IsArray(Var("ipRange")),
+                    Var("doc"),
+                    Update(
+                        Var("firewall_rule_ref"),
+                        { data: { ipRange: [Var("ipRange")] } }
+                    )
+                )
+            )
+        )
+    )
+})

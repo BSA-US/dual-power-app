@@ -1,0 +1,9 @@
+# Copyright Fauna, Inc.
+# SPDX-License-Identifier: MIT-0
+
+mutation DeleteRule {
+    deleteFirewallRule(id: "<data.denyPrivateHTTP._id>") {
+        _id
+        description
+    }
+}

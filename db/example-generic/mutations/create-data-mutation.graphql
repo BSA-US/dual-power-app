@@ -1,0 +1,54 @@
+# Copyright Fauna, Inc.
+# SPDX-License-Identifier: MIT-0
+
+mutation CreateOldRules {
+    denyPrivateHTTP: createFirewallRule(data: {
+        action: "Deny"
+        port: 80
+        ipRange: "192.168.0.0/16"
+        description: "Deny HTTP from private IP address range"
+    }) {
+        _id
+        description
+    }
+
+    denyPrivateHTTPS: createFirewallRule(data: {
+        action: "Deny"
+        port: 443
+        ipRange: "192.168.0.0/16"
+        description: "Deny HTTP from private IP address range"
+    }) {
+        _id
+        description
+    }
+}
+
+mutation CreateNewRules {
+    denyPrivateHTTP: createFirewallRule(data: {
+        action: "Deny"
+        port: 80
+        ipRange: [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16"
+        ]
+        description: "Deny HTTP from private IP address ranges"
+    }) {
+        _id
+        description
+    }
+
+    denyPrivateHTTPS: createFirewallRule(data: {
+        action: "Deny"
+        port: 443
+        ipRange: [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16"
+        ]
+        description: "Deny HTTP from private IP address ranges"
+    }) {
+        _id
+        description
+    }
+}

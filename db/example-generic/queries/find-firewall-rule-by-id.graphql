@@ -1,0 +1,11 @@
+# Copyright Fauna, Inc.
+# SPDX-License-Identifier: MIT-0
+
+query {
+  findFirewallRuleByID(id:"<data.http._id>"){
+    description
+    ipRange
+    port
+    action
+  }
+}

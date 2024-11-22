@@ -1,0 +1,30 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+Update(
+    Function("update_firewall_rule"),
+    {
+        body: Query(
+            Lambda(
+                ["id", "new_rule"],
+                Let(
+                    {
+                        ref: Ref(Collection("migrate_firewall_rule"), Var("id")),
+                        doc: Update(
+                            Var("ref"),
+                            { data: Var("new_rule") }
+                        )
+                    },
+                    Call("migrate_firewall_rule", Var("ref"))
+                )        
+            )
+        )
+    }
+)
+
+// Test your UDF by running the following FQL query with various objects,
+// replacing *<some_id>* with a valid id from a document in the
+// *FirewallRule* collection.
+// Explore different variations with *ipRange* defined as a string, array, and
+// updating existing and migrated documents.
+Call("update_firewall_rule", ["<some_id>", { data: { action: "Allow", description: null } }])
