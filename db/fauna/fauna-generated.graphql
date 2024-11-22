@@ -1,0 +1,1067 @@
+directive @embedded on OBJECT
+directive @collection(name: String!) on OBJECT
+directive @index(name: String!) on FIELD_DEFINITION
+directive @resolver(
+  name: String
+  paginated: Boolean! = false
+) on FIELD_DEFINITION
+directive @relation(name: String) on FIELD_DEFINITION
+directive @unique(index: String) on FIELD_DEFINITION
+type Area {
+  name: String!
+  location: Location
+  posts(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): PostPage!
+  circle: Circle!
+  # The document's ID.
+  _id: ID!
+  documents(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): DocumentPage!
+  proposal: Proposal!
+  events(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): EventPage!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Circle' using the field 'Area.circle'.
+input AreaCircleRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Document'.
+input AreaDocumentsRelation {
+  # Create one or more documents of type 'Document' and associate them with the current document.
+  create: [DocumentInput]
+  # Connect one or more documents of type 'Document' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Document' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Event'.
+input AreaEventsRelation {
+  # Create one or more documents of type 'Event' and associate them with the current document.
+  create: [EventInput]
+  # Connect one or more documents of type 'Event' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Event' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# 'Area' input values
+input AreaInput {
+  circle: AreaCircleRelation
+  name: String!
+  proposal: AreaProposalRelation
+  location: AreaLocationRelation
+  posts: AreaPostsRelation
+  documents: AreaDocumentsRelation
+  events: AreaEventsRelation
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Location' using the field 'Area.location'.
+input AreaLocationRelation {
+  # Create a document of type 'Location' and associate it with the current document.
+  create: LocationInput
+  # Connect a document of type 'Location' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Location'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Post'.
+input AreaPostsRelation {
+  # Create one or more documents of type 'Post' and associate them with the current document.
+  create: [PostInput]
+  # Connect one or more documents of type 'Post' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Post' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# Allow manipulating the relationship between the types 'Area' and 'Proposal' using the field 'Area.proposal'.
+input AreaProposalRelation {
+  # Create a document of type 'Proposal' and associate it with the current document.
+  create: ProposalInput
+  # Connect a document of type 'Proposal' with the current document using its ID.
+  connect: ID
+}
+
+type Circle {
+  parent: Circle
+  name: String!
+  location: Location
+  posts(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): PostPage!
+  # The document's ID.
+  _id: ID!
+  documents(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): DocumentPage!
+  proposal: Proposal!
+  members(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): ProfilePage!
+  events(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): EventPage!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Document'.
+input CircleDocumentsRelation {
+  # Create one or more documents of type 'Document' and associate them with the current document.
+  create: [DocumentInput]
+  # Connect one or more documents of type 'Document' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Document' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Event'.
+input CircleEventsRelation {
+  # Create one or more documents of type 'Event' and associate them with the current document.
+  create: [EventInput]
+  # Connect one or more documents of type 'Event' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Event' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# 'Circle' input values
+input CircleInput {
+  parent: CircleParentRelation
+  name: String!
+  proposal: CircleProposalRelation
+  location: CircleLocationRelation
+  members: CircleMembersRelation
+  posts: CirclePostsRelation
+  documents: CircleDocumentsRelation
+  events: CircleEventsRelation
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Location' using the field 'Circle.location'.
+input CircleLocationRelation {
+  # Create a document of type 'Location' and associate it with the current document.
+  create: LocationInput
+  # Connect a document of type 'Location' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Location'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Profile'.
+input CircleMembersRelation {
+  # Create one or more documents of type 'Profile' and associate them with the current document.
+  create: [ProfileInput]
+  # Connect one or more documents of type 'Profile' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Profile' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# The pagination object for elements of type 'Circle'.
+type CirclePage {
+  # The elements of type 'Circle' in this page.
+  data: [Circle]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Circle' using the field 'Circle.parent'.
+input CircleParentRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Circle'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Post'.
+input CirclePostsRelation {
+  # Create one or more documents of type 'Post' and associate them with the current document.
+  create: [PostInput]
+  # Connect one or more documents of type 'Post' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Post' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# Allow manipulating the relationship between the types 'Circle' and 'Proposal' using the field 'Circle.proposal'.
+input CircleProposalRelation {
+  # Create a document of type 'Proposal' and associate it with the current document.
+  create: ProposalInput
+  # Connect a document of type 'Proposal' with the current document using its ID.
+  connect: ID
+}
+
+type Comment {
+  post: Post!
+  author: Profile!
+  # The document's ID.
+  _id: ID!
+  content: String!
+  created_at: Time!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Comment' and 'Profile' using the field 'Comment.author'.
+input CommentAuthorRelation {
+  # Create a document of type 'Profile' and associate it with the current document.
+  create: ProfileInput
+  # Connect a document of type 'Profile' with the current document using its ID.
+  connect: ID
+}
+
+# 'Comment' input values
+input CommentInput {
+  post: CommentPostRelation
+  author: CommentAuthorRelation
+  content: String!
+  created_at: Time!
+}
+
+# The pagination object for elements of type 'Comment'.
+type CommentPage {
+  # The elements of type 'Comment' in this page.
+  data: [Comment]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+# Allow manipulating the relationship between the types 'Comment' and 'Post' using the field 'Comment.post'.
+input CommentPostRelation {
+  # Create a document of type 'Post' and associate it with the current document.
+  create: PostInput
+  # Connect a document of type 'Post' with the current document using its ID.
+  connect: ID
+}
+
+scalar Date
+
+type Document {
+  area: Area
+  circle: Circle
+  # The document's ID.
+  _id: ID!
+  current_revision: Revision!
+  proposal: Proposal!
+  title: String!
+  revisions(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): RevisionPage!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Document' and 'Area' using the field 'Document.area'.
+input DocumentAreaRelation {
+  # Create a document of type 'Area' and associate it with the current document.
+  create: AreaInput
+  # Connect a document of type 'Area' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Area'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Document' and 'Circle' using the field 'Document.circle'.
+input DocumentCircleRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Circle'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Document' and 'Revision' using the field 'Document.current_revision'.
+input DocumentCurrent_revisionRelation {
+  # Create a document of type 'Revision' and associate it with the current document.
+  create: RevisionInput
+  # Connect a document of type 'Revision' with the current document using its ID.
+  connect: ID
+}
+
+# 'Document' input values
+input DocumentInput {
+  circle: DocumentCircleRelation
+  area: DocumentAreaRelation
+  proposal: DocumentProposalRelation
+  title: String!
+  current_revision: DocumentCurrent_revisionRelation
+  revisions: DocumentRevisionsRelation
+}
+
+# The pagination object for elements of type 'Document'.
+type DocumentPage {
+  # The elements of type 'Document' in this page.
+  data: [Document]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+# Allow manipulating the relationship between the types 'Document' and 'Proposal' using the field 'Document.proposal'.
+input DocumentProposalRelation {
+  # Create a document of type 'Proposal' and associate it with the current document.
+  create: ProposalInput
+  # Connect a document of type 'Proposal' with the current document using its ID.
+  connect: ID
+}
+
+# Allow manipulating the relationship between the types 'Document' and 'Revision'.
+input DocumentRevisionsRelation {
+  # Create one or more documents of type 'Revision' and associate them with the current document.
+  create: [RevisionInput]
+  # Connect one or more documents of type 'Revision' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Revision' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+type Event {
+  area: Area
+  name: String!
+  starts_at: Time!
+  location: Location
+  circle: Circle
+  # The document's ID.
+  _id: ID!
+  proposal: Proposal!
+  ends_at: Time!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Event' and 'Area' using the field 'Event.area'.
+input EventAreaRelation {
+  # Create a document of type 'Area' and associate it with the current document.
+  create: AreaInput
+  # Connect a document of type 'Area' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Area'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Event' and 'Circle' using the field 'Event.circle'.
+input EventCircleRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Circle'
+  disconnect: Boolean
+}
+
+# 'Event' input values
+input EventInput {
+  name: String!
+  proposal: EventProposalRelation
+  location: EventLocationRelation
+  circle: EventCircleRelation
+  area: EventAreaRelation
+  starts_at: Time!
+  ends_at: Time!
+}
+
+# Allow manipulating the relationship between the types 'Event' and 'Location' using the field 'Event.location'.
+input EventLocationRelation {
+  # Create a document of type 'Location' and associate it with the current document.
+  create: LocationInput
+  # Connect a document of type 'Location' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Location'
+  disconnect: Boolean
+}
+
+# The pagination object for elements of type 'Event'.
+type EventPage {
+  # The elements of type 'Event' in this page.
+  data: [Event]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+# Allow manipulating the relationship between the types 'Event' and 'Proposal' using the field 'Event.proposal'.
+input EventProposalRelation {
+  # Create a document of type 'Proposal' and associate it with the current document.
+  create: ProposalInput
+  # Connect a document of type 'Proposal' with the current document using its ID.
+  connect: ID
+}
+
+type Location {
+  name: String!
+  # The document's ID.
+  _id: ID!
+  address: String
+  lon: Float
+  lat: Float
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# 'Location' input values
+input LocationInput {
+  name: String!
+  address: String
+  lat: Float
+  lon: Float
+}
+
+# The `Long` scalar type
+ represents non-fractional signed whole numeric values.
+# Long can represent values between -(2^63) and 2^63 - 1.
+scalar Long
+
+type Mutation {
+  # Update an existing document in the collection of 'User'
+  updateUser(
+    # The 'User' document's ID
+    id: ID!
+    # 'User' input values
+    data: UserInput!
+  ): User
+  # Delete an existing document in the collection of 'Profile'
+  deleteProfile(
+    # The 'Profile' document's ID
+    id: ID!
+  ): Profile
+  # Create a new document in the collection of 'User'
+  createUser(
+    # 'User' input values
+    data: UserInput!
+  ): User!
+  # Create a new document in the collection of 'Proposal'
+  createProposal(
+    # 'Proposal' input values
+    data: ProposalInput!
+  ): Proposal!
+  # Update an existing document in the collection of 'Comment'
+  updateComment(
+    # The 'Comment' document's ID
+    id: ID!
+    # 'Comment' input values
+    data: CommentInput!
+  ): Comment
+  # Delete an existing document in the collection of 'Location'
+  deleteLocation(
+    # The 'Location' document's ID
+    id: ID!
+  ): Location
+  # Delete an existing document in the collection of 'Comment'
+  deleteComment(
+    # The 'Comment' document's ID
+    id: ID!
+  ): Comment
+  # Update an existing document in the collection of 'Post'
+  updatePost(
+    # The 'Post' document's ID
+    id: ID!
+    # 'Post' input values
+    data: PostInput!
+  ): Post
+  # Create a new document in the collection of 'Area'
+  createArea(
+    # 'Area' input values
+    data: AreaInput!
+  ): Area!
+  # Update an existing document in the collection of 'Event'
+  updateEvent(
+    # The 'Event' document's ID
+    id: ID!
+    # 'Event' input values
+    data: EventInput!
+  ): Event
+  # Delete an existing document in the collection of 'Proposal'
+  deleteProposal(
+    # The 'Proposal' document's ID
+    id: ID!
+  ): Proposal
+  # Update an existing document in the collection of 'Location'
+  updateLocation(
+    # The 'Location' document's ID
+    id: ID!
+    # 'Location' input values
+    data: LocationInput!
+  ): Location
+  # Create a new document in the collection of 'Document'
+  createDocument(
+    # 'Document' input values
+    data: DocumentInput!
+  ): Document!
+  # Update an existing document in the collection of 'Proposal'
+  updateProposal(
+    # The 'Proposal' document's ID
+    id: ID!
+    # 'Proposal' input values
+    data: ProposalInput!
+  ): Proposal
+  # Delete an existing document in the collection of 'Circle'
+  deleteCircle(
+    # The 'Circle' document's ID
+    id: ID!
+  ): Circle
+  # Update an existing document in the collection of 'Area'
+  updateArea(
+    # The 'Area' document's ID
+    id: ID!
+    # 'Area' input values
+    data: AreaInput!
+  ): Area
+  # Create a new document in the collection of 'Location'
+  createLocation(
+    # 'Location' input values
+    data: LocationInput!
+  ): Location!
+  # Create a new document in the collection of 'Revision'
+  createRevision(
+    # 'Revision' input values
+    data: RevisionInput!
+  ): Revision!
+  # Create a new document in the collection of 'Comment'
+  createComment(
+    # 'Comment' input values
+    data: CommentInput!
+  ): Comment!
+  # Delete an existing document in the collection of 'Area'
+  deleteArea(
+    # The 'Area' document's ID
+    id: ID!
+  ): Area
+  # Delete an existing document in the collection of 'User'
+  deleteUser(
+    # The 'User' document's ID
+    id: ID!
+  ): User
+  # Delete an existing document in the collection of 'Vote'
+  deleteVote(
+    # The 'Vote' document's ID
+    id: ID!
+  ): Vote
+  # Delete an existing document in the collection of 'Document'
+  deleteDocument(
+    # The 'Document' document's ID
+    id: ID!
+  ): Document
+  # Delete an existing document in the collection of 'Post'
+  deletePost(
+    # The 'Post' document's ID
+    id: ID!
+  ): Post
+  # Create a new document in the collection of 'Event'
+  createEvent(
+    # 'Event' input values
+    data: EventInput!
+  ): Event!
+  # Update an existing document in the collection of 'Revision'
+  updateRevision(
+    # The 'Revision' document's ID
+    id: ID!
+    # 'Revision' input values
+    data: RevisionInput!
+  ): Revision
+  # Update an existing document in the collection of 'Document'
+  updateDocument(
+    # The 'Document' document's ID
+    id: ID!
+    # 'Document' input values
+    data: DocumentInput!
+  ): Document
+  # Create a new document in the collection of 'Circle'
+  createCircle(
+    # 'Circle' input values
+    data: CircleInput!
+  ): Circle!
+  # Create a new document in the collection of 'Profile'
+  createProfile(
+    # 'Profile' input values
+    data: ProfileInput!
+  ): Profile!
+  # Delete an existing document in the collection of 'Revision'
+  deleteRevision(
+    # The 'Revision' document's ID
+    id: ID!
+  ): Revision
+  # Create a new document in the collection of 'Vote'
+  createVote(
+    # 'Vote' input values
+    data: VoteInput!
+  ): Vote!
+  # Create a new document in the collection of 'Post'
+  createPost(
+    # 'Post' input values
+    data: PostInput!
+  ): Post!
+  # Update an existing document in the collection of 'Vote'
+  updateVote(
+    # The 'Vote' document's ID
+    id: ID!
+    # 'Vote' input values
+    data: VoteInput!
+  ): Vote
+  resolveProposedRevision(revision_id: ID!): ProposalOutcome
+  # Delete an existing document in the collection of 'Event'
+  deleteEvent(
+    # The 'Event' document's ID
+    id: ID!
+  ): Event
+  # Update an existing document in the collection of 'Profile'
+  updateProfile(
+    # The 'Profile' document's ID
+    id: ID!
+    # 'Profile' input values
+    data: ProfileInput!
+  ): Profile
+  # Update an existing document in the collection of 'Circle'
+  updateCircle(
+    # The 'Circle' document's ID
+    id: ID!
+    # 'Circle' input values
+    data: CircleInput!
+  ): Circle
+}
+
+type Post {
+  author: Profile!
+  area: Area
+  subject: String!
+  circle: Circle
+  # The document's ID.
+  _id: ID!
+  content: String!
+  created_at: Time!
+  comments(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): CommentPage!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Post' and 'Area' using the field 'Post.area'.
+input PostAreaRelation {
+  # Create a document of type 'Area' and associate it with the current document.
+  create: AreaInput
+  # Connect a document of type 'Area' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Area'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Post' and 'Profile' using the field 'Post.author'.
+input PostAuthorRelation {
+  # Create a document of type 'Profile' and associate it with the current document.
+  create: ProfileInput
+  # Connect a document of type 'Profile' with the current document using its ID.
+  connect: ID
+}
+
+# Allow manipulating the relationship between the types 'Post' and 'Circle' using the field 'Post.circle'.
+input PostCircleRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Circle'
+  disconnect: Boolean
+}
+
+# Allow manipulating the relationship between the types 'Post' and 'Comment'.
+input PostCommentsRelation {
+  # Create one or more documents of type 'Comment' and associate them with the current document.
+  create: [CommentInput]
+  # Connect one or more documents of type 'Comment' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Comment' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# 'Post' input values
+input PostInput {
+  author: PostAuthorRelation
+  circle: PostCircleRelation
+  area: PostAreaRelation
+  subject: String!
+  content: String!
+  created_at: Time!
+  comments: PostCommentsRelation
+}
+
+# The pagination object for elements of type 'Post'.
+type PostPage {
+  # The elements of type 'Post' in this page.
+  data: [Post]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+type Profile {
+  # The document's ID.
+  _id: ID!
+  display_name: String!
+  pronoun: String
+  circles(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): CirclePage!
+  user: User!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Profile' and 'Circle'.
+input ProfileCirclesRelation {
+  # Create one or more documents of type 'Circle' and associate them with the current document.
+  create: [CircleInput]
+  # Connect one or more documents of type 'Circle' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Circle' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+# 'Profile' input values
+input ProfileInput {
+  user: ProfileUserRelation
+  display_name: String!
+  pronoun: String
+  circles: ProfileCirclesRelation
+}
+
+# The pagination object for elements of type 'Profile'.
+type ProfilePage {
+  # The elements of type 'Profile' in this page.
+  data: [Profile]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+# Allow manipulating the relationship between the types 'Profile' and 'User' using the field 'Profile.user'.
+input ProfileUserRelation {
+  # Create a document of type 'User' and associate it with the current document.
+  create: UserInput
+  # Connect a document of type 'User' with the current document using its ID.
+  connect: ID
+}
+
+type Proposal {
+  votes(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): VotePage!
+  circle: Circle!
+  # The document's ID.
+  _id: ID!
+  resolved_at: Time
+  outcome: ProposalOutcome
+  minimum_participation_rate: Float!
+  voting_model: VotingModel!
+  created_at: Time!
+  active: Boolean!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Proposal' and 'Circle' using the field 'Proposal.circle'.
+input ProposalCircleRelation {
+  # Create a document of type 'Circle' and associate it with the current document.
+  create: CircleInput
+  # Connect a document of type 'Circle' with the current document using its ID.
+  connect: ID
+}
+
+# 'Proposal' input values
+input ProposalInput {
+  circle: ProposalCircleRelation
+  voting_model: VotingModel!
+  minimum_participation_rate: Float!
+  votes: ProposalVotesRelation
+  active: Boolean!
+  created_at: Time!
+  resolved_at: Time
+  outcome: ProposalOutcome
+}
+
+enum ProposalOutcome {
+  APPROVED
+  REJECTED
+  UNDECIDED
+}
+
+# Allow manipulating the relationship between the types 'Proposal' and 'Vote'.
+input ProposalVotesRelation {
+  # Create one or more documents of type 'Vote' and associate them with the current document.
+  create: [VoteInput]
+  # Connect one or more documents of type 'Vote' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Vote' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+type Query {
+  calculateOutcome(proposal_id: ID!): ProposalOutcome
+  # Find a document from the collection of 'Event' by its id.
+  findEventByID(
+    # The 'Event' document's ID
+    id: ID!
+  ): Event
+  # Find a document from the collection of 'Location' by its id.
+  findLocationByID(
+    # The 'Location' document's ID
+    id: ID!
+  ): Location
+  # Find a document from the collection of 'Profile' by its id.
+  findProfileByID(
+    # The 'Profile' document's ID
+    id: ID!
+  ): Profile
+  # Find a document from the collection of 'Proposal' by its id.
+  findProposalByID(
+    # The 'Proposal' document's ID
+    id: ID!
+  ): Proposal
+  # Find a document from the collection of 'Circle' by its id.
+  findCircleByID(
+    # The 'Circle' document's ID
+    id: ID!
+  ): Circle
+  # Find a document from the collection of 'Post' by its id.
+  findPostByID(
+    # The 'Post' document's ID
+    id: ID!
+  ): Post
+  # Find a document from the collection of 'Document' by its id.
+  findDocumentByID(
+    # The 'Document' document's ID
+    id: ID!
+  ): Document
+  # Find a document from the collection of 'User' by its id.
+  findUserByID(
+    # The 'User' document's ID
+    id: ID!
+  ): User
+  # Find a document from the collection of 'Comment' by its id.
+  findCommentByID(
+    # The 'Comment' document's ID
+    id: ID!
+  ): Comment
+  # Find a document from the collection of 'Vote' by its id.
+  findVoteByID(
+    # The 'Vote' document's ID
+    id: ID!
+  ): Vote
+  # Find a document from the collection of 'Area' by its id.
+  findAreaByID(
+    # The 'Area' document's ID
+    id: ID!
+  ): Area
+  # Find a document from the collection of 'Revision' by its id.
+  findRevisionByID(
+    # The 'Revision' document's ID
+    id: ID!
+  ): Revision
+}
+
+type Revision {
+  author: Profile!
+  document: Document!
+  # The document's ID.
+  _id: ID!
+  proposal: Proposal!
+  content: String!
+  created_at: Time!
+  revision_title: String!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# Allow manipulating the relationship between the types 'Revision' and 'Profile' using the field 'Revision.author'.
+input RevisionAuthorRelation {
+  # Create a document of type 'Profile' and associate it with the current document.
+  create: ProfileInput
+  # Connect a document of type 'Profile' with the current document using its ID.
+  connect: ID
+}
+
+# Allow manipulating the relationship between the types 'Revision' and 'Document' using the field 'Revision.document'.
+input RevisionDocumentRelation {
+  # Create a document of type 'Document' and associate it with the current document.
+  create: DocumentInput
+  # Connect a document of type 'Document' with the current document using its ID.
+  connect: ID
+}
+
+# 'Revision' input values
+input RevisionInput {
+  author: RevisionAuthorRelation
+  proposal: RevisionProposalRelation
+  document: RevisionDocumentRelation
+  revision_title: String!
+  content: String!
+  created_at: Time!
+}
+
+# The pagination object for elements of type 'Revision'.
+type RevisionPage {
+  # The elements of type 'Revision' in this page.
+  data: [Revision]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+# Allow manipulating the relationship between the types 'Revision' and 'Proposal' using the field 'Revision.proposal'.
+input RevisionProposalRelation {
+  # Create a document of type 'Proposal' and associate it with the current document.
+  create: ProposalInput
+  # Connect a document of type 'Proposal' with the current document using its ID.
+  connect: ID
+}
+
+scalar Time
+
+type User {
+  email: String!
+  # The document's ID.
+  _id: ID!
+  auth_uid: String!
+  profiles(
+    # The number of items to return per page.
+    _size: Int
+    # The pagination cursor.
+    _cursor: String
+  ): ProfilePage!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# 'User' input values
+input UserInput {
+  email: String!
+  auth_uid: String!
+  profiles: UserProfilesRelation
+}
+
+# Allow manipulating the relationship between the types 'User' and 'Profile'.
+input UserProfilesRelation {
+  # Create one or more documents of type 'Profile' and associate them with the current document.
+  create: [ProfileInput]
+  # Connect one or more documents of type 'Profile' with the current document using their IDs.
+  connect: [ID]
+  # Disconnect the given documents of type 'Profile' from the current document using their IDs.
+  disconnect: [ID]
+}
+
+type Vote {
+  approve: Boolean
+  # The document's ID.
+  _id: ID!
+  proxy_to: Profile
+  proposal: Proposal!
+  profile: Profile!
+  # The document's timestamp.
+  _ts: Long!
+}
+
+# 'Vote' input values
+input VoteInput {
+  proposal: VoteProposalRelation
+  profile: VoteProfileRelation
+  proxy_to: VoteProxy_toRelation
+  approve: Boolean
+}
+
+# The pagination object for elements of type 'Vote'.
+type VotePage {
+  # The elements of type 'Vote' in this page.
+  data: [Vote]!
+  # A cursor for elements coming after the current page.
+  after: String
+  # A cursor for elements coming before the current page.
+  before: String
+}
+
+# Allow manipulating the relationship between the types 'Vote' and 'Profile' using the field 'Vote.profile'.
+input VoteProfileRelation {
+  # Create a document of type 'Profile' and associate it with the current document.
+  create: ProfileInput
+  # Connect a document of type 'Profile' with the current document using its ID.
+  connect: ID
+}
+
+# Allow manipulating the relationship between the types 'Vote' and 'Proposal' using the field 'Vote.proposal'.
+input VoteProposalRelation {
+  # Create a document of type 'Proposal' and associate it with the current document.
+  create: ProposalInput
+  # Connect a document of type 'Proposal' with the current document using its ID.
+  connect: ID
+}
+
+# Allow manipulating the relationship between the types 'Vote' and 'Profile' using the field 'Vote.proxy_to'.
+input VoteProxy_toRelation {
+  # Create a document of type 'Profile' and associate it with the current document.
+  create: ProfileInput
+  # Connect a document of type 'Profile' with the current document using its ID.
+  connect: ID
+  # If true, disconnects this document from 'Profile'
+  disconnect: Boolean
+}
+
+enum VotingModel {
+  CONSENSUS
+  CONSENT
+}
+
